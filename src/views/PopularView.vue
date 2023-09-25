@@ -91,7 +91,7 @@ export default {
       if (scrollY + windowHeight >= documentHeight - threshold) {
         setTimeout(async () => {
           await this.loadMoreFilms();
-        }, 1000);
+        }, 50);
       }
     },
   },
