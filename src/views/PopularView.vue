@@ -45,7 +45,7 @@ export default {
             Title: x.title,
             Overview: x.overview
               ? x.overview
-              : "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+              : "Lorem Ipsum is ssimply dummy of the printing and typesetting industry.",
             PosterPath: x.poster_path,
             ReleaseDate: x.release_date,
             VoteAverage: x.vote_average,
