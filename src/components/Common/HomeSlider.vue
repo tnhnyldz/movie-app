@@ -1,49 +1,55 @@
 <template>
   <swiper
-    :slides-per-view="3"
-    :space-between="50"
-    @swiper="onSwiper"
-    @slideChange="onSlideChange"
+    :effect="'coverflow'"
+    :autoplay="{
+      delay: 2000,
+      disableOnInteraction: false,
+    }"
+    :centeredSlides="true"
+    :slidesPerView="3"
+    :coverflowEffect="{
+      rotate: 50,
+      stretch: 0,
+      depth: 100,
+      modifier: 1,
+      slideShadows: true,
+    }"
+    :modules="modules"
+    class="mySwiper"
   >
     <swiper-slide
-      ><img src="https://source.unsplash.com/kZokA2VTKn4" alt=""
+      ><img src="https://swiperjs.com/demos/images/nature-1.jpg"
     /></swiper-slide>
     <swiper-slide
-      ><img src="https://source.unsplash.com/kZokA2VTKn4" alt=""
+      ><img src="https://swiperjs.com/demos/images/nature-2.jpg"
     /></swiper-slide>
     <swiper-slide
-      ><img src="https://source.unsplash.com/kZokA2VTKn4" alt=""
+      ><img src="https://swiperjs.com/demos/images/nature-3.jpg"
     /></swiper-slide>
     <swiper-slide
-      ><img src="https://source.unsplash.com/kZokA2VTKn4" alt=""
-    /></swiper-slide>
-    <swiper-slide
-      ><img src="https://source.unsplash.com/kZokA2VTKn4" alt=""
-    /></swiper-slide>
-    <swiper-slide
-      ><img src="https://source.unsplash.com/kZokA2VTKn4" alt=""
+      ><img src="https://swiperjs.com/demos/images/nature-4.jpg"
     /></swiper-slide>
   </swiper>
 </template>
 <script>
-import { Swiper, SwiperSlide } from "swiper/vue";
-import "swiper/css";
+// Import Swiper Vue.js components
+import { Swiper, SwiperSlide } from 'swiper/vue';
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/effect-coverflow';
+import 'swiper/css/pagination';
+// import required modules
+import { Autoplay,EffectCoverflow } from 'swiper/modules';
 export default {
   components: {
     Swiper,
     SwiperSlide,
   },
   setup() {
-    const onSwiper = (swiper) => {
-      console.log(swiper);
-    };
-    const onSlideChange = () => {
-      console.log("slide change");
-    };
     return {
-      onSwiper,
-      onSlideChange,
+      modules: [Autoplay,EffectCoverflow],
     };
   },
 };
 </script>
+<style></style>
