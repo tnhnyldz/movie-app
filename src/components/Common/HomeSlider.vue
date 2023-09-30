@@ -2,7 +2,7 @@
   <swiper
     :effect="'coverflow'"
     :autoplay="{
-      delay: 2000,
+      delay: 1800,
       disableOnInteraction: false,
     }"
     :centeredSlides="true"
