@@ -1,7 +1,7 @@
 <template>
   <div
     class="card mb-3 border-black ms-1 me-1"
-    style="max-width: 450px; min-width: 450px"
+    style="max-width: 450px; min-width: 450px; min-height: 260px;"
   >
     <div class="row g-0">
       <div class="col-md-4">
