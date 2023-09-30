@@ -90,4 +90,7 @@ export default {
 .texts:focus {
   color: #4caf50;
 }
+.navbar{
+  height: 5vh;
+}
 </style>

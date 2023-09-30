@@ -4,8 +4,7 @@ const config = {
   headers: {
     "Access-Control-Allow-Origin": "*",
     "Content-Type": "text/plain",
-    Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlNDI2Njc3NzY0YWI0NjcwNjFkODRhZGYxZmM1M2Y0MCIsInN1YiI6IjY0ZDIyMDc3NGQ2NzkxMDBjNTJkYjAxNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ._88bsgtEaFC1687FqOijtXPYwekDQPxE97cCqKvPlVs",
+    Authorization: process.env.VUE_APP_BEARER,
   },
 };
 const instance = axios.create({

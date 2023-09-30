@@ -1,7 +1,6 @@
 <template>
   <div
-    class="card mb-3 border-black ms-1 me-1"
-    style="max-width: 450px; min-width: 450px; min-height: 260px;"
+    class="card mb-3 border-black ms-1 me-1 main-div"
   >
     <div class="row g-0">
       <div class="col-md-4">
@@ -32,7 +31,6 @@
               {{ formatDate(Film.ReleaseDate) }})
             </p>
           </div>
-
           <button type="button" class="btn btn-danger">Go Details</button>
         </div>
       </div>
@@ -68,4 +66,11 @@ export default {
 .card-text {
   font-size: medium;
 }
+.main-div {
+  max-width: 450px; 
+  min-width: 450px; 
+  min-height: 260px;
+  background-color: black;
+}
+
 </style>
