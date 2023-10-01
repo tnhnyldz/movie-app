@@ -33,7 +33,6 @@ export default {
   methods: {
     async getPopularFilms() {
       try {
-
         var popularFilms = await BaseService.getPopularFilms(
           this.selectedLanguage,
           this.currentPage

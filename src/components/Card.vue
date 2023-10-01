@@ -1,7 +1,5 @@
 <template>
-  <div
-    class="card mb-3 border-black ms-1 me-1 main-div"
-  >
+  <div class="card mb-3 border-black ms-1 me-1 main-div">
     <div class="row g-0">
       <div class="col-md-4">
         <img
@@ -31,7 +29,13 @@
               {{ formatDate(Film.ReleaseDate) }})
             </p>
           </div>
-          <button type="button" class="btn btn-danger">Go Details</button>
+          <button
+            type="button"
+            class="btn btn-danger"
+            @click="goToDetailsPage(Film.Id)"
+          >
+            Go Details
+          </button>
         </div>
       </div>
     </div>
@@ -52,6 +56,9 @@ export default {
     Film: Object,
   },
   methods: {
+    goToDetailsPage(id) {
+      this.$router.push({ name: "detail", params: { id } });
+    },
     formatDate(date) {
       return Helper.formatDate(date).toString();
     },
@@ -67,10 +74,9 @@ export default {
   font-size: medium;
 }
 .main-div {
-  max-width: 450px; 
-  min-width: 450px; 
+  max-width: 450px;
+  min-width: 450px;
   min-height: 260px;
   background-color: black;
 }
-
 </style>
