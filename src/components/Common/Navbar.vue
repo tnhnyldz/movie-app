@@ -1,5 +1,21 @@
 <template>
   <nav class="navbar navbar-expand-lg bg-black">
+    <div class="container">
+      <a class="navbar-brand text-warning" href="#">Movie Jar</a>
+      <button class="btn btn-outline-dark btn-sm me-4 ps-3 pe-3 border border-secondary" type="button"
+        data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop"><i class="fa fa-bars"
+          style="color: white"></i></button>
+      <div class="input-group input-group-sm">
+        <input type="text" class="form-control" placeholder="Search something..." aria-label="Recipient's username"
+          aria-describedby="button-addon2">
+        <button class="btn btn-warning" type="button" id="button-addon2"><i class="fas fa-search"></i></button>
+      </div>
+      <div class="separator"></div>
+      <button type="button" class="btn btn-sm btn-dark me-2 ps-3 pe-3">Register</button>
+      <button type="button" class="btn btn-sm btn-dark ps-4 pe-4"> Login</button>
+    </div>
+  </nav>
+  <!-- <nav class="navbar navbar-expand-lg bg-black">
     <div class="container-fluid">
       <a class="navbar-brand text-white" href="#">Film App</a>
       <button
@@ -60,7 +76,15 @@
         </div>
       </div>
     </div>
-  </nav>
+  </nav> -->
+  <div class="offcanvas offcanvas-top text-bg-dark" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
+    <div class="offcanvas-header container">
+      <h5 class="offcanvas-title text-warning navbar-menu-brand" id="offcanvasTopLabel">Movie Jar Menu</h5>
+      <button type="button" class="btn-close  bg-warning" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body container">
+    </div>
+  </div>
   <router-view />
 </template>
 
@@ -71,18 +95,49 @@ export default {
 </script>
 
 <style scoped>
+.offcanvas-header{
+  background-color: #45a049;
+}
+.offcanvas-body{
+  margin-top: 2%;
+  margin-bottom: 2%;
+  background-color: red;
+}
+
+.navbar-brand {
+  font-size: 24px;
+  font-family: 'Roboto', sans-serif;
+}
+.navbar-menu-brand {
+  font-size: 26px;
+  font-family: 'Roboto', sans-serif;
+}
 .btn-success {
-  background-color: #4caf50; /* Yeşil renkli arka plan */
-  color: #fff; /* Beyaz metin rengi */
-  border-color: #4caf50; /* Kenarlık rengi */
+  background-color: #4caf50;
+  /* Yeşil renkli arka plan */
+  color: #fff;
+  /* Beyaz metin rengi */
+  border-color: #4caf50;
+  /* Kenarlık rengi */
 }
+
+.separator {
+  width: 1px;
+  height: 20px;
+  background-color: #555;
+  margin: 0 10px;
+}
+
 .btn-success:hover {
-  background-color: #45a049; /* Parlak yeşil renk üzerine gelince */
-  border-color: #45a049; /* Parlak kenarlık rengi üzerine gelince */
+  background-color: #45a049;
+  border-color: #45a049;
+
 }
+
 .texts {
   color: white;
 }
+
 .texts:hover {
   color: #4caf50;
 }
@@ -90,7 +145,13 @@ export default {
 .texts:focus {
   color: #4caf50;
 }
-.navbar{
+
+.navbar {
   height: 5vh;
+
+}
+
+.colorful {
+  background-color: #45a049;
 }
 </style>

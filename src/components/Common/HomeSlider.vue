@@ -94,10 +94,16 @@ export default {
 </script>
 <style scoped>
 .container-slider {
-  background-color: black;
+  background-color: rgb(100, 100, 100);
   padding-top: 3%;
   padding-bottom: 3%;
+  transition: background-color 1.0s ease-in-out;
 }
+
+.container-slider:hover {
+  background-color:#ac961d;
+}
+
 img {
   width: 60vh;
   height: 40vh;

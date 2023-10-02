@@ -57,6 +57,7 @@ export default {
   min-height: 95vh;
   background-color: brown;
 }
+
 .row-1 {
   padding-top: 2%;
   padding-bottom: 2%;
@@ -65,6 +66,7 @@ export default {
   min-height: 5vh;
   background-color: black;
 }
+
 .row-2 {
   background-color: yellow;
 }

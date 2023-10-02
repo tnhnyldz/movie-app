@@ -1,15 +1,8 @@
 <template>
-  <swiper
-    :spaceBetween="0"
-    :slidesPerView="2"
-    :autoplay="{
-      delay: 1000,
-      disableOnInteraction: false,
-    }"
-    :modules="modules"
-    :speed="1000"
-    class="mySwiper"
-  >
+  <swiper :spaceBetween="0" :slidesPerView="2" :autoplay="{
+    delay: 1000,
+    disableOnInteraction: false,
+  }" :modules="modules" :speed="1000" class="mySwiper">
     <swiper-slide v-for="(photo, index) in photoArray">
       <img :src="photo.FilePath" />
     </swiper-slide>
@@ -62,8 +55,9 @@ export default {
 }
 */
 .swiper-slide img {
+  padding: 0 2.5% 0 2.5%;
   width: 100vh;
-  height: 50vh;
+  height: 55vh;
   object-fit: cover;
-} 
+}
 </style>
