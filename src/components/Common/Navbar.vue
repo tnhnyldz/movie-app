@@ -83,6 +83,20 @@
       <button type="button" class="btn-close  bg-warning" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body container">
+      <div class="row">
+        <div class="col-sm col-1">
+          <div class="col-1-header"><i class="fa fa-film"></i> This is Header for col-1</div>
+        </div>
+        <div class="col-sm col-2">
+          <div class="col-2-header"><i class="fa fa-tv"></i> This is Header for col-1</div>
+
+        </div>
+        <div class="col-sm col-3">
+          <div class="col-3-header d-flex justify-content-center"><i class="fa fa-user" style="font-size: 1.5vh;"></i>
+            <p class="ms-2">This is Header for col-3</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <router-view />
@@ -95,10 +109,15 @@ export default {
 </script>
 
 <style scoped>
-.offcanvas-header{
-  background-color: #45a049;
+.offcanvas {
+  font-family: 'Roboto', sans-serif;
 }
-.offcanvas-body{
+
+.offcanvas-header {
+  font-family: 'Roboto', sans-serif;
+}
+
+.offcanvas-body {
   margin-top: 2%;
   margin-bottom: 2%;
   background-color: red;
@@ -108,10 +127,35 @@ export default {
   font-size: 24px;
   font-family: 'Roboto', sans-serif;
 }
+
 .navbar-menu-brand {
   font-size: 26px;
   font-family: 'Roboto', sans-serif;
 }
+
+.separator {
+  width: 1px;
+  height: 20px;
+  background-color: #555;
+  margin: 0 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .btn-success {
   background-color: #4caf50;
   /* Yeşil renkli arka plan */
@@ -121,12 +165,6 @@ export default {
   /* Kenarlık rengi */
 }
 
-.separator {
-  width: 1px;
-  height: 20px;
-  background-color: #555;
-  margin: 0 10px;
-}
 
 .btn-success:hover {
   background-color: #45a049;
@@ -148,10 +186,5 @@ export default {
 
 .navbar {
   height: 5vh;
-
-}
-
-.colorful {
-  background-color: #45a049;
 }
 </style>
