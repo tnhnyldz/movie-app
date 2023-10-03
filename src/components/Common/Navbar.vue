@@ -92,7 +92,7 @@
 
         </div>
         <div class="col-sm col-3">
-          <div class="col-3-header d-flex justify-content-center"><i class="fa fa-user" style="font-size: 1.5vh;"></i>
+          <div class="col-3-header d-flex justify-content-center"><i class="fa fa-user" style="font-size:20px;"></i>
             <p class="ms-2">This is Header for col-3</p>
           </div>
         </div>
