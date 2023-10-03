@@ -101,7 +101,7 @@ export default {
 }
 
 .container-slider:hover {
-  background-color:#ac961d;
+  background-color:#bba110;
 }
 
 img {
