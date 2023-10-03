@@ -88,7 +88,7 @@
           <div class="col-1-header"><i class="fa fa-film"></i> This is Header for col-1</div>
         </div>
         <div class="col-sm col-2">
-          <div class="col-2-header"><i class="fa fa-tv"></i> This is Header for col-1</div>
+          <div class="col-2-header"><i class="fa fa-tv"></i> <router-link class="nav-link texts" to="/popular">Popular</router-link></div>
 
         </div>
         <div class="col-sm col-3">
