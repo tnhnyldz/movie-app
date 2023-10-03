@@ -85,16 +85,62 @@
     <div class="offcanvas-body container">
       <div class="row">
         <div class="col-sm col-1">
-          <div class="col-1-header"><i class="fa fa-film"></i> This is Header for col-1</div>
+          <div class="col-1-header d-flex justify-content-start">
+            <i class="fa fa-film mt-1 icon-yellow" style="font-size:26px;"></i>
+            <p class="roboto menu-text ms-2"><router-link class="nav-link" to="/popular">Movies</router-link></p>
+          </div>
+          
+          <div class="col-3-body d-flex flex-column align-items-start">
+            <p class="roboto body-item menu-text ms-5 border"><router-link class="nav-link" to="/popular">safadadsadsads</router-link>
+            </p>
+            <p class="roboto body-item menu-text ms-5 border"><router-link class="nav-link" to="/popular">safadadsadsads</router-link>
+            </p>
+            <p class="roboto body-item menu-text ms-5 border"><router-link class="nav-link" to="/popular">safadadsadsads</router-link>
+            </p>
+            <p class="roboto body-item menu-text ms-5 border"><router-link class="nav-link" to="/popular">safadadsadsads</router-link>
+            </p>
+          </div>
         </div>
         <div class="col-sm col-2">
-          <div class="col-2-header"><i class="fa fa-tv"></i> <router-link class="nav-link texts" to="/popular">Popular</router-link></div>
-
+          <div class="col-2-header d-flex justify-content-start">
+            <i class="fa fa-tv mt-1 icon-yellow" style="font-size:26px;"></i>
+            <p class="roboto menu-text ms-2"><router-link class="nav-link" to="/popular">TV Series</router-link></p>
+          </div>
+          
+          <div class="col-3-body d-flex flex-column align-items-start">
+            <p class="roboto body-item menu-text ms-5 border"><router-link class="nav-link" to="/popular">safadadsadsads</router-link>
+            </p>
+            <p class="roboto body-item menu-text ms-5 border"><router-link class="nav-link" to="/popular">safadadsadsads</router-link>
+            </p>
+            <p class="roboto body-item menu-text ms-5 border"><router-link class="nav-link" to="/popular">safadadsadsads</router-link>
+            </p>
+            <p class="roboto body-item menu-text ms-5 border"><router-link class="nav-link" to="/popular">safadadsadsads</router-link>
+            </p>
+          </div>
         </div>
         <div class="col-sm col-3">
-          <div class="col-3-header d-flex justify-content-center"><i class="fa fa-user" style="font-size:20px;"></i>
-            <p class="ms-2">This is Header for col-3</p>
+
+
+
+          <div class="col-3-header d-flex justify-content-start">
+            <i class="fa fa-award icon-yellow mt-1" style="font-size:26px;"></i>
+            <p class="roboto menu-text ms-2"><router-link class="nav-link" to="/popular">Celebs</router-link></p>
           </div>
+
+
+          <div class="col-3-body d-flex flex-column align-items-start">
+            <p class="roboto body-item menu-text ms-5 border"><router-link class="nav-link" to="/popular">safadadsadsads</router-link>
+            </p>
+            <p class="roboto body-item menu-text ms-5 border"><router-link class="nav-link" to="/popular">safadadsadsads</router-link>
+            </p>
+            <p class="roboto body-item menu-text ms-5 border"><router-link class="nav-link" to="/popular">safadadsadsads</router-link>
+            </p>
+            <p class="roboto body-item menu-text ms-5 border"><router-link class="nav-link" to="/popular">safadadsadsads</router-link>
+            </p>
+          </div>
+
+
+
         </div>
       </div>
     </div>
@@ -109,12 +155,32 @@ export default {
 </script>
 
 <style scoped>
+@import '@/assets/css/app-global.css';
+
+.body-item{
+  width: 20px;
+} .col-3-body {
+  background-color: chocolate;
+  border: 1px solid white;
+}
+
+.col-3-header {
+  background-color: chocolate;
+  border: 1px solid white;
+}
+
+
 .offcanvas {
-  font-family: 'Roboto', sans-serif;
+  min-height: 1000px;
+}
+
+.col-sm {
+  border: 1px solid yellow;
 }
 
 .offcanvas-header {
   font-family: 'Roboto', sans-serif;
+  background-color: blue;
 }
 
 .offcanvas-body {
@@ -140,51 +206,6 @@ export default {
   margin: 0 10px;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.btn-success {
-  background-color: #4caf50;
-  /* Yeşil renkli arka plan */
-  color: #fff;
-  /* Beyaz metin rengi */
-  border-color: #4caf50;
-  /* Kenarlık rengi */
-}
-
-
-.btn-success:hover {
-  background-color: #45a049;
-  border-color: #45a049;
-
-}
-
-.texts {
-  color: white;
-}
-
-.texts:hover {
-  color: #4caf50;
-}
-
-.texts:focus {
-  color: #4caf50;
-}
-
 .navbar {
   height: 5vh;
-}
-</style>
+}</style>

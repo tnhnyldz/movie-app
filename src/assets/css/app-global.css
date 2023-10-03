@@ -1,0 +1,13 @@
+.decoration-none{
+    text-decoration: none;
+}
+.roboto{
+    font-family: 'Roboto', sans-serif; 
+}
+.menu-text{
+    font-size: 24px;
+    color: white;
+}
+.icon-yellow{
+    color: #ffd700
+}
