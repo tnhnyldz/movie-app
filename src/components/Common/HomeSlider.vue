@@ -137,11 +137,11 @@ img {
   padding-left: 10%;
 }
 .subtitle {
-  top: 13%;
+  top: 14%;
   padding-left: 10%;
 }
 .date {
   top: 21%;
-  padding-left: 10%;
+  padding-left: 10.5%;
 }
 </style>
