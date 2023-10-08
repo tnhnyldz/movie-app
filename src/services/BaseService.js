@@ -16,6 +16,21 @@ class BaseService {
         }
       );
   }
+  async getNowPlayingMovies(language = "en-US", page=1) {
+    // https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1
+    return await api
+      .get(
+        `movie/now_playing?language=${language}&page=${page}&api_key=${process.env.VUE_APP_APIKEY}`
+      )
+      .then(
+        (response) => {
+          return response.data;
+        },
+        (error) => {
+          return error.data;
+        }
+      );
+  }
   async getTrendingMovies(language = "en-US") {
     //https://api.themoviedb.org/3/trending/movie/week?language=en-US&api_key=
     return await api

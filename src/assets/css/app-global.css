@@ -1,9 +1,12 @@
-.decoration-none{
-    text-decoration: none;
+.decoration-none {
+  text-decoration: none;
 }
-.roboto{
-    font-family: 'Roboto', sans-serif; 
+.roboto {
+  font-family: "Roboto", sans-serif;
 }
-.icon-yellow{
-    color: #ffd700
+.icon-yellow {
+  color: #ffd700;
+}
+body::-webkit-scrollbar {
+  display: none;
 }

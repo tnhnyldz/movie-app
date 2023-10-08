@@ -1,7 +1,9 @@
 <template>
   <swiper
-    :spaceBetween="0"
-    :slidesPerView="2"
+    :direction="'vertical'"
+    :slidesPerView="1"
+    :spaceBetween="10"
+    :mousewheel="true"
     :autoplay="{
       delay: 1000,
       disableOnInteraction: false,
@@ -10,7 +12,8 @@
     :speed="1000"
     class="mySwiper"
   >
-    <swiper-slide v-for="(photo, index) in photoArray">
+    
+  <swiper-slide v-for="(photo, index) in photoArray">
       <img :src="photo.BackDropPath" />
     </swiper-slide>
   </swiper>
@@ -18,37 +21,37 @@
 <script>
 // Import Swiper Vue.js components
 import { Swiper, SwiperSlide } from "swiper/vue";
-import { Autoplay, EffectFade } from "swiper/modules";
+
+// import required modules
+import { Mousewheel, Pagination } from "swiper/modules";
+import { Autoplay } from "swiper/modules";
 
 // Import Swiper styles
 import "swiper/css";
-import "swiper/css/effect-fade";
-import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 export default {
-  name: "DetailSlider",
+  name: "NowPlayingSlider",
   props: {
     photoArray: {
       type: Array,
       default: () => [],
     },
   },
-
   components: {
     Swiper,
     SwiperSlide,
   },
   setup() {
     return {
-      modules: [EffectFade, Autoplay],
+      modules: [Mousewheel, Pagination, Autoplay],
     };
   },
 };
 </script>
 <style scoped>
-/* .swiper {
-  width: 100%;
+.swiper {
+  width: 60%;
   height: 100%;
 }
 
@@ -56,15 +59,17 @@ export default {
   text-align: center;
   font-size: 18px;
   background: #fff;
+
+  /* Center slide text vertically */
   display: flex;
   justify-content: center;
   align-items: center;
 }
-*/
+
 .swiper-slide img {
-  padding: 0 2.5% 0 2.5%;
-  width: 100vh;
-  height: 55vh;
+  display: block;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
 }
 </style>

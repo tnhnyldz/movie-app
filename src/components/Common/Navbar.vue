@@ -44,7 +44,7 @@
             <p class="roboto menu-text-header ms-2"><router-link class="nav-link " to="/popular">Movies</router-link></p>
           </div>
           <div class="col-3-body d-flex flex-column align-items-center">
-            <p class="roboto body-item menu-text"><router-link class="nav-link router-link-left" to="/popular"><i
+            <p class="roboto body-item menu-text"><router-link class="nav-link router-link-left" to="/now-playing"><i
                   class="fa fa-arrow-right"></i> Now
                 Playing</router-link>
             </p>
