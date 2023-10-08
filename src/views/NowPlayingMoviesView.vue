@@ -138,6 +138,8 @@ export default {
 .main-container {
   background-color: black;
   min-height: 95vh;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .nowplaying-container {
@@ -151,6 +153,7 @@ export default {
   padding-left: 5%;
 }
 .col-movie {
+  padding-top: 1%;
   background-color: black;
 }
 
@@ -163,11 +166,16 @@ export default {
   color: white;
 }
 .slider-container {
-  padding: 1% 1% 1% 1%;
+  margin-left: 0;
+  padding-top: 1%;
+  padding-bottom: 1%;
   height: 55vh;
-  /* background-color: rgb(100, 100, 100); */
-  background-color: black;
+  background-color: rgb(100, 100, 100);
+  /* background-color: black; */
   transition: background-color 1s ease-in-out;
+}
+.slider-container:hover {
+  background-color:#bba110;
 }
 .more-to-explore-text {
   font-size: 30px;
