@@ -1,7 +1,7 @@
 <template>
   <div class="detail-container container-fluid">
     <div class="row row-1">
-      <DetailSlider :photoArray="detailPhotos" />
+      <SliderOne :photoArray="detailPhotos" />
     </div>
     <h2>Detail Page</h2>
     <p>Film ID: {{ filmId }}</p>
@@ -10,12 +10,12 @@
 </template>
 
 <script>
-import DetailSlider from "@/components/Sliders/SliderOne.vue";
+import SliderOne from "@/components/Sliders/SliderOne.vue";
 import MovieService from "@/services/MovieService.js";
 export default {
   name: "DetailView",
   components: {
-    DetailSlider,
+    SliderOne,
   },
   data() {
     return {

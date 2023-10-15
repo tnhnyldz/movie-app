@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid main-container">
     <div class="container-fluid slider-container">
-      <NowPlayingSlider :photoArray="SliderMovies" />
+      <SliderTwo :photoArray="SliderMovies" />
     </div>
     <div class="container nowplaying-container">
       <div class="row">
@@ -50,7 +50,7 @@
 </template>
 <!-- <i class="icon-yellow fa fa-angle-right"></i> -->
 <script>
-import NowPlayingSlider from "@/components/Sliders/SliderTwo.vue";
+import SliderTwo from "@/components/Sliders/SliderTwo.vue";
 import MovieService from "@/services/MovieService.js";
 import CardLarge from "@/components/CardLarge.vue";
 export default {
@@ -126,7 +126,7 @@ export default {
   },
   components: {
     CardLarge,
-    NowPlayingSlider,
+    SliderTwo,
   },
 };
 </script>

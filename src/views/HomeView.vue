@@ -1,14 +1,14 @@
 <template>
   <div class="container-fluid main-container">
     <div class="container-fluid slider-container">
-      <HomeSlider :Movies="Movies" />
+      <SliderThree :Movies="Movies" />
     </div>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HomeSlider from "@/components/Sliders/SliderThree.vue";
+import SliderThree from "@/components/Sliders/SliderThree.vue";
 import MovieService from "@/services/MovieService.js";
 import Helper from "@/assets/Js/Helper";
 export default {
@@ -19,7 +19,7 @@ export default {
     };
   },
   components: {
-    HomeSlider
+    SliderThree
   },
   async created() {
     this.getTrendingMovies();

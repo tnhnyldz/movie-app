@@ -1,5 +1,5 @@
 <template>
-  <div class="card mb-3 bg-black border-black" style="max-width: 420px" >
+  <div data-aos="zoom-in-up" data-aos-anchor-placement="top-bottom" class="card mb-3 bg-black border-black" style="max-width: 420px" >
     <div class="row g-0">
       <div class="col-md-4">
         <img
