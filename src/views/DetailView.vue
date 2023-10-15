@@ -11,7 +11,7 @@
 
 <script>
 import DetailSlider from "@/components/Sliders/SliderOne.vue";
-import BaseService from "@/services/BaseService.js";
+import MovieService from "@/services/MovieService.js";
 export default {
   name: "DetailView",
   components: {
@@ -30,7 +30,7 @@ export default {
   methods: {
     async getDetailPhotosById(filmId) {
       try {
-        var photos = await BaseService.getDetailPhotosById(filmId);
+        var photos = await MovieService.getDetailPhotosById(filmId);
         if (photos && photos.backdrops) {
           this.detailPhotos = photos.backdrops.map((x) => {
             return {

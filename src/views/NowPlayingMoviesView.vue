@@ -51,7 +51,7 @@
 <!-- <i class="icon-yellow fa fa-angle-right"></i> -->
 <script>
 import NowPlayingSlider from "@/components/Sliders/SliderTwo.vue";
-import BaseService from "@/services/BaseService.js";
+import MovieService from "@/services/MovieService.js";
 import CardLarge from "@/components/CardLarge.vue";
 export default {
   name: "NowPlayingMoviesView",
@@ -74,7 +74,7 @@ export default {
   methods: {
     async getNowPlayingMovies() {
       try {
-        var NowPlayingFilms = await BaseService.getNowPlayingMovies();
+        var NowPlayingFilms = await MovieService.getNowPlayingMovies();
         this.Movies = NowPlayingFilms.results.map((x) => {
           return {
             Id: x.id,
@@ -101,7 +101,7 @@ export default {
     async loadMoreMovies() {
       try {
         this.counter++;
-        var moreMovies = await BaseService.getNowPlayingMovies(
+        var moreMovies = await MovieService.getNowPlayingMovies(
           "en-US",
           this.counter
         );

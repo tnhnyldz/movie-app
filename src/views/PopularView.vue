@@ -10,7 +10,7 @@
 
 <script>
 import Card from "@/components/Card.vue";
-import BaseService from "@/services/BaseService.js";
+import MovieService from "@/services/MovieService.js";
 export default {
   name: "PopularView",
   components: {
@@ -32,7 +32,7 @@ export default {
   methods: {
     async getPopularFilms() {
       try {
-        var popularFilms = await BaseService.getPopularFilms(
+        var popularFilms = await MovieService.getPopularFilms(
           this.selectedLanguage,
           this.currentPage
         );
@@ -56,7 +56,7 @@ export default {
     async loadMoreFilms() {
       this.currentPage++;
       try {
-        var popularFilms = await BaseService.getPopularFilms(
+        var popularFilms = await MovieService.getPopularFilms(
           this.selectedLanguage,
           this.currentPage
         );

@@ -9,7 +9,7 @@
 <script>
 // @ is an alias to /src
 import HomeSlider from "@/components/Sliders/SliderThree.vue";
-import BaseService from "@/services/BaseService.js";
+import MovieService from "@/services/MovieService.js";
 import Helper from "@/assets/Js/Helper";
 export default {
   name: "HomeView",
@@ -30,7 +30,7 @@ export default {
     },
     async getTrendingMovies() {
       try {
-        var trendingMovies = await BaseService.getTrendingMovies();
+        var trendingMovies = await MovieService.getTrendingMovies();
         this.Movies = trendingMovies.results.map((x) => {
           return {
             Id: x.id,

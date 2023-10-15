@@ -1,6 +1,6 @@
 import api from "@/services/api";
 
-class BaseService {
+class MovieService {
   async getPopularFilms(language, page) {
     return await api
       .get(
@@ -87,4 +87,4 @@ class BaseService {
   }
 }
 
-export default new BaseService();
+export default new MovieService();
