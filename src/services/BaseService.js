@@ -8,7 +8,6 @@ class BaseService {
       )
       .then(
         (response) => {
-          // console.log(response.data)
           return response.data;
         },
         (error) => {
@@ -17,7 +16,6 @@ class BaseService {
       );
   }
   async getNowPlayingMovies(language = "en-US", page=1) {
-    // https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1
     return await api
       .get(
         `movie/now_playing?language=${language}&page=${page}&api_key=${process.env.VUE_APP_APIKEY}`
@@ -32,14 +30,12 @@ class BaseService {
       );
   }
   async getTrendingMovies(language = "en-US") {
-    //https://api.themoviedb.org/3/trending/movie/week?language=en-US&api_key=
     return await api
       .get(
         `trending/movie/week?language=${language}&api_key=${process.env.VUE_APP_APIKEY}`
       )
       .then(
         (response) => {
-          // console.log(response.data)
           return response.data;
         },
         (error) => {
@@ -48,14 +44,12 @@ class BaseService {
       );
   }
   async getDetailsById(MovieId) {
-    // https://api.themoviedb.org/3/movie/385687?append_to_response=images%2Cvideos&language=en-US&api_key=
     return await api
       .get(
         `trending/movie/week?language=${language}&api_key=${process.env.VUE_APP_APIKEY}`
       )
       .then(
         (response) => {
-          // console.log(response.data)
           return response.data;
         },
         (error) => {
@@ -64,14 +58,12 @@ class BaseService {
       );
   }
   async getCreditsById(MovieId) {
-    // https://api.themoviedb.org/3/movie/385687/credits?language=en-US&api_key=
     return await api
       .get(
         `trending/movie/week?language=${language}&api_key=${process.env.VUE_APP_APIKEY}`
       )
       .then(
         (response) => {
-          // console.log(response.data)
           return response.data;
         },
         (error) => {
@@ -80,15 +72,12 @@ class BaseService {
       );
   }
   async getDetailPhotosById(MovieId) {
-    // https://api.themoviedb.org/3/original/movie/385687/images?api_key=
-    // 49013
     return await api
       .get(
         `movie/${MovieId}/images?api_key=${process.env.VUE_APP_APIKEY}`
       )
       .then(
         (response) => {
-          // console.log(response.data) 
           return response.data;
         },
         (error) => {
