@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-lg bg-black">
     <div class="container">
-      <a class="navbar-brand text-warning" href="#">Movie Jar</a>
+      <router-link class="navbar-brand text-warning" to="/">Movie Jar</router-link>
       <button class="btn btn-sm btn-outline-dark me-1 ps-3 pe-3 border border-secondary" type="button"
         data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop"><i class="fa fa-bars"
           style="color: white"></i></button>
