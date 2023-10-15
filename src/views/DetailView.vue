@@ -1,7 +1,7 @@
 <template>
   <div class="detail-container container-fluid">
     <div class="row row-1">
-      <DetailSlider :photoArray="moviePhotos" />
+      <DetailSlider :photoArray="detailPhotos" />
     </div>
     <h2>Detail Page</h2>
     <p>Film ID: {{ filmId }}</p>
@@ -20,8 +20,7 @@ export default {
   data() {
     return {
       filmId: null,
-      moviePhotos: [],
-      photoBaseUrl: "https://image.tmdb.org/t/p/original/",
+      detailPhotos: [],
     };
   },
   mounted() {
@@ -33,15 +32,15 @@ export default {
       try {
         var photos = await BaseService.getDetailPhotosById(filmId);
         if (photos && photos.backdrops) {
-          this.moviePhotos = photos.backdrops.map((x) => {
+          this.detailPhotos = photos.backdrops.map((x) => {
             return {
-              FilePath: this.photoBaseUrl + x.file_path,
+              FilePath: this.$store.state.BaseUrls.Original + x.file_path,
               Height: x.height,
               Width: x.width,
               AspectRatio: x.aspect_ratio,
             };
           });
-          console.log(this.moviePhotos);
+          console.log(this.detailPhotos);
         } else {
           console.error("Format Error");
         }

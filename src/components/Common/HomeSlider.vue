@@ -21,7 +21,7 @@
       class="mySwiper"
     >
       <swiper-slide v-for="movie in this.movies" :key="movie.Id">
-        <img :src="photoBaseUrl + movie.BackDropPath" />
+        <img :src="movie.FilePath" />
         <div class="title" data-swiper-parallax="-300">{{ movie.Title }}</div>
         <p class="subtitle" data-swiper-parallax="-300">
           <i class="fas fa-star" style="color: #ffd700"></i>
@@ -50,7 +50,6 @@ export default {
   name: "HomeSlider",
   data() {
     return {
-      photoBaseUrl: "https://image.tmdb.org/t/p/original/",
       movies: [],
     };
   },
@@ -65,7 +64,7 @@ export default {
           return {
             Id: x.id,
             Title: x.title,
-            BackDropPath: x.backdrop_path,
+            FilePath: this.$store.state.BaseUrls.Original+ x.backdrop_path,
             ReleaseDate: x.release_date,
             VoteAverage: parseFloat(x.vote_average).toFixed(1),
           };

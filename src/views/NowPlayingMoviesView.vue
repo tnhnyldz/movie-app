@@ -48,7 +48,6 @@
     </div>
   </div>
 </template>
-
 <!-- <i class="icon-yellow fa fa-angle-right"></i> -->
 <script>
 import NowPlayingSlider from "@/components/Common/NowPlayingSlider.vue";
@@ -64,8 +63,6 @@ export default {
   },
   data() {
     return {
-      photoBaseUrl: "https://image.tmdb.org/t/p/original/",
-      photoBaseUrl2: "https://image.tmdb.org/t/p/w500/",
       SliderMovies: [],
       Movies: [],
       counter: 1,
@@ -85,7 +82,7 @@ export default {
             Overview: x.overview
               ? x.overview
               : "Lorem Ipsum is ssimply dummy of the printing and typesetting industry.",
-            PosterPath: x.poster_path ? this.photoBaseUrl2+x.poster_path: "https://user-images.githubusercontent.com/2279051/36819127-dc9e33ea-1c9c-11e8-9a93-0d3c0a674f02.png",
+            PosterPath: x.poster_path ? this.$store.state.BaseUrls.Original+x.poster_path: "https://user-images.githubusercontent.com/2279051/36819127-dc9e33ea-1c9c-11e8-9a93-0d3c0a674f02.png",
             ReleaseDate: x.release_date,
             VoteAverage: x.vote_average,
           };
@@ -93,7 +90,7 @@ export default {
         this.SliderMovies=NowPlayingFilms.results.map((x) => {
           return {
             Id: x.id,
-            BackDropPath: this.photoBaseUrl+x.backdrop_path
+            FilePath: this.$store.state.BaseUrls.Original+x.backdrop_path
           };
         })
         console.log(this.SliderMovies);
@@ -116,7 +113,7 @@ export default {
               Overview: x.overview
                 ? x.overview
                 : "Lorem Ipsum is simply dummy of the printing and typesetting industry.",
-              PosterPath:  x.poster_path ? this.photoBaseUrl2+x.poster_path: "https://user-images.githubusercontent.com/2279051/36819127-dc9e33ea-1c9c-11e8-9a93-0d3c0a674f02.png",
+              PosterPath:  x.poster_path ? this.$store.state.BaseUrls.Large+x.poster_path: "https://user-images.githubusercontent.com/2279051/36819127-dc9e33ea-1c9c-11e8-9a93-0d3c0a674f02.png",
               ReleaseDate: x.release_date,
               VoteAverage: x.vote_average,
             };

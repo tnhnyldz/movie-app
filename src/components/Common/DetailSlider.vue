@@ -11,7 +11,7 @@
     class="mySwiper"
   >
     <swiper-slide v-for="(photo, index) in photoArray">
-      <img :src="photo.BackDropPath" />
+      <img :src="photo.FilePath" />
     </swiper-slide>
   </swiper>
 </template>

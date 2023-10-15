@@ -12,7 +12,6 @@ export default {
   name: "HomeView",
   data() {
     return {
-      photoBaseUrl: "https://image.tmdb.org/t/p/w500/",
     };
   },
   components: {

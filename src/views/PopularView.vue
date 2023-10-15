@@ -18,7 +18,6 @@ export default {
   },
   data() {
     return {
-      photoBaseUrl: "https://image.tmdb.org/t/p/w500/",
       selectedLanguage: "tr-TR",
       films: [],
       currentPage: 1,
@@ -78,8 +77,6 @@ export default {
         );
       } catch (error) {
         console.log(error);
-        // 385687
-        // https://www.youtube.com/watch?v=wB64FqJ-H3s
       }
     },
     handleScroll() {
