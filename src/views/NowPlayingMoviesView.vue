@@ -50,7 +50,7 @@
 </template>
 <!-- <i class="icon-yellow fa fa-angle-right"></i> -->
 <script>
-import NowPlayingSlider from "@/components/Sliders/NowPlayingSlider.vue";
+import NowPlayingSlider from "@/components/Sliders/SliderTwo.vue";
 import BaseService from "@/services/BaseService.js";
 import CardLarge from "@/components/CardLarge.vue";
 export default {

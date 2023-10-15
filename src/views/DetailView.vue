@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import DetailSlider from "@/components/Sliders/DetailSlider.vue";
+import DetailSlider from "@/components/Sliders/SliderOne.vue";
 import BaseService from "@/services/BaseService.js";
 export default {
   name: "DetailView",

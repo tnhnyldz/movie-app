@@ -43,7 +43,7 @@ import "swiper/css/pagination";
 // import required modules
 import { Autoplay, EffectCoverflow } from "swiper/modules";
 export default {
-  name: "HomeSlider",
+  name: "SliderThree",
   props: {
     Movies: {
       type: Array,

@@ -8,7 +8,7 @@
 
 <script>
 // @ is an alias to /src
-import HomeSlider from "@/components/Sliders/HomeSlider.vue";
+import HomeSlider from "@/components/Sliders/SliderThree.vue";
 import BaseService from "@/services/BaseService.js";
 import Helper from "@/assets/Js/Helper";
 export default {
