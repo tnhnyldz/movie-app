@@ -12,7 +12,6 @@
     :speed="1000"
     class="mySwiper"
   >
-    
   <swiper-slide v-for="(photo, index) in photoArray">
       <img :src="photo.FilePath" />
     </swiper-slide>

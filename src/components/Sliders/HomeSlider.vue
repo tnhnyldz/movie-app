@@ -1,5 +1,4 @@
 <template>
-  <div class="container-slider">
     <swiper
       :effect="'coverflow'"
       :autoplay="{
@@ -20,7 +19,7 @@
       :speed="1800"
       class="mySwiper"
     >
-      <swiper-slide v-for="movie in this.movies" :key="movie.Id">
+      <swiper-slide v-for="movie in Movies" :key="movie.Id">
         <img :src="movie.FilePath" />
         <div class="title" data-swiper-parallax="-300">{{ movie.Title }}</div>
         <p class="subtitle" data-swiper-parallax="-300">
@@ -29,15 +28,12 @@
         </p>
         <p class="date" data-swiper-parallax="-300">
           <i class="far fa-calendar-alt" style="color: #df7bfe"></i>
-          {{ formatDate(movie.ReleaseDate) }}
+          {{ movie.ReleaseDate }}
         </p>
       </swiper-slide>
     </swiper>
-  </div>
 </template>
 <script>
-import BaseService from "@/services/BaseService.js";
-import Helper from "@/assets/Js/Helper";
 // Import Swiper Vue.js componentszs
 import { Swiper, SwiperSlide } from "swiper/vue";
 // Import Swiper styles
@@ -48,41 +44,15 @@ import "swiper/css/pagination";
 import { Autoplay, EffectCoverflow } from "swiper/modules";
 export default {
   name: "HomeSlider",
-  data() {
-    return {
-      movies: [],
-    };
-  },
-  methods: {
-    formatDate(date) {
-      return Helper.formatDate(date).toString();
+  props: {
+    Movies: {
+      type: Array,
+      default: () => [],
     },
-    async getTrendingMovies() {
-      try {
-        var trendingMovies = await BaseService.getTrendingMovies();
-        this.movies = trendingMovies.results.map((x) => {
-          return {
-            Id: x.id,
-            Title: x.title,
-            FilePath: this.$store.state.BaseUrls.Original+ x.backdrop_path,
-            ReleaseDate: x.release_date,
-            VoteAverage: parseFloat(x.vote_average).toFixed(1),
-          };
-        });
-      } catch (error) {
-        console.log(error);
-      }
-    },
-  },
-  async created() {
-    this.getTrendingMovies();
-  },
+  }, 
   components: {
     Swiper,
     SwiperSlide,
-  },
-  props: {
-    Film: Object,
   },
   setup() {
     return {
@@ -92,17 +62,6 @@ export default {
 };
 </script>
 <style scoped>
-.container-slider {
-  background-color: rgb(100, 100, 100);
-  padding-top: 3%;
-  padding-bottom: 3%;
-  transition: background-color 1.0s ease-in-out;
-}
-
-.container-slider:hover {
-  background-color:#bba110;
-}
-
 img {
   width: 60vh;
   height: 40vh;
