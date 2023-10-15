@@ -10,7 +10,7 @@
 
 <script>
 import Card from "@/components/Card.vue";
-import MovieService from "@/services/MovieService.js";
+import MovieService from "@/services/movie/MovieService.js";
 export default {
   name: "PopularView",
   components: {

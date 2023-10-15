@@ -51,7 +51,7 @@
 <!-- <i class="icon-yellow fa fa-angle-right"></i> -->
 <script>
 import SliderTwo from "@/components/Sliders/SliderTwo.vue";
-import MovieService from "@/services/MovieService.js";
+import MovieService from "@/services/movie/MovieService.js";
 import CardLarge from "@/components/CardLarge.vue";
 export default {
   name: "NowPlayingMoviesView",

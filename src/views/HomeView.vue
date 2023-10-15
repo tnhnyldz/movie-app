@@ -9,7 +9,7 @@
 <script>
 // @ is an alias to /src
 import SliderThree from "@/components/Sliders/SliderThree.vue";
-import MovieService from "@/services/MovieService.js";
+import MovieService from "@/services/movie/MovieService.js";
 import Helper from "@/assets/Js/Helper";
 export default {
   name: "HomeView",

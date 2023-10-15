@@ -11,7 +11,7 @@
 
 <script>
 import SliderOne from "@/components/Sliders/SliderOne.vue";
-import MovieService from "@/services/MovieService.js";
+import MovieService from "@/services/movie/MovieService.js";
 export default {
   name: "DetailView",
   components: {
