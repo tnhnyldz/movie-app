@@ -68,6 +68,10 @@ export default {
       counter: 1,
     };
   },
+  components: {
+    CardLarge,
+    SliderTwo,
+  },
   async created() {
     this.getNowPlayingMovies();
   },
@@ -123,10 +127,6 @@ export default {
         console.log(error);
       }
     },
-  },
-  components: {
-    CardLarge,
-    SliderTwo,
   },
 };
 </script>

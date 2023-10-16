@@ -42,7 +42,7 @@ class MovieService {
           return error.data;
         }
       );
-  }
+  } //Moviedetails olacak
   async getDetailsById(MovieId) {
     return await api
       .get(
