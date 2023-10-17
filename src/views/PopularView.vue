@@ -30,9 +30,9 @@ export default {
     };
   },
   methods: {
-    async getPopularFilms() {
+    async getPopularMovies() {
       try {
-        var popularFilms = await MovieService.getPopularFilms(
+        var popularFilms = await MovieService.getPopularMovies(
           this.selectedLanguage,
           this.currentPage
         );
@@ -56,7 +56,7 @@ export default {
     async loadMoreFilms() {
       this.currentPage++;
       try {
-        var popularFilms = await MovieService.getPopularFilms(
+        var popularFilms = await MovieService.getPopularMovies(
           this.selectedLanguage,
           this.currentPage
         );
@@ -96,7 +96,7 @@ export default {
     window.removeEventListener("scroll", this.handleScroll);
   },
   async created() {
-    this.getPopularFilms(this.selectedLanguage, this.currentPage);
+    this.getPopularMovies(this.selectedLanguage, this.currentPage);
     window.addEventListener("scroll", this.handleScroll);
   },
 };

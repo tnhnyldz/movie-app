@@ -3,26 +3,22 @@ import MovieService from "@/services/movie/MovieService";
 const MovieModule = {
   namespaced: true,
   state: {
-    popularFilms: [],
+    popularMovies: [],
     nowPlayingMovies: [],
     trendingMovies: [],
-    movieDetailsById: {},
-    movieCredits: {},
-    moviePhotos: [],
+    movieDetailPhotos: [],
   },
 
   getters: {
-    getPopularFilms: (state) => state.popularFilms,
+    getPopularMovies: (state) => state.popularMovies,
     getNowPlayingMovies: (state) => state.nowPlayingMovies,
     getTrendingMovies: (state) => state.trendingMovies,
-    getMovieDetailsById: (state) => state.movieDetailsById,
-    getMovieCredits: (state) => state.movieCredits,
-    getMoviePhotos: (state) => state.moviePhotos,
+    getMovieDetailPhotos: (state) => state.movieDetailPhotos,
   },
 
   mutations: {
-    setPopularFilms: (state, films) => {
-      state.popularFilms = films;
+    setPopularMovies: (state, movies) => {
+      state.popularMovies = movies;
     },
     setNowPlayingMovies: (state, movies) => {
       state.nowPlayingMovies = movies;
@@ -30,14 +26,8 @@ const MovieModule = {
     setTrendingMovies: (state, movies) => {
       state.trendingMovies = movies;
     },
-    setMovieCredits: (state, credits) => {
-      state.movieCredits = credits;
-    },
-    setMoviePhotos: (state, photos) => {
+    setMovieDetailPhotos: (state, photos) => {
       state.moviePhotos = photos;
-    },
-    setMovieDetailsById: (state, details) => {
-      state.movieDetailsById = details;
     },
   },
 
@@ -49,13 +39,13 @@ const MovieModule = {
     //   });
     async fetchPopularFilms({ commit }, { language, page }) {
       try {
-        const response = await MovieService.getPopularFilms(language, page);
+        const response = await MovieService.getPopularMovies(language, page);
         commit("setPopularMovies", response);
       } catch (error) {
         console.error("Error fetching Popular Movies:", error);
       }
     },
-    async NowPlayingMovies({ commit }, { language, page }) {
+    async fetchNowPlayingMovies({ commit }, { language, page }) {
       try {
         const response = await MovieService.getNowPlayingMovies(language, page);
         commit("setNowPlayingMovies", response);
@@ -71,10 +61,10 @@ const MovieModule = {
         console.error("Error fetching Trending Movies:", error);
       }
     },
-    async fetchMovieDetailsById({ commit }, movieId) {
+    async fetchMovieDetailPhotos({ commit }, movieId) {
       try {
-        const response = await MovieService.getDetailsById(movieId);
-        commit("setMovieDetailsById", response);
+        const response = await MovieService.getMovieDetailPhotos(movieId);
+        commit("setMovieDetailPhotos", response);
       } catch (error) {
         console.error("Error fetching Movie Details:", error);
       }

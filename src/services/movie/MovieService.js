@@ -1,7 +1,8 @@
 import api from "@/services/api";
 
 class MovieService {
-  async getPopularFilms(language, page) {
+  async getPopularMovies(language= "en-US", page=1) {
+    //https://api.themoviedb.org/3/movie/popular?language=en-US&page=1&api_key=
     return await api
       .get(
         `movie/popular?language=${language}&page=${page}&api_key=${process.env.VUE_APP_APIKEY}`
@@ -16,6 +17,7 @@ class MovieService {
       );
   }
   async getNowPlayingMovies(language = "en-US", page=1) {
+    //https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1&api_key=
     return await api
       .get(
         `movie/now_playing?language=${language}&page=${page}&api_key=${process.env.VUE_APP_APIKEY}`
@@ -42,36 +44,8 @@ class MovieService {
           return error.data;
         }
       );
-  } //Moviedetails olacak
-  async getDetailsById(MovieId) {
-    return await api
-      .get(
-        `trending/movie/week?language=${language}&api_key=${process.env.VUE_APP_APIKEY}`
-      )
-      .then(
-        (response) => {
-          return response.data;
-        },
-        (error) => {
-          return error.data;
-        }
-      );
   }
-  async getCreditsById(MovieId) {
-    return await api
-      .get(
-        `trending/movie/week?language=${language}&api_key=${process.env.VUE_APP_APIKEY}`
-      )
-      .then(
-        (response) => {
-          return response.data;
-        },
-        (error) => {
-          return error.data;
-        }
-      );
-  }
-  async getDetailPhotosById(MovieId) {
+  async getMovieDetailPhotos(MovieId) {
     return await api
       .get(
         `movie/${MovieId}/images?api_key=${process.env.VUE_APP_APIKEY}`

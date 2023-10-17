@@ -25,12 +25,12 @@ export default {
   },
   mounted() {
     this.filmId = this.$route.params.id;
-    this.getDetailPhotosById(this.filmId);
+    this.getMovieDetailPhotos(this.filmId);
   },
   methods: {
-    async getDetailPhotosById(filmId) {
+    async getMovieDetailPhotos(filmId) {
       try {
-        var photos = await MovieService.getDetailPhotosById(filmId);
+        var photos = await MovieService.getMovieDetailPhotos(filmId);
         if (photos && photos.backdrops) {
           this.detailPhotos = photos.backdrops.map((x) => {
             return {

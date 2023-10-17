@@ -122,7 +122,7 @@
                   class="fa fa-arrow-right"></i> People</router-link>
             </p>
             <p class="ms-3 roboto body-item menu-text"><router-link class="nav-link router-link-left" to="/popular"><i
-                  class="fa fa-arrow-right"></i> TV</router-link>
+                  class="fa fa-arrow-right"></i> TV Shows</router-link>
             </p>
           </div>
         </div>
