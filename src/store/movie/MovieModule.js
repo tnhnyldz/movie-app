@@ -35,6 +35,7 @@ const MovieModule = {
     setMovieDetailPhotos: (state, { rootState, response }) => {
       state.movieDetailPhotos = response.backdrops.map((x) => {
         return {
+          //use original quality
           FilePath: rootState.BaseUrls.Original + x.file_path,
           Height: x.height,
           Width: x.width,
