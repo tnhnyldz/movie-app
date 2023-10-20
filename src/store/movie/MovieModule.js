@@ -19,6 +19,9 @@ const MovieModule = {
   mutations: {
     setEmpty: (state) => {
       state.movieDetailPhotos = [];
+      state.trendingMovies= [];
+      state.nowPlayingMovies= [];
+      state.popularMovies= [];
     },
     setPopularMovies: (state, movies) => {
       state.popularMovies = movies;
