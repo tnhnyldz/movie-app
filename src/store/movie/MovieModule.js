@@ -17,6 +17,9 @@ const MovieModule = {
   },
 
   mutations: {
+    setEmpty: (state) => {
+      state.movieDetailPhotos = [];
+    },
     setPopularMovies: (state, movies) => {
       state.popularMovies = movies;
     },
@@ -26,17 +29,21 @@ const MovieModule = {
     setTrendingMovies: (state, movies) => {
       state.trendingMovies = movies;
     },
-    setMovieDetailPhotos: (state, photos) => {
-      state.moviePhotos = photos;
+    setMovieDetailPhotos: (state, { rootState, response }) => {
+      if (response && response.backdrops) {
+        state.movieDetailPhotos = response.backdrops.map((x) => {
+          return {
+            FilePath: rootState.BaseUrls.Original + x.file_path,
+            Height: x.height,
+            Width: x.width,
+            AspectRatio: x.aspect_ratio,
+          };
+        });
+      }
     },
   },
 
   actions: {
-    //Vue actions always takes Js objects as payload
-    // this.$store.dispatch("fetchPopularFilms", { sample using
-    //     language: "en-US",
-    //     page: 1,
-    //   });
     async fetchPopularFilms({ commit }, { language, page }) {
       try {
         const response = await MovieService.getPopularMovies(language, page);
@@ -61,10 +68,10 @@ const MovieModule = {
         console.error("Error fetching Trending Movies:", error);
       }
     },
-    async fetchMovieDetailPhotos({ commit }, movieId) {
+    async fetchMovieDetailPhotos({ commit, rootState }, movieId) {
       try {
         const response = await MovieService.getMovieDetailPhotos(movieId);
-        commit("setMovieDetailPhotos", response);
+        commit("setMovieDetailPhotos", { rootState, response });
       } catch (error) {
         console.error("Error fetching Movie Details:", error);
       }

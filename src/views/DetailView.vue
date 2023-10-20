@@ -4,7 +4,7 @@
       <SliderOne :photoArray="detailPhotos" />
     </div>
     <h2>Detail Page</h2>
-    <p>Film ID: {{ filmId }}</p>
+    <p>Film ID: {{ MovieId }}</p>
     <div class="row row-2"></div>
   </div>
 </template>
@@ -19,36 +19,28 @@ export default {
   },
   data() {
     return {
-      filmId: null,
+      MovieId: null,
       detailPhotos: [],
     };
   },
-  mounted() {
-    this.filmId = this.$route.params.id;
-    this.getMovieDetailPhotos(this.filmId);
-  },
-  methods: {
-    async getMovieDetailPhotos(filmId) {
-      try {
-        var photos = await MovieService.getMovieDetailPhotos(filmId);
-        if (photos && photos.backdrops) {
-          this.detailPhotos = photos.backdrops.map((x) => {
-            return {
-              FilePath: this.$store.state.BaseUrls.Original + x.file_path,
-              Height: x.height,
-              Width: x.width,
-              AspectRatio: x.aspect_ratio,
-            };
-          });
-          console.log(this.detailPhotos);
-        } else {
-          console.error("Format Error");
-        }
-      } catch (error) {
-        console.log(error);
-      }
+  computed: {
+    detailPhotos() {
+      return this.$store.getters["Movie/getMovieDetailPhotos"];
     },
   },
+  beforeUnmount() {
+    // console.log("Ok Unmounting");
+    // this.$store.commit("Movie/setEmpty");
+  },
+  beforeRouteLeave() {
+    // console.log("Ok leaving");
+    // this.$store.commit("Movie/setEmpty");
+  },
+  created() {
+    this.MovieId = this.$route.params.id;
+    this.$store.dispatch("Movie/fetchMovieDetailPhotos", this.MovieId);
+  },
+  methods: {},
 };
 </script>
 <style scoped>

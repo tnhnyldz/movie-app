@@ -46,6 +46,7 @@ class MovieService {
       );
   }
   async getMovieDetailPhotos(MovieId) {
+    // https://api.themoviedb.org/3/movie/299054/images?api_key=
     return await api
       .get(
         `movie/${MovieId}/images?api_key=${process.env.VUE_APP_APIKEY}`

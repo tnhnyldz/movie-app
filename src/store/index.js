@@ -22,6 +22,6 @@ export default createStore({
   actions: {
   },
   modules: {
-     movie: MovieModule,
+     Movie: MovieModule,
   }
 })

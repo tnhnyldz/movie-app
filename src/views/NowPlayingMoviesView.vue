@@ -97,7 +97,6 @@ export default {
             FilePath: this.$store.state.BaseUrls.Original+x.backdrop_path
           };
         })
-        console.log(this.SliderMovies);
       } catch (error) {
         console.log(error);
       }
