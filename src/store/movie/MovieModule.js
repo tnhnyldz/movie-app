@@ -19,9 +19,9 @@ const MovieModule = {
   mutations: {
     setEmpty: (state) => {
       state.movieDetailPhotos = [];
-      state.trendingMovies= [];
-      state.nowPlayingMovies= [];
-      state.popularMovies= [];
+      state.trendingMovies = [];
+      state.nowPlayingMovies = [];
+      state.popularMovies = [];
     },
     setPopularMovies: (state, movies) => {
       state.popularMovies = movies;
@@ -33,16 +33,14 @@ const MovieModule = {
       state.trendingMovies = movies;
     },
     setMovieDetailPhotos: (state, { rootState, response }) => {
-      if (response && response.backdrops) {
-        state.movieDetailPhotos = response.backdrops.map((x) => {
-          return {
-            FilePath: rootState.BaseUrls.Original + x.file_path,
-            Height: x.height,
-            Width: x.width,
-            AspectRatio: x.aspect_ratio,
-          };
-        });
-      }
+      state.movieDetailPhotos = response.backdrops.map((x) => {
+        return {
+          FilePath: rootState.BaseUrls.Original + x.file_path,
+          Height: x.height,
+          Width: x.width,
+          AspectRatio: x.aspect_ratio,
+        };
+      });
     },
   },
 
@@ -74,7 +72,15 @@ const MovieModule = {
     async fetchMovieDetailPhotos({ commit, rootState }, movieId) {
       try {
         const response = await MovieService.getMovieDetailPhotos(movieId);
-        commit("setMovieDetailPhotos", { rootState, response });
+        if (
+          response &&
+          response.backdrops &&
+          response.backdrops.length>0
+        ) {
+          commit("setMovieDetailPhotos", { rootState, response });
+        }else{
+          console.error("Invalid data for fetchMovieDetailPhotos");
+        }
       } catch (error) {
         console.error("Error fetching Movie Details:", error);
       }
