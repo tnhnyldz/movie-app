@@ -11,7 +11,6 @@
 
 <script>
 import SliderOne from "@/components/Sliders/SliderOne.vue";
-import MovieService from "@/services/movie/MovieService.js";
 export default {
   name: "DetailView",
   components: {
@@ -34,7 +33,7 @@ export default {
   },
   beforeRouteLeave() {
     // console.log("Ok leaving");
-    // this.$store.commit("Movie/setEmpty");
+    this.$store.commit("Movie/setEmpty");
   },
   created() {
     this.MovieId = this.$route.params.id;
