@@ -47,24 +47,8 @@ export default {
 };
 </script>
 <style scoped>
-/* .swiper {
-  width: 100%;
-  height: 100%;
-}
-
-.swiper-slide {
-  text-align: center;
-  font-size: 18px;
-  background: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-*/
 .swiper-slide img {
-  padding: 0 2.5% 0 2.5%;
-  width: 100vh;
-  height: 55vh;
+  width: 47vw;
   object-fit: cover;
 }
 </style>
