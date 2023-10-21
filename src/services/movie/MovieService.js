@@ -49,7 +49,37 @@ class MovieService {
     // https://api.themoviedb.org/3/movie/346698/images?api_key=
     return await api
       .get(
-        `movie/${MovieId}/images?api_key=${process.env.VUE_APP_APIKEY}`
+        `movie/${MovieId}/images?include_image_language=en,null&api_key=${process.env.VUE_APP_APIKEY}`
+      )
+      .then(
+        (response) => {
+          return response.data;
+        },
+        (error) => {
+          return error.data;
+        }
+      );
+  }
+  async getMovieDetailPosters(MovieId) {
+    // https://api.themoviedb.org/3/movie/346698/images?include_image_language=en,null&api_key=
+    return await api
+      .get(
+        `movie/${MovieId}/images?include_image_language=en,null&api_key=${process.env.VUE_APP_APIKEY}`
+      )
+      .then(
+        (response) => {
+          return response.data;
+        },
+        (error) => {
+          return error.data;
+        }
+      );
+  }
+  async getMovieDetailCast(MovieId) {
+    // https://api.themoviedb.org/3/movie/346698/credits?language=en-US&api_key=
+    return await api
+      .get(
+        `movie/${MovieId}/credits?language=en-US&api_key=${process.env.VUE_APP_APIKEY}`
       )
       .then(
         (response) => {

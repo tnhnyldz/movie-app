@@ -9,14 +9,18 @@ const MovieModule = {
     nowPlayingSliderPhotos: [],
     trendingMovies: [],
     movieDetailBackdrops: [],
+    movieDetailPosters: [],
+    movieDetailCast: [],
   },
 
   getters: {
     getPopularMovies: (state) => state.popularMovies,
-    getNowPlayingMovies: (state) => state.nowPlayingMovies,
     getTrendingMovies: (state) => state.trendingMovies,
-    getMovieDetailBackdrops: (state) => state.movieDetailBackdrops,
+    getNowPlayingMovies: (state) => state.nowPlayingMovies,
     getNowPlayingSliderPhotos: (state) => state.nowPlayingSliderPhotos,
+    getMovieDetailBackdrops: (state) => state.movieDetailBackdrops,
+    getMovieDetailPosters: (state) => state.movieDetailPosters,
+    getMovieDetailCast: (state) => state.movieDetailCast,
   },
 
   mutations: {
@@ -67,8 +71,36 @@ const MovieModule = {
           FilePath: rootState.BaseUrls.Original + x.file_path,
           Height: x.height,
           Width: x.width,
-          AspectRatio: x.aspect_ratio,
+          Language:x.iso_639_1
         };
+      });
+    },
+    setMovieDetailPosters: (state, { rootState, response }) => {
+      state.movieDetailPosters = response.posters.map((x) => {
+        return {
+          //use original quality
+          FilePath: rootState.BaseUrls.Original + x.file_path,
+          Height: x.height,
+          Width: x.width,
+          VoteAverage:x.vote_average,
+          VoteCount:x.vote_count,
+          Language:x.iso_639_1
+        };
+      });
+    },
+    setMovieDetailCast: (state, { rootState, response }) => {
+      state.movieDetailCast= response.cast.map((x)=>{
+        return{
+          Gender: x.gender === 1 ? "Female" : x.gender === 2 ? "Male" : "Other",
+          Id:x.id,
+          Name:x.name,
+          Popularity:x.popularity,
+          Photo: rootState.BaseUrls.Original+x.profile_path,
+          CastId:x.cast_id,
+          Character:x.character,
+          CreditId:x.credit_id,
+          Order:x.order,
+        }
       });
     },
   },
@@ -116,6 +148,30 @@ const MovieModule = {
         }
       } catch (error) {
         console.error("Error fetching Movie Backdrops:", error);
+      }
+    },
+    async fetchMovieDetailPosters({ commit, rootState }, movieId) {
+      try {
+        const response = await MovieService.getMovieDetailPosters(movieId);
+        if (response && response.posters && response.posters.length > 0) {
+          commit("setMovieDetailPosters", { rootState, response });
+        } else {
+          console.error("Invalid data for fetchMovieDetailPosters");
+        }
+      } catch (error) {
+        console.error("Error fetching Movie Posters:", error);
+      }
+    },
+    async fetchMovieDetailCast({ commit, rootState }, movieId) {
+      try {
+        const response = await MovieService.getMovieDetailCast(movieId);
+        if (response && response.cast && response.cast.length > 0) {
+          commit("setMovieDetailCast", { rootState, response });
+        } else {
+          console.error("Invalid data for fetchMovieDetailCast");
+        }
+      } catch (error) {
+        console.error("Error fetching Movie Cast:", error);
       }
     },
   },

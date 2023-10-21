@@ -1,11 +1,14 @@
 <template>
   <div class="detail-container container-fluid">
     <div class="row row-1">
-      <SliderOne :photoArray="movieDetailBackdrops" />
+      <SliderOne :photoArray="Backdrops" />
     </div>
     <div class="row row-2">
       <h2>Detail Page</h2>
       <p>Film ID: {{ MovieId }}</p>
+      <p>Number of Backdrops : {{ Backdrops.length }}</p>
+      <p>Number of Posters : {{ Posters.length }}</p>
+      <p>Number of Cast : {{ Cast.length }}</p>
     </div>
   </div>
 </template>
@@ -20,7 +23,9 @@ export default {
   data() {
     return {
       MovieId: null,
-      movieDetailBackdrops: [],
+      Backdrops: [],
+      Posters: [],
+      Cast:[]
     };
   },
   beforeRouteLeave() {
@@ -30,12 +35,25 @@ export default {
   },
   created() {
     // 346698 barbide id
+    // 1160164 taylor swift id
     this.MovieId = this.$route.params.id;
+
     this.$store
       .dispatch("Movie/fetchMovieDetailBackdrops", this.MovieId)
       .then(() => {
-        this.movieDetailBackdrops =
-          this.$store.getters["Movie/getMovieDetailBackdrops"];
+        this.Backdrops = this.$store.getters["Movie/getMovieDetailBackdrops"];
+      });
+
+    this.$store
+      .dispatch("Movie/fetchMovieDetailPosters", this.MovieId)
+      .then(() => {
+        this.Posters = this.$store.getters["Movie/getMovieDetailPosters"];
+      });
+
+    this.$store
+      .dispatch("Movie/fetchMovieDetailCast", this.MovieId)
+      .then(() => {
+        this.Cast = this.$store.getters["Movie/getMovieDetailCast"];
       });
   },
   methods: {},
