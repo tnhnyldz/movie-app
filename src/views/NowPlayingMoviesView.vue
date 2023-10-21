@@ -51,7 +51,6 @@
 <!-- <i class="icon-yellow fa fa-angle-right"></i> -->
 <script>
 import SliderTwo from "@/components/Sliders/SliderTwo.vue";
-import MovieService from "@/services/movie/MovieService.js";
 import CardLarge from "@/components/CardLarge.vue";
 export default {
   name: "NowPlayingMoviesView",
@@ -72,59 +71,35 @@ export default {
     CardLarge,
     SliderTwo,
   },
-  async created() {
-    this.getNowPlayingMovies();
+  created() {
+    this.$store
+      .dispatch("Movie/fetchNowPlayingMovies", {
+        language: "en-US",
+        page: this.counter, //passing the page value as 1
+      })
+      .then(() => {
+        this.Movies = this.$store.getters["Movie/getNowPlayingMovies"];
+      })
+      .then(() => {
+        this.SliderMovies =
+          this.$store.getters["Movie/getNowPlayingSliderPhotos"];
+      });
   },
   methods: {
-    async getNowPlayingMovies() {
-      try {
-        var NowPlayingFilms = await MovieService.getNowPlayingMovies();
-        this.Movies = NowPlayingFilms.results.map((x) => {
-          return {
-            Id: x.id,
-            Title: x.title,
-            Overview: x.overview
-              ? x.overview
-              : "Lorem Ipsum is ssimply dummy of the printing and typesetting industry.",
-            PosterPath: x.poster_path ? this.$store.state.BaseUrls.Original+x.poster_path: "https://user-images.githubusercontent.com/2279051/36819127-dc9e33ea-1c9c-11e8-9a93-0d3c0a674f02.png",
-            ReleaseDate: x.release_date,
-            VoteAverage: x.vote_average,
-          };
-        });
-        this.SliderMovies=NowPlayingFilms.results.map((x) => {
-          return {
-            Id: x.id,
-            FilePath: this.$store.state.BaseUrls.Original+x.backdrop_path
-          };
+    loadMoreMovies() {
+      this.counter++;
+      this.$store
+        .dispatch("Movie/fetchNowPlayingMovies", {
+          language: "en-US",
+          page: this.counter, //increase value and add
         })
-      } catch (error) {
-        console.log(error);
-      }
-    },
-    async loadMoreMovies() {
-      try {
-        this.counter++;
-        var moreMovies = await MovieService.getNowPlayingMovies(
-          "en-US",
-          this.counter
-        );
-        this.Movies = this.Movies.concat(
-          moreMovies.results.map((x) => {
-            return {
-              Id: x.id,
-              Title: x.title,
-              Overview: x.overview
-                ? x.overview
-                : "Lorem Ipsum is simply dummy of the printing and typesetting industry.",
-              PosterPath:  x.poster_path ? this.$store.state.BaseUrls.Large+x.poster_path: "https://user-images.githubusercontent.com/2279051/36819127-dc9e33ea-1c9c-11e8-9a93-0d3c0a674f02.png",
-              ReleaseDate: x.release_date,
-              VoteAverage: x.vote_average,
-            };
-          })
-        );
-      } catch (error) {
-        console.log(error);
-      }
+        .then(() => {
+          //alternative way
+          // var moreMovies = this.$store.getters["Movie/getNowPlayingMovies"];
+          // this.Movies.push(...moreMovies);
+          var moreMovies = this.$store.getters["Movie/getNowPlayingMovies"];
+          this.Movies = this.Movies.concat(moreMovies);
+        });
     },
   },
 };
@@ -171,7 +146,7 @@ export default {
   transition: background-color 1s ease-in-out;
 }
 .slider-container:hover {
-  background-color:#bba110;
+  background-color: #bba110;
 }
 .more-to-explore-text {
   font-size: 30px;
