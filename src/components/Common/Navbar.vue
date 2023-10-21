@@ -53,7 +53,7 @@
   </nav>
   <!-- offcanvas  -->
   <div
-    class="offcanvas offcanvas-top text-bg-dark"
+    class="offcanvas offcanvas-top text-white"
     tabindex="-1"
     id="offcanvasTop"
     aria-labelledby="offcanvasTopLabel"
@@ -251,6 +251,7 @@ export default {
 
 .offcanvas {
   min-height: 660px;
+  background-color: #121212;
 }
 
 .offcanvas-header {
