@@ -1,7 +1,7 @@
 <template>
   <div class="detail-container container-fluid">
     <div class="row row-1">
-      <SliderOne :photoArray="movieDetailPhotos" />
+      <SliderOne :photoArray="movieDetailBackdrops" />
     </div>
     <div class="row row-2">
       <h2>Detail Page</h2>
@@ -20,7 +20,7 @@ export default {
   data() {
     return {
       MovieId: null,
-      movieDetailPhotos: [],
+      movieDetailBackdrops: [],
     };
   },
   beforeRouteLeave() {
@@ -32,10 +32,10 @@ export default {
     // 346698 barbide id
     this.MovieId = this.$route.params.id;
     this.$store
-      .dispatch("Movie/fetchMovieDetailPhotos", this.MovieId)
+      .dispatch("Movie/fetchMovieDetailBackdrops", this.MovieId)
       .then(() => {
-        this.movieDetailPhotos =
-          this.$store.getters["Movie/getMovieDetailPhotos"];
+        this.movieDetailBackdrops =
+          this.$store.getters["Movie/getMovieDetailBackdrops"];
       });
   },
   methods: {},

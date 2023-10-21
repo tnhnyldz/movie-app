@@ -45,7 +45,7 @@ class MovieService {
         }
       );
   }
-  async getMovieDetailPhotos(MovieId) {
+  async getMovieDetailBackdrops(MovieId) {
     // https://api.themoviedb.org/3/movie/346698/images?api_key=
     return await api
       .get(

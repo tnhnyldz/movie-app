@@ -8,20 +8,20 @@ const MovieModule = {
     nowPlayingMovies: [],
     nowPlayingSliderPhotos: [],
     trendingMovies: [],
-    movieDetailPhotos: [],
+    movieDetailBackdrops: [],
   },
 
   getters: {
     getPopularMovies: (state) => state.popularMovies,
     getNowPlayingMovies: (state) => state.nowPlayingMovies,
     getTrendingMovies: (state) => state.trendingMovies,
-    getMovieDetailPhotos: (state) => state.movieDetailPhotos,
+    getMovieDetailBackdrops: (state) => state.movieDetailBackdrops,
     getNowPlayingSliderPhotos: (state) => state.nowPlayingSliderPhotos,
   },
 
   mutations: {
     setEmpty: (state) => {
-      state.movieDetailPhotos = [];
+      state.movieDetailBackdrops = [];
       state.popularMovies = [];
     },
     setPopularMovies: (state, movies) => {
@@ -60,8 +60,8 @@ const MovieModule = {
         };
       });
     },
-    setMovieDetailPhotos: (state, { rootState, response }) => {
-      state.movieDetailPhotos = response.backdrops.map((x) => {
+    setMovieDetailBackdrops: (state, { rootState, response }) => {
+      state.movieDetailBackdrops = response.backdrops.map((x) => {
         return {
           //use original quality
           FilePath: rootState.BaseUrls.Original + x.file_path,
@@ -106,16 +106,16 @@ const MovieModule = {
         console.error("Error fetching Trending Movies:", error);
       }
     },
-    async fetchMovieDetailPhotos({ commit, rootState }, movieId) {
+    async fetchMovieDetailBackdrops({ commit, rootState }, movieId) {
       try {
-        const response = await MovieService.getMovieDetailPhotos(movieId);
+        const response = await MovieService.getMovieDetailBackdrops(movieId);
         if (response && response.backdrops && response.backdrops.length > 0) {
-          commit("setMovieDetailPhotos", { rootState, response });
+          commit("setMovieDetailBackdrops", { rootState, response });
         } else {
-          console.error("Invalid data for fetchMovieDetailPhotos");
+          console.error("Invalid data for fetchMovieDetailBackdrops");
         }
       } catch (error) {
-        console.error("Error fetching Movie Details:", error);
+        console.error("Error fetching Movie Backdrops:", error);
       }
     },
   },
