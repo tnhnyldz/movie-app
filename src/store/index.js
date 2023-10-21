@@ -5,7 +5,7 @@ export default createStore({
     //generalstate
     apikey:"e426677764ab467061d84adf1fc53f40",
     BaseUrls:{
-      Original:"https://image.tmdb.org/t/p/original/",
+      Original:"https://image.tmdb.org/t/p/original",
       Large:"https://image.tmdb.org/t/p/w500/",
     },
     Languages: {

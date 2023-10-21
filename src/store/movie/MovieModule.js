@@ -1,4 +1,5 @@
 import MovieService from "@/services/movie/MovieService";
+import Helper from "@/assets/Js/Helper";
 
 const MovieModule = {
   namespaced: true,
@@ -19,7 +20,6 @@ const MovieModule = {
   mutations: {
     setEmpty: (state) => {
       state.movieDetailPhotos = [];
-      state.trendingMovies = [];
       state.nowPlayingMovies = [];
       state.popularMovies = [];
     },
@@ -29,8 +29,16 @@ const MovieModule = {
     setNowPlayingMovies: (state, movies) => {
       state.nowPlayingMovies = movies;
     },
-    setTrendingMovies: (state, movies) => {
-      state.trendingMovies = movies;
+    setTrendingMovies: (state, { rootState, response }) => {
+      state.trendingMovies = response.results.map((x) => {
+        return {
+          Id: x.id,
+          Title: x.title,
+          FilePath: rootState.BaseUrls.Original + x.backdrop_path,
+          ReleaseDate: Helper.formatDate(x.release_date),
+          VoteAverage: parseFloat(x.vote_average).toFixed(1),
+        };
+      });
     },
     setMovieDetailPhotos: (state, { rootState, response }) => {
       state.movieDetailPhotos = response.backdrops.map((x) => {
@@ -62,10 +70,14 @@ const MovieModule = {
         console.error("Error fetching Now Playing Movies:", error);
       }
     },
-    async fetchTrendingMovies({ commit }, language) {
+    async fetchTrendingMovies({ commit, rootState }, language) {
       try {
         const response = await MovieService.getTrendingMovies(language);
-        commit("setTrendingMovies", response);
+        if (response && response.results && response.results.length > 0) {
+          commit("setTrendingMovies", { rootState, response });
+        } else {
+          console.error("Invalid data for fetchTrendingMovies");
+        }
       } catch (error) {
         console.error("Error fetching Trending Movies:", error);
       }
@@ -73,13 +85,9 @@ const MovieModule = {
     async fetchMovieDetailPhotos({ commit, rootState }, movieId) {
       try {
         const response = await MovieService.getMovieDetailPhotos(movieId);
-        if (
-          response &&
-          response.backdrops &&
-          response.backdrops.length>0
-        ) {
+        if (response && response.backdrops && response.backdrops.length > 0) {
           commit("setMovieDetailPhotos", { rootState, response });
-        }else{
+        } else {
           console.error("Invalid data for fetchMovieDetailPhotos");
         }
       } catch (error) {

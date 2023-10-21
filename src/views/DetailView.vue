@@ -1,7 +1,7 @@
 <template>
   <div class="detail-container container-fluid">
     <div class="row row-1">
-      <SliderOne :photoArray="detailPhotos" />
+      <SliderOne :photoArray="movieDetailPhotos" />
     </div>
     <h2>Detail Page</h2>
     <p>Film ID: {{ MovieId }}</p>
@@ -19,25 +19,23 @@ export default {
   data() {
     return {
       MovieId: null,
-      detailPhotos: [],
+      movieDetailPhotos: [],
     };
   },
-  computed: {
-    detailPhotos() {
-      return this.$store.getters["Movie/getMovieDetailPhotos"];
-    },
-  },
-  beforeUnmount() {
-    // console.log("Ok Unmounting");
-    // this.$store.commit("Movie/setEmpty");
-  },
   beforeRouteLeave() {
+    //beforeUnmount
     // console.log("Ok leaving");
     this.$store.commit("Movie/setEmpty");
   },
   created() {
+    // 346698 barbide id
     this.MovieId = this.$route.params.id;
-    this.$store.dispatch("Movie/fetchMovieDetailPhotos", this.MovieId);
+    this.$store
+      .dispatch("Movie/fetchMovieDetailPhotos", this.MovieId)
+      .then(() => {
+        this.movieDetailPhotos =
+          this.$store.getters["Movie/getMovieDetailPhotos"];
+      });
   },
   methods: {},
 };
