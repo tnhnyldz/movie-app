@@ -170,7 +170,7 @@ export default {
   align-items: center;
 }
 .horizontal-row-5 {
-  background-color: wheat;
+  background-color: black;
   height: 20%;
 }
 .multiple-text {
@@ -196,7 +196,7 @@ export default {
 }
 .container-3 {
   min-height: 700px;
-  background-color: cadetblue;
+  background-color: black;;
 }
 .col-poster {
   padding: 1%;
