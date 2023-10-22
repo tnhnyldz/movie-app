@@ -17,8 +17,7 @@
     <div class="container container-3">
       <div class="row row-3">
         <div class="col col-3 col-poster" v-if="Posters.length>0">
-          <img :src="Posters[0].FilePath" :style="{ width: '100%', borderRadius: '10px'}" />
-          <!-- <img :src="Posters[0].FilePath" :style="{ width: '100%', borderRadius: '10px'}" /> -->
+          <SliderFour :photoArray="Posters" />
         </div>
         <div class="col col-9 col-details">2 of 2</div>
       </div>
@@ -28,10 +27,14 @@
 
 <script>
 import SliderOne from "@/components/Sliders/SliderOne.vue";
+import SliderFour from "@/components/Sliders/SliderFour.vue";
+import "@/assets/css/app-global.css";
+
 export default {
   name: "DetailView",
   components: {
     SliderOne,
+    SliderFour
   },
   data() {
     return {
@@ -73,6 +76,7 @@ export default {
 };
 </script>
 <style scoped>
+
 .container-1 {
   padding: 0;
 }
@@ -84,13 +88,9 @@ export default {
   background-color: cadetblue;
 }
 .col-poster {
-  padding: 1% 1%;
+  padding: 1% 1% 1% 1%;
   background-color: saddlebrown;
   min-height: 200px;
-}
-.col-poster img {
-  width: 100%;
-  border-radius: 10%;
 }
 .col-details {
   background-color: darkgoldenrod;
