@@ -6,6 +6,13 @@ class Helper {
     // console.log(formattedDate);
     return formattedDate;
   }
+  getYear(date, language = "en-US") {
+    const originalDate = new Date(date);
+    const options = { year: "numeric" };
+    const formattedDate = originalDate.toLocaleDateString(language, options);
+    return formattedDate;
+}
+
 }
 
 export default new Helper();

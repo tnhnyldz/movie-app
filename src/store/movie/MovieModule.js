@@ -8,6 +8,7 @@ const MovieModule = {
     nowPlayingMovies: [],
     nowPlayingSliderPhotos: [],
     trendingMovies: [],
+    movieDetails: {},
     movieDetailBackdrops: [],
     movieDetailPosters: [],
     movieDetailCast: [],
@@ -17,6 +18,7 @@ const MovieModule = {
     getPopularMovies: (state) => state.popularMovies,
     getTrendingMovies: (state) => state.trendingMovies,
     getNowPlayingMovies: (state) => state.nowPlayingMovies,
+    getMovieDetails: (state) => state.movieDetails,
     getNowPlayingSliderPhotos: (state) => state.nowPlayingSliderPhotos,
     getMovieDetailBackdrops: (state) => state.movieDetailBackdrops,
     getMovieDetailPosters: (state) => state.movieDetailPosters,
@@ -71,7 +73,7 @@ const MovieModule = {
           FilePath: rootState.BaseUrls.Original + x.file_path,
           Height: x.height,
           Width: x.width,
-          Language:x.iso_639_1
+          Language: x.iso_639_1,
         };
       });
     },
@@ -82,27 +84,53 @@ const MovieModule = {
           FilePath: rootState.BaseUrls.Original + x.file_path,
           Height: x.height,
           Width: x.width,
-          VoteAverage:x.vote_average,
-          VoteCount:x.vote_count,
-          Language:x.iso_639_1,
-          AspectRatio:x.aspect_ratio
+          VoteAverage: x.vote_average,
+          VoteCount: x.vote_count,
+          Language: x.iso_639_1,
+          AspectRatio: x.aspect_ratio,
         };
       });
     },
     setMovieDetailCast: (state, { rootState, response }) => {
-      state.movieDetailCast= response.cast.map((x)=>{
-        return{
+      state.movieDetailCast = response.cast.map((x) => {
+        return {
           Gender: x.gender === 1 ? "Female" : x.gender === 2 ? "Male" : "Other",
-          Id:x.id,
-          Name:x.name,
-          Popularity:x.popularity,
-          Photo: rootState.BaseUrls.Original+x.profile_path,
-          CastId:x.cast_id,
-          Character:x.character,
-          CreditId:x.credit_id,
-          Order:x.order,
-        }
+          Id: x.id,
+          Name: x.name,
+          Popularity: x.popularity,
+          Photo: rootState.BaseUrls.Original + x.profile_path,
+          CastId: x.cast_id,
+          Character: x.character,
+          CreditId: x.credit_id,
+          Order: x.order,
+        };
       });
+    },
+    setMovieDetails: (state, { response }) => {
+      state.movieDetails = {
+        Adult: response.adult,
+        Budget: response.budget,
+        Genres: response.genres,
+        HomePage: response.homepage,
+        Id: response.id,
+        ImdbId: response.imdb_id,
+        OriginalLanguage: response.original_language,
+        OriginalTitle: response.original_title,
+        Overview: response.overview,
+        Popularity: response.popularity,
+        ProductionCountries: response.production_countries,
+        ReleaseDate: Helper.formatDate(response.release_date),
+        Revenue: response.revenue,
+        Runtime: response.runtime,
+        SpokenLanguages: response.spoken_languages,
+        Status: response.status,
+        Tagline: response.tagline,
+        Title: response.title,
+        Video: response.video,
+        VoteAverage: response.vote_average ? response.vote_average.toString().slice(0, 3) : 'N/A',
+        VoteCount: response.vote_count,
+        Year:Helper.getYear(response.release_date)
+      };
     },
   },
 
@@ -174,6 +202,18 @@ const MovieModule = {
         }
       } catch (error) {
         console.error("Error fetching Movie Cast:", error);
+      }
+    },
+    async fetchMovieDetails({ commit }, movieId) {
+      try {
+        const response = await MovieService.getMovieDetails(movieId);
+        if (response && response.title) {
+          commit("setMovieDetails", { response });
+        } else {
+          console.error("Invalid data for fetchMovieDetails");
+        }
+      } catch (error) {
+        console.error("Error fetching Movie Details:", error);
       }
     },
   },

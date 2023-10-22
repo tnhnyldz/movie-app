@@ -91,6 +91,21 @@ class MovieService {
         }
       );
   }
+  async getMovieDetails(MovieId) {
+    // https://api.themoviedb.org/3/movie/346698?language=en-US&api_key=e426677764ab467061d84adf1fc53f40
+    return await api
+      .get(
+        `movie/${MovieId}?language=en-US&api_key=${process.env.VUE_APP_APIKEY}`
+      )
+      .then(
+        (response) => {
+          return response.data;
+        },
+        (error) => {
+          return error.data;
+        }
+      );
+  }
 }
 
 export default new MovieService();

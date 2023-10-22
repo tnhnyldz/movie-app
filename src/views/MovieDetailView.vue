@@ -5,7 +5,7 @@
         <SliderOne :photoArray="Backdrops" />
       </div>
     </div>
-    <div class="container container-2">
+    <!-- <div class="container container-2">
       <div class="row row-2">
         <h2>Detail Page</h2>
         <p>Film ID: {{ MovieId }}</p>
@@ -13,13 +13,44 @@
         <p>Number of Posters : {{ Posters.length }}</p>
         <p>Number of Cast : {{ Cast.length }}</p>
       </div>
-    </div>
+    </div> -->
     <div class="container container-3">
       <div class="row row-3">
-        <div class="col col-3 col-poster" v-if="Posters.length>0">
+        <div class="col col-3 col-poster" v-if="Posters.length > 0">
           <SliderFour :photoArray="Posters" />
         </div>
-        <div class="col col-9 col-details">2 of 2</div>
+        <div class="col col-9 col-details">
+          <div class="col horizontal-row horizontal-row-1">
+            <h1 class="roboto text-white">
+              {{ Details.Title }} ({{ Details.Year }})
+            </h1>
+          </div>
+          <div class="col horizontal-row horizontal-row-2">
+            <p class="text-white multiple-text">
+              {{ Details.ReleaseDate }} &bull; {{ Details.Runtime }} minutes
+              &bull;
+              <i class="fa fa-star" style="color: #ffd700; font-size: 20px"></i>
+              {{ Details.VoteAverage }}
+            </p>
+            <p class="text-white">
+              <i> "{{ Details.Tagline }}"</i>
+            </p>
+          </div>
+          <div class="col horizontal-row horizontal-row-3">
+            <span class="roboto text-white overview">Overview</span>
+            <span class="roboto text-white overview-text">{{
+              Details.Overview
+            }}</span>
+          </div>
+          <div class="col horizontal-row horizontal-row-4"></div>
+          <div class="col horizontal-row horizontal-row-5">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/6/69/IMDB_Logo_2016.svg"
+              alt=""
+              style="width: 10%; height: auto"
+            />
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -34,7 +65,7 @@ export default {
   name: "DetailView",
   components: {
     SliderOne,
-    SliderFour
+    SliderFour,
   },
   data() {
     return {
@@ -42,6 +73,7 @@ export default {
       Backdrops: [],
       Posters: [],
       Cast: [],
+      Details: {},
     };
   },
   beforeRouteLeave() {
@@ -50,7 +82,6 @@ export default {
     this.$store.commit("Movie/setEmpty");
   },
   created() {
-    console.log("created");
     // 346698 barbide id
     // 1160164 taylor swift id
     this.MovieId = this.$route.params.id;
@@ -71,12 +102,62 @@ export default {
       .then(() => {
         this.Cast = this.$store.getters["Movie/getMovieDetailCast"];
       });
+    this.$store.dispatch("Movie/fetchMovieDetails", this.MovieId).then(() => {
+      this.Details = this.$store.getters["Movie/getMovieDetails"];
+    });
   },
   methods: {},
 };
 </script>
 <style scoped>
-
+.horizontal-row-1 {
+  background-color: black;
+  height: 15%;
+  padding: 0 1%;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+.horizontal-row-2 {
+  background-color: rosybrown;
+  height: 20%;
+  padding: 0 1%;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: flex-start;
+  text-align: left;
+}
+.horizontal-row-3 {
+  background-color: chocolate;
+  height: 30%;
+  padding: 0 1%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  text-align: left;
+}
+.horizontal-row-4 {
+  background-color: green;
+  height: 10%;
+}
+.horizontal-row-5 {
+  background-color: wheat;
+  height: 25%;
+}
+.multiple-text {
+  font-size: 20px;
+}
+.overview {
+  font-weight: 500;
+  font-size: 24px;
+  margin-bottom: 1%;
+}
+.overview-text {
+  letter-spacing: 1px;
+  line-height: 1.25;
+}
 .container-1 {
   padding: 0;
 }
@@ -88,13 +169,12 @@ export default {
   background-color: cadetblue;
 }
 .col-poster {
-  padding: 1% 1% 1% 1%;
+  padding: 1%;
   background-color: saddlebrown;
-  min-height: 200px;
 }
 .col-details {
+  padding: 1%;
   background-color: darkgoldenrod;
-  min-height: 200px;
 }
 
 .detail-container {
