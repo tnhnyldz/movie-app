@@ -42,7 +42,30 @@
               Details.Overview
             }}</span>
           </div>
-          <div class="col horizontal-row horizontal-row-4"></div>
+          <div class="col horizontal-row horizontal-row-4">
+            <p class="roboto text-white row-4-text">
+              Revenue:
+              <span class="badge text-bg-secondary">{{ Details.Revenue }}</span>
+            </p>
+            <p class="roboto text-white row-4-text">
+              Budget:
+              <span class="badge text-bg-secondary">{{ Details.Budget }}</span>
+            </p>
+            <p class="roboto text-white row-4-text">
+              Status:
+              <span class="badge text-bg-secondary">{{ Details.Status }}</span>
+            </p>
+            <p class="roboto text-white row-4-text">
+              Original Language:
+              <span class="badge text-bg-secondary">{{
+                Details.OriginalLanguage
+              }}</span>
+            </p>
+            <p class="roboto text-white row-4-text">
+              Popularity:
+              <span class="badge text-bg-secondary">{{ Details.Popularity }}</span>
+            </p>
+          </div>
           <div class="col horizontal-row horizontal-row-5">
             <img
               src="https://upload.wikimedia.org/wikipedia/commons/6/69/IMDB_Logo_2016.svg"
@@ -119,7 +142,7 @@ export default {
   align-items: center;
 }
 .horizontal-row-2 {
-  background-color: rosybrown;
+  background-color: black;
   height: 20%;
   padding: 0 1%;
   display: flex;
@@ -129,7 +152,7 @@ export default {
   text-align: left;
 }
 .horizontal-row-3 {
-  background-color: chocolate;
+  background-color: black;
   height: 30%;
   padding: 0 1%;
   display: flex;
@@ -139,12 +162,16 @@ export default {
   text-align: left;
 }
 .horizontal-row-4 {
-  background-color: green;
-  height: 10%;
+  background-color: black;
+  height: 15%;
+  padding: 0 1%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 .horizontal-row-5 {
   background-color: wheat;
-  height: 25%;
+  height: 20%;
 }
 .multiple-text {
   font-size: 20px;
@@ -158,6 +185,9 @@ export default {
   letter-spacing: 1px;
   line-height: 1.25;
 }
+.row-4-text {
+  font-size: 18px;
+}
 .container-1 {
   padding: 0;
 }
@@ -170,16 +200,16 @@ export default {
 }
 .col-poster {
   padding: 1%;
-  background-color: saddlebrown;
+  background-color: black;
 }
 .col-details {
   padding: 1%;
-  background-color: darkgoldenrod;
+  background-color: black;
 }
 
 .detail-container {
   min-height: 95vh;
-  background-color: brown;
+  background-color: black;
 }
 
 .row-1 {

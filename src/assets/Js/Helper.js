@@ -11,8 +11,12 @@ class Helper {
     const options = { year: "numeric" };
     const formattedDate = originalDate.toLocaleDateString(language, options);
     return formattedDate;
-}
-
+  }
+  formatDollar(data) {
+    const formattedData = (data / 1000000).toFixed(2); 
+    const result = `$${formattedData}M`;
+    return result;
+  }
 }
 
 export default new Helper();
