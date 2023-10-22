@@ -84,7 +84,8 @@ const MovieModule = {
           Width: x.width,
           VoteAverage:x.vote_average,
           VoteCount:x.vote_count,
-          Language:x.iso_639_1
+          Language:x.iso_639_1,
+          AspectRatio:x.aspect_ratio
         };
       });
     },
@@ -154,6 +155,7 @@ const MovieModule = {
       try {
         const response = await MovieService.getMovieDetailPosters(movieId);
         if (response && response.posters && response.posters.length > 0) {
+          // console.log(response.posters)
           commit("setMovieDetailPosters", { rootState, response });
         } else {
           console.error("Invalid data for fetchMovieDetailPosters");

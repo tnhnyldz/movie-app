@@ -68,6 +68,7 @@ class MovieService {
       )
       .then(
         (response) => {
+          // console.log(response.data.posters)
           return response.data;
         },
         (error) => {
