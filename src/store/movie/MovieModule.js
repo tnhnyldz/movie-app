@@ -127,7 +127,8 @@ const MovieModule = {
         Tagline: response.tagline,
         Title: response.title,
         Video: response.video,
-        VoteAverage: response.vote_average ? response.vote_average.toString().slice(0, 3) : 'N/A',
+        VoteAverage: response.vote_average ? Math.round(response.vote_average * 10).toString() : 'N/A',
+
         VoteCount: response.vote_count,
         Year:Helper.getYear(response.release_date)
       };

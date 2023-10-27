@@ -26,15 +26,15 @@
             </h1>
           </div>
           <div class="col horizontal-row horizontal-row-2">
-            <p class="text-white multiple-text">
-              {{ Details.ReleaseDate }} &bull; {{ Details.Runtime }} minutes
-              &bull;
-              <i class="fa fa-star" style="color: #ffd700; font-size: 20px"></i>
-              {{ Details.VoteAverage }}
-            </p>
-            <p class="text-white">
-              <i> "{{ Details.Tagline }}"</i>
-            </p>
+            <div class="col-md-1 progress-bar-container" style="background-color: violet;">
+              <ProgressBar :BarValue="Details.VoteAverage" />
+            </div>
+            <div class="col-md-1 progress-bar-container" style="background-color: violet;">
+            <p class="user-score roboto" >User Score</p>
+            </div>
+            <div class="col-md-10 " style="background-color: gold;">
+              <p>asd</p>
+            </div>
           </div>
           <div class="col horizontal-row horizontal-row-3">
             <span class="roboto text-white overview">Overview</span>
@@ -63,7 +63,9 @@
             </p>
             <p class="roboto text-white row-4-text">
               Popularity:
-              <span class="badge text-bg-secondary">{{ Details.Popularity }}</span>
+              <span class="badge text-bg-secondary">{{
+                Details.Popularity
+              }}</span>
             </p>
           </div>
           <div class="col horizontal-row horizontal-row-5">
@@ -82,6 +84,7 @@
 <script>
 import SliderOne from "@/components/Sliders/SliderOne.vue";
 import SliderFour from "@/components/Sliders/SliderFour.vue";
+import ProgressBar from "@/components/Common/ProgressBar.vue";
 import "@/assets/css/app-global.css";
 
 export default {
@@ -89,6 +92,7 @@ export default {
   components: {
     SliderOne,
     SliderFour,
+    ProgressBar,
   },
   data() {
     return {
@@ -133,6 +137,23 @@ export default {
 };
 </script>
 <style scoped>
+.progress-bar-container{
+  padding: 0.5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.user-score{
+  margin-top: 12px;
+  font-size: 18px;
+  font-weight: 600;
+}
+#progress-container {
+  width: 65px;
+  height: 66px;
+  position: relative;
+  background-color: yellow;
+}
 .horizontal-row-1 {
   background-color: orange;
   height: 15%;
@@ -143,13 +164,15 @@ export default {
 }
 .horizontal-row-2 {
   background-color: green;
-  height: 20%;
+   display: flex;
+  /* height: 20%;
   padding: 0 1%;
   display: flex;
   flex-direction: column;
   justify-content: end;
   align-items: flex-start;
-  text-align: left;
+  text-align: left; */
+  height: 20%;
 }
 .horizontal-row-3 {
   background-color: burlywood;
@@ -196,7 +219,7 @@ export default {
 }
 .container-3 {
   min-height: 700px;
-  background-color: black;;
+  background-color: black;
 }
 .col-poster {
   padding: 1%;
