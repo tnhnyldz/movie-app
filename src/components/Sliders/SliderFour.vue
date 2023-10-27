@@ -6,7 +6,7 @@
     :speed="750"
     class="mySwiper"
     :autoplay="{
-      delay: 10000,
+      delay: 15000,
       disableOnInteraction: false,
     }"
   >

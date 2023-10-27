@@ -134,7 +134,7 @@ export default {
 </script>
 <style scoped>
 .horizontal-row-1 {
-  background-color: black;
+  background-color: orange;
   height: 15%;
   padding: 0 1%;
   display: flex;
@@ -142,7 +142,7 @@ export default {
   align-items: center;
 }
 .horizontal-row-2 {
-  background-color: black;
+  background-color: green;
   height: 20%;
   padding: 0 1%;
   display: flex;
@@ -152,7 +152,7 @@ export default {
   text-align: left;
 }
 .horizontal-row-3 {
-  background-color: black;
+  background-color: burlywood;
   height: 30%;
   padding: 0 1%;
   display: flex;
@@ -162,7 +162,7 @@ export default {
   text-align: left;
 }
 .horizontal-row-4 {
-  background-color: black;
+  background-color: darkslategray;
   height: 15%;
   padding: 0 1%;
   display: flex;
@@ -170,7 +170,7 @@ export default {
   align-items: center;
 }
 .horizontal-row-5 {
-  background-color: black;
+  background-color: cornflowerblue;
   height: 20%;
 }
 .multiple-text {
@@ -200,11 +200,11 @@ export default {
 }
 .col-poster {
   padding: 1%;
-  background-color: black;
+  background-color: brown;
 }
 .col-details {
   padding: 1%;
-  background-color: black;
+  background-color: thistle;
 }
 
 .detail-container {
