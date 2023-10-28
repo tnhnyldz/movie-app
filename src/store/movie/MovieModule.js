@@ -98,13 +98,16 @@ const MovieModule = {
           Id: x.id,
           Name: x.name,
           Popularity: x.popularity,
-          Photo: rootState.BaseUrls.Original + x.profile_path,
+          Photo: x.profile_path
+            ? rootState.BaseUrls.Large + x.profile_path
+            : "no photo",
           CastId: x.cast_id,
           Character: x.character,
           CreditId: x.credit_id,
           Order: x.order,
         };
       });
+      state.movieDetailCast=state.movieDetailCast.filter(x=>x.Photo!=="no photo");
     },
     setMovieDetails: (state, { response }) => {
       state.movieDetails = {
@@ -127,10 +130,14 @@ const MovieModule = {
         Tagline: response.tagline,
         Title: response.title,
         Video: response.video,
-        VoteAverage: response.vote_average ? Math.round(response.vote_average * 10).toString() : 'N/A',
-
+        VoteAverage: response.vote_average
+          ? Math.round(response.vote_average * 10).toString()
+          : "N/A",
+        VoteStar: response.vote_average
+          ? response.vote_average.toString().slice(0, 3)
+          : "N/A",
         VoteCount: response.vote_count,
-        Year:Helper.getYear(response.release_date)
+        Year: Helper.getYear(response.release_date),
       };
     },
   },

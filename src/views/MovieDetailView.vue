@@ -26,15 +26,36 @@
             </h1>
           </div>
           <div class="col horizontal-row horizontal-row-2">
-            <div class="col-md-1 progress-bar-container" style="background-color: violet;">
+            <div
+              class="col-md-1 progress-bar-container"
+              style="background-color: violet"
+            >
               <ProgressBar :BarValue="Details.VoteAverage" />
             </div>
-            <div class="col-md-1 progress-bar-container" style="background-color: violet;">
-            <p class="user-score roboto" >User Score</p>
+            <div
+              class="col-md-1 progress-bar-container"
+              style="background-color: violet"
+            >
+              <p class="user-score roboto">User Score</p>
             </div>
-            <div class="col-md-10 " style="background-color: gold;">
-              <p>asd</p>
+            <div
+              class="col-md-4 short-details-container"
+              style="background-color: gold"
+            >
+              <p class="movie-tagline roboto">"{{ Details.Tagline }}"</p>
+              <p class="movie-infos roboto">
+                <span class="badge more-info-badges text-bg-secondary roboto"
+                  >{{ Details.Runtime }} minutes</span
+                ><span class="badge text-bg-secondary roboto more-info-badges"
+                  ><i class="fas fa-star" style="color: #ffd700"></i>
+                  {{ Details.VoteStar }}</span
+                ><span
+                  class="badge text-bg-secondary roboto more-info-badges"
+                  >{{ Details.ReleaseDate }}</span
+                >
+              </p>
             </div>
+            <div class="col-md-6" style="background-color: lightcoral"></div>
           </div>
           <div class="col horizontal-row horizontal-row-3">
             <span class="roboto text-white overview">Overview</span>
@@ -78,12 +99,26 @@
         </div>
       </div>
     </div>
+    <div class="container container-4">
+      <div class="row row-4">
+        <div class="col col-md-12 cast-header">
+          <p class="lead-actors roboto">Lead Actors</p>
+        </div>
+      </div>
+      <div class="row row-5 cast-div">
+        <div class="col col-md-9 cast-cards">
+          <SliderFive :castArray="Cast" />
+        </div>
+        <div class="col col-md-3 cast-additional-infos"></div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 import SliderOne from "@/components/Sliders/SliderOne.vue";
 import SliderFour from "@/components/Sliders/SliderFour.vue";
+import SliderFive from "@/components/Sliders/SliderFive.vue";
 import ProgressBar from "@/components/Common/ProgressBar.vue";
 import "@/assets/css/app-global.css";
 
@@ -92,6 +127,7 @@ export default {
   components: {
     SliderOne,
     SliderFour,
+    SliderFive,
     ProgressBar,
   },
   data() {
@@ -137,13 +173,64 @@ export default {
 };
 </script>
 <style scoped>
-.progress-bar-container{
+.cast-cards {
+  /* max-height: 500px; */
+  padding: 1%;
+  /* background-color: black; */
+}
+.cast-additional-infos {
+  /* max-height: 500px; */
+  /* background-color: navy; */
+}
+.cast-div {
+  /* min-height: 700px; */
+  /* background-color: forestgreen; */
+}
+.cast-header {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  /* background-color: black; */
+}
+.container-4 {
+  background-position: center;
+  background-size: cover;
+  /* min-height: 700px; */
+  /* background-color: darkorange; */
+ background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.dev/svgjs' width='1400' height='500' preserveAspectRatio='none' viewBox='0 0 1400 500'%3e%3cg mask='url(%26quot%3b%23SvgjsMask3069%26quot%3b)' fill='none'%3e%3crect width='1400' height='500' x='0' y='0' fill='rgba(0%2c 0%2c 0%2c 1)'%3e%3c/rect%3e%3cg mask='url(%26quot%3b%23SvgjsMask3071%26quot%3b)'%3e%3cpath d='M1175 275L1125 325M1225 275L1175 225M1475 275L1425 275L1375 275L1325 275L1275 275L1225 275L1175 275L1125 275' stroke='url(%26quot%3b%23SvgjsLinearGradient3070%26quot%3b)' stroke-width='8.33'%3e%3c/path%3e%3cpath d='M1112.5 275 a12.5 12.5 0 1 0 25 0 a12.5 12.5 0 1 0 -25 0zM1112.5 325 a12.5 12.5 0 1 0 25 0 a12.5 12.5 0 1 0 -25 0zM1162.5 225 a12.5 12.5 0 1 0 25 0 a12.5 12.5 0 1 0 -25 0z' fill='url(%26quot%3b%23SvgjsLinearGradient3070%26quot%3b)'%3e%3c/path%3e%3cpath d='M1475 225L1425 225L1375 225L1325 225L1275 225' stroke='url(%26quot%3b%23SvgjsLinearGradient3070%26quot%3b)' stroke-width='8.33'%3e%3c/path%3e%3cpath d='M1262.5 225 a12.5 12.5 0 1 0 25 0 a12.5 12.5 0 1 0 -25 0z' fill='url(%26quot%3b%23SvgjsLinearGradient3070%26quot%3b)'%3e%3c/path%3e%3cpath d='M1425 325L1375 375L1325 375L1275 425L1225 425M1475 325L1425 325L1375 325L1325 325L1275 325L1225 325' stroke='url(%26quot%3b%23SvgjsLinearGradient3070%26quot%3b)' stroke-width='8.33'%3e%3c/path%3e%3cpath d='M1212.5 325 a12.5 12.5 0 1 0 25 0 a12.5 12.5 0 1 0 -25 0zM1212.5 425 a12.5 12.5 0 1 0 25 0 a12.5 12.5 0 1 0 -25 0z' fill='url(%26quot%3b%23SvgjsLinearGradient3070%26quot%3b)'%3e%3c/path%3e%3cpath d='M1225 175L1175 175L1125 175L1075 175M1325 175L1275 125L1225 125M1425 175L1375 125L1325 125M1475 175L1425 175L1375 175L1325 175L1275 175L1225 175L1175 125' stroke='url(%26quot%3b%23SvgjsLinearGradient3070%26quot%3b)' stroke-width='8.33'%3e%3c/path%3e%3cpath d='M1162.5 125 a12.5 12.5 0 1 0 25 0 a12.5 12.5 0 1 0 -25 0zM1062.5 175 a12.5 12.5 0 1 0 25 0 a12.5 12.5 0 1 0 -25 0zM1212.5 125 a12.5 12.5 0 1 0 25 0 a12.5 12.5 0 1 0 -25 0zM1312.5 125 a12.5 12.5 0 1 0 25 0 a12.5 12.5 0 1 0 -25 0z' fill='url(%26quot%3b%23SvgjsLinearGradient3070%26quot%3b)'%3e%3c/path%3e%3c/g%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask3069'%3e%3crect width='1400' height='500' fill='white'%3e%3c/rect%3e%3c/mask%3e%3clinearGradient x1='924' y1='250' x2='1400' y2='250' gradientUnits='userSpaceOnUse' id='SvgjsLinearGradient3070'%3e%3cstop stop-color='rgba(204%2c 163%2c 0%2c 1)' offset='0'%3e%3c/stop%3e%3cstop stop-color='rgba(255%2c 215%2c 0%2c 1)' offset='1'%3e%3c/stop%3e%3c/linearGradient%3e%3cmask id='SvgjsMask3071'%3e%3crect width='1400' height='500' fill='white'%3e%3c/rect%3e%3cpath d='M1118.75 275 a6.25 6.25 0 1 0 12.5 0 a6.25 6.25 0 1 0 -12.5 0zM1118.75 325 a6.25 6.25 0 1 0 12.5 0 a6.25 6.25 0 1 0 -12.5 0zM1168.75 225 a6.25 6.25 0 1 0 12.5 0 a6.25 6.25 0 1 0 -12.5 0z' fill='black'%3e%3c/path%3e%3cpath d='M1268.75 225 a6.25 6.25 0 1 0 12.5 0 a6.25 6.25 0 1 0 -12.5 0z' fill='black'%3e%3c/path%3e%3cpath d='M1218.75 325 a6.25 6.25 0 1 0 12.5 0 a6.25 6.25 0 1 0 -12.5 0zM1218.75 425 a6.25 6.25 0 1 0 12.5 0 a6.25 6.25 0 1 0 -12.5 0z' fill='black'%3e%3c/path%3e%3cpath d='M1168.75 125 a6.25 6.25 0 1 0 12.5 0 a6.25 6.25 0 1 0 -12.5 0zM1068.75 175 a6.25 6.25 0 1 0 12.5 0 a6.25 6.25 0 1 0 -12.5 0zM1218.75 125 a6.25 6.25 0 1 0 12.5 0 a6.25 6.25 0 1 0 -12.5 0zM1318.75 125 a6.25 6.25 0 1 0 12.5 0 a6.25 6.25 0 1 0 -12.5 0z' fill='black'%3e%3c/path%3e%3c/mask%3e%3c/defs%3e%3c/svg%3e");
+}
+.more-info-badges {
+  margin: 5px 5px;
+  font-size: 14px;
+}
+.lead-actors {
+  color: white;
+  margin: 1% 1% 0 1%;
+  font-size: 30px;
+}
+.short-details-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.movie-tagline {
+  font-style: italic;
+  background-color: rebeccapurple;
+  color: white;
+  margin: 1%;
+}
+.movie-infos {
+  background-color: yellowgreen;
+  margin: 1%;
+}
+.progress-bar-container {
   padding: 0.5%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.user-score{
+.user-score {
   margin-top: 12px;
   font-size: 18px;
   font-weight: 600;
@@ -164,7 +251,7 @@ export default {
 }
 .horizontal-row-2 {
   background-color: green;
-   display: flex;
+  display: flex;
   /* height: 20%;
   padding: 0 1%;
   display: flex;
@@ -218,8 +305,8 @@ export default {
   background-color: purple;
 }
 .container-3 {
-  min-height: 700px;
-  background-color: black;
+  /* min-height: 700px; */
+  background-color: darkblue;
 }
 .col-poster {
   padding: 1%;

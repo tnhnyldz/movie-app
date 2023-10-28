@@ -77,7 +77,7 @@ class MovieService {
       );
   }
   async getMovieDetailCast(MovieId) {
-    // https://api.themoviedb.org/3/movie/346698/credits?language=en-US&api_key=
+    // https://api.themoviedb.org/3/movie/346698/credits?language=en-US&api_key=e426677764ab467061d84adf1fc53f40
     return await api
       .get(
         `movie/${MovieId}/credits?language=en-US&api_key=${process.env.VUE_APP_APIKEY}`
