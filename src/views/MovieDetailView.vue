@@ -5,21 +5,19 @@
         <SliderOne :photoArray="Backdrops" />
       </div>
     </div>
-    <!-- <div class="container container-2">
-      <div class="row row-2">
-        <h2>Detail Page</h2>
-        <p>Film ID: {{ MovieId }}</p>
-        <p>Number of Backdrops : {{ Backdrops.length }}</p>
-        <p>Number of Posters : {{ Posters.length }}</p>
-        <p>Number of Cast : {{ Cast.length }}</p>
+    <div class="container container-2">
+      <div class="row">
+        <div class="col col-md-12 row-col">
+          <i class="fa fa-arrow-left" @click="goBack"></i>
+        </div>
       </div>
-    </div> -->
-    <div class="container container-3">
       <div class="row row-2">
-        <div class="col col-md-12 cast-header">
+        <div class="col col-md-12 key-information-header">
           <p class="key-information roboto">Key Information</p>
         </div>
       </div>
+    </div>
+    <div class="container container-3">
       <div class="row row-3">
         <div class="col col-3 col-poster" v-if="Posters.length > 0">
           <SliderFour :photoArray="Posters" />
@@ -153,7 +151,6 @@
         <div class="col col-md-9 cast-cards">
           <SliderFive :castArray="Cast" />
         </div>
-        <div class="col col-md-3 cast-additional-infos"></div>
       </div>
     </div>
   </div>
@@ -213,10 +210,30 @@ export default {
       this.Details = this.$store.getters["Movie/getMovieDetails"];
     });
   },
-  methods: {},
+  methods: {
+    goBack() {
+      this.$router.go(-1);
+    },
+  },
 };
 </script>
 <style scoped>
+.fa-arrow-left {
+  color: white;
+  font-size: 28px;
+}
+.fa-arrow-left:hover {
+  color: white;
+  cursor: pointer;
+  font-size: 28px;
+}
+.row-col {
+  display: flex;
+  background-color: black;
+  justify-content: flex-start;
+  align-items: end;
+  padding: 2% 0 2% 0.9%;
+}
 .list-group {
   width: 100%;
 }
@@ -245,6 +262,12 @@ export default {
   align-items: center;
   /* background-color: black; */
 }
+.key-information-header {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  /* background-color: black; */
+}
 .container-4 {
   background-position: center;
   background-size: cover;
@@ -258,14 +281,14 @@ export default {
 }
 .lead-actors {
   color: white;
-  margin: 1% 1% 0 0.2%;
+  margin: 1% 0 1% 0;
   padding: 0 0 0 1%;
   font-size: 30px;
   border-left: 3px solid #ffd700;
 }
 .key-information {
   color: white;
-  margin: 1% 1% 0 0.2%;
+  margin: 1% 0 1% 0;
   padding: 0 0 0 1%;
   font-size: 30px;
   border-left: 3px solid #ffd700;
