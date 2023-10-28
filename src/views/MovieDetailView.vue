@@ -15,6 +15,11 @@
       </div>
     </div> -->
     <div class="container container-3">
+      <div class="row row-2">
+        <div class="col col-md-12 cast-header">
+          <p class="key-information roboto">Key Information</p>
+        </div>
+      </div>
       <div class="row row-3">
         <div class="col col-3 col-poster" v-if="Posters.length > 0">
           <SliderFour :photoArray="Posters" />
@@ -70,7 +75,7 @@
             <div class="col-md-4 tags-container">
               <ul class="list-group">
                 <li
-                  class="list-group-item text-start roboto text-white bg-black"
+                  class="list-group-item text-start roboto text-white bg-dark"
                 >
                   Revenue:
                   <span class="badge text-bg-secondary">{{
@@ -86,7 +91,7 @@
                   }}</span>
                 </li>
                 <li
-                  class="list-group-item text-start roboto text-white bg-black"
+                  class="list-group-item text-start roboto text-white bg-dark"
                 >
                   Language:
                   <span class="badge text-bg-secondary">{{
@@ -253,8 +258,17 @@ export default {
 }
 .lead-actors {
   color: white;
-  margin: 1% 1% 0 0;
+  margin: 1% 1% 0 0.2%;
+  padding: 0 0 0 1%;
   font-size: 30px;
+  border-left: 3px solid #ffd700;
+}
+.key-information {
+  color: white;
+  margin: 1% 1% 0 0.2%;
+  padding: 0 0 0 1%;
+  font-size: 30px;
+  border-left: 3px solid #ffd700;
 }
 .short-details-container {
   display: flex;

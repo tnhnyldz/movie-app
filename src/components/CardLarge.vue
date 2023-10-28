@@ -20,9 +20,9 @@
           </p>
           <div class="d-flex justify-content-around bg-dark">
             <p class="vote-text text-white bg-dark">
-              (
-              <i class="fas fa-star bg-dark" style="color: #ffd700"></i>
-              {{ Movie.VoteAverage }})
+              
+              (<i class="fas fa-star bg-dark" style="color: #ffd700"></i>
+             {{ Movie.VoteAverage.toString().slice(0, 3)}})
             </p>
             <p class="vote-text text-white bg-dark">
               (
