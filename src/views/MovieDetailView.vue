@@ -28,19 +28,22 @@
           <div class="col horizontal-row horizontal-row-2">
             <div
               class="col-md-1 progress-bar-container"
-              style="background-color: violet"
+              style="background-color: black"
             >
-              <ProgressBar :BarValue="Details.VoteAverage" />
+              <p class="user-score bg-secondary roboto text-white">
+                User Score
+              </p>
             </div>
             <div
               class="col-md-1 progress-bar-container"
-              style="background-color: violet"
+              style="background-color: black"
             >
-              <p class="user-score roboto">User Score</p>
+              <ProgressBar :BarValue="Details.VoteAverage" />
             </div>
+
             <div
               class="col-md-4 short-details-container"
-              style="background-color: gold"
+              style="background-color: black"
             >
               <p class="movie-tagline roboto">"{{ Details.Tagline }}"</p>
               <p class="movie-infos roboto">
@@ -55,7 +58,7 @@
                 >
               </p>
             </div>
-            <div class="col-md-6" style="background-color: lightcoral"></div>
+            <div class="col-md-6" style="background-color: black"></div>
           </div>
           <div class="col horizontal-row horizontal-row-3">
             <span class="roboto text-white overview">Overview</span>
@@ -64,7 +67,45 @@
             }}</span>
           </div>
           <div class="col horizontal-row horizontal-row-4">
-            <p class="roboto text-white row-4-text">
+            <div class="col-md-4 tags-container">
+              <ul class="list-group">
+                <li
+                  class="list-group-item text-start roboto text-white bg-black"
+                >
+                  Revenue:
+                  <span class="badge text-bg-secondary">{{
+                    Details.Revenue
+                  }}</span>
+                </li>
+                <li
+                  class="list-group-item text-start roboto text-white bg-dark"
+                >
+                  Budget:
+                  <span class="badge text-bg-secondary">{{
+                    Details.Budget
+                  }}</span>
+                </li>
+                <li
+                  class="list-group-item text-start roboto text-white bg-black"
+                >
+                  Language:
+                  <span class="badge text-bg-secondary">{{
+                    Details.OriginalLanguage
+                  }}</span>
+                </li>
+                <li
+                  class="list-group-item text-start roboto text-white bg-dark"
+                >
+                  Status:
+                  <span class="badge text-bg-secondary">{{
+                    Details.Status
+                  }}</span>
+                </li>
+              </ul>
+            </div>
+            <div class="col-md-4">şsdklsd</div>
+            <div class="col-md-4">şsdklsd</div>
+            <!-- <p class="roboto text-white row-4-text">
               Revenue:
               <span class="badge text-bg-secondary">{{ Details.Revenue }}</span>
             </p>
@@ -88,13 +129,11 @@
                 Details.Popularity
               }}</span>
             </p>
-          </div>
-          <div class="col horizontal-row horizontal-row-5">
             <img
               src="https://upload.wikimedia.org/wikipedia/commons/6/69/IMDB_Logo_2016.svg"
               alt=""
               style="width: 10%; height: auto"
-            />
+            /> -->
           </div>
         </div>
       </div>
@@ -173,19 +212,28 @@ export default {
 };
 </script>
 <style scoped>
+.list-group {
+  width: 100%;
+}
+.horizontal-row-4 {
+  background-color: black;
+  height: 40%;
+  padding: 0 1%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.tags-container {
+  background-color: black;
+  display: flex;
+  justify-content: center;
+}
 .cast-cards {
   /* max-height: 500px; */
   padding: 1%;
   /* background-color: black; */
 }
-.cast-additional-infos {
-  /* max-height: 500px; */
-  /* background-color: navy; */
-}
-.cast-div {
-  /* min-height: 700px; */
-  /* background-color: forestgreen; */
-}
+
 .cast-header {
   display: flex;
   justify-content: start;
@@ -197,7 +245,7 @@ export default {
   background-size: cover;
   /* min-height: 700px; */
   /* background-color: darkorange; */
- background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.dev/svgjs' width='1400' height='500' preserveAspectRatio='none' viewBox='0 0 1400 500'%3e%3cg mask='url(%26quot%3b%23SvgjsMask3069%26quot%3b)' fill='none'%3e%3crect width='1400' height='500' x='0' y='0' fill='rgba(0%2c 0%2c 0%2c 1)'%3e%3c/rect%3e%3cg mask='url(%26quot%3b%23SvgjsMask3071%26quot%3b)'%3e%3cpath d='M1175 275L1125 325M1225 275L1175 225M1475 275L1425 275L1375 275L1325 275L1275 275L1225 275L1175 275L1125 275' stroke='url(%26quot%3b%23SvgjsLinearGradient3070%26quot%3b)' stroke-width='8.33'%3e%3c/path%3e%3cpath d='M1112.5 275 a12.5 12.5 0 1 0 25 0 a12.5 12.5 0 1 0 -25 0zM1112.5 325 a12.5 12.5 0 1 0 25 0 a12.5 12.5 0 1 0 -25 0zM1162.5 225 a12.5 12.5 0 1 0 25 0 a12.5 12.5 0 1 0 -25 0z' fill='url(%26quot%3b%23SvgjsLinearGradient3070%26quot%3b)'%3e%3c/path%3e%3cpath d='M1475 225L1425 225L1375 225L1325 225L1275 225' stroke='url(%26quot%3b%23SvgjsLinearGradient3070%26quot%3b)' stroke-width='8.33'%3e%3c/path%3e%3cpath d='M1262.5 225 a12.5 12.5 0 1 0 25 0 a12.5 12.5 0 1 0 -25 0z' fill='url(%26quot%3b%23SvgjsLinearGradient3070%26quot%3b)'%3e%3c/path%3e%3cpath d='M1425 325L1375 375L1325 375L1275 425L1225 425M1475 325L1425 325L1375 325L1325 325L1275 325L1225 325' stroke='url(%26quot%3b%23SvgjsLinearGradient3070%26quot%3b)' stroke-width='8.33'%3e%3c/path%3e%3cpath d='M1212.5 325 a12.5 12.5 0 1 0 25 0 a12.5 12.5 0 1 0 -25 0zM1212.5 425 a12.5 12.5 0 1 0 25 0 a12.5 12.5 0 1 0 -25 0z' fill='url(%26quot%3b%23SvgjsLinearGradient3070%26quot%3b)'%3e%3c/path%3e%3cpath d='M1225 175L1175 175L1125 175L1075 175M1325 175L1275 125L1225 125M1425 175L1375 125L1325 125M1475 175L1425 175L1375 175L1325 175L1275 175L1225 175L1175 125' stroke='url(%26quot%3b%23SvgjsLinearGradient3070%26quot%3b)' stroke-width='8.33'%3e%3c/path%3e%3cpath d='M1162.5 125 a12.5 12.5 0 1 0 25 0 a12.5 12.5 0 1 0 -25 0zM1062.5 175 a12.5 12.5 0 1 0 25 0 a12.5 12.5 0 1 0 -25 0zM1212.5 125 a12.5 12.5 0 1 0 25 0 a12.5 12.5 0 1 0 -25 0zM1312.5 125 a12.5 12.5 0 1 0 25 0 a12.5 12.5 0 1 0 -25 0z' fill='url(%26quot%3b%23SvgjsLinearGradient3070%26quot%3b)'%3e%3c/path%3e%3c/g%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask3069'%3e%3crect width='1400' height='500' fill='white'%3e%3c/rect%3e%3c/mask%3e%3clinearGradient x1='924' y1='250' x2='1400' y2='250' gradientUnits='userSpaceOnUse' id='SvgjsLinearGradient3070'%3e%3cstop stop-color='rgba(204%2c 163%2c 0%2c 1)' offset='0'%3e%3c/stop%3e%3cstop stop-color='rgba(255%2c 215%2c 0%2c 1)' offset='1'%3e%3c/stop%3e%3c/linearGradient%3e%3cmask id='SvgjsMask3071'%3e%3crect width='1400' height='500' fill='white'%3e%3c/rect%3e%3cpath d='M1118.75 275 a6.25 6.25 0 1 0 12.5 0 a6.25 6.25 0 1 0 -12.5 0zM1118.75 325 a6.25 6.25 0 1 0 12.5 0 a6.25 6.25 0 1 0 -12.5 0zM1168.75 225 a6.25 6.25 0 1 0 12.5 0 a6.25 6.25 0 1 0 -12.5 0z' fill='black'%3e%3c/path%3e%3cpath d='M1268.75 225 a6.25 6.25 0 1 0 12.5 0 a6.25 6.25 0 1 0 -12.5 0z' fill='black'%3e%3c/path%3e%3cpath d='M1218.75 325 a6.25 6.25 0 1 0 12.5 0 a6.25 6.25 0 1 0 -12.5 0zM1218.75 425 a6.25 6.25 0 1 0 12.5 0 a6.25 6.25 0 1 0 -12.5 0z' fill='black'%3e%3c/path%3e%3cpath d='M1168.75 125 a6.25 6.25 0 1 0 12.5 0 a6.25 6.25 0 1 0 -12.5 0zM1068.75 175 a6.25 6.25 0 1 0 12.5 0 a6.25 6.25 0 1 0 -12.5 0zM1218.75 125 a6.25 6.25 0 1 0 12.5 0 a6.25 6.25 0 1 0 -12.5 0zM1318.75 125 a6.25 6.25 0 1 0 12.5 0 a6.25 6.25 0 1 0 -12.5 0z' fill='black'%3e%3c/path%3e%3c/mask%3e%3c/defs%3e%3c/svg%3e");
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.dev/svgjs' width='1400' height='500' preserveAspectRatio='none' viewBox='0 0 1400 500'%3e%3cg mask='url(%26quot%3b%23SvgjsMask3069%26quot%3b)' fill='none'%3e%3crect width='1400' height='500' x='0' y='0' fill='rgba(0%2c 0%2c 0%2c 1)'%3e%3c/rect%3e%3cg mask='url(%26quot%3b%23SvgjsMask3071%26quot%3b)'%3e%3cpath d='M1175 275L1125 325M1225 275L1175 225M1475 275L1425 275L1375 275L1325 275L1275 275L1225 275L1175 275L1125 275' stroke='url(%26quot%3b%23SvgjsLinearGradient3070%26quot%3b)' stroke-width='8.33'%3e%3c/path%3e%3cpath d='M1112.5 275 a12.5 12.5 0 1 0 25 0 a12.5 12.5 0 1 0 -25 0zM1112.5 325 a12.5 12.5 0 1 0 25 0 a12.5 12.5 0 1 0 -25 0zM1162.5 225 a12.5 12.5 0 1 0 25 0 a12.5 12.5 0 1 0 -25 0z' fill='url(%26quot%3b%23SvgjsLinearGradient3070%26quot%3b)'%3e%3c/path%3e%3cpath d='M1475 225L1425 225L1375 225L1325 225L1275 225' stroke='url(%26quot%3b%23SvgjsLinearGradient3070%26quot%3b)' stroke-width='8.33'%3e%3c/path%3e%3cpath d='M1262.5 225 a12.5 12.5 0 1 0 25 0 a12.5 12.5 0 1 0 -25 0z' fill='url(%26quot%3b%23SvgjsLinearGradient3070%26quot%3b)'%3e%3c/path%3e%3cpath d='M1425 325L1375 375L1325 375L1275 425L1225 425M1475 325L1425 325L1375 325L1325 325L1275 325L1225 325' stroke='url(%26quot%3b%23SvgjsLinearGradient3070%26quot%3b)' stroke-width='8.33'%3e%3c/path%3e%3cpath d='M1212.5 325 a12.5 12.5 0 1 0 25 0 a12.5 12.5 0 1 0 -25 0zM1212.5 425 a12.5 12.5 0 1 0 25 0 a12.5 12.5 0 1 0 -25 0z' fill='url(%26quot%3b%23SvgjsLinearGradient3070%26quot%3b)'%3e%3c/path%3e%3cpath d='M1225 175L1175 175L1125 175L1075 175M1325 175L1275 125L1225 125M1425 175L1375 125L1325 125M1475 175L1425 175L1375 175L1325 175L1275 175L1225 175L1175 125' stroke='url(%26quot%3b%23SvgjsLinearGradient3070%26quot%3b)' stroke-width='8.33'%3e%3c/path%3e%3cpath d='M1162.5 125 a12.5 12.5 0 1 0 25 0 a12.5 12.5 0 1 0 -25 0zM1062.5 175 a12.5 12.5 0 1 0 25 0 a12.5 12.5 0 1 0 -25 0zM1212.5 125 a12.5 12.5 0 1 0 25 0 a12.5 12.5 0 1 0 -25 0zM1312.5 125 a12.5 12.5 0 1 0 25 0 a12.5 12.5 0 1 0 -25 0z' fill='url(%26quot%3b%23SvgjsLinearGradient3070%26quot%3b)'%3e%3c/path%3e%3c/g%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask3069'%3e%3crect width='1400' height='500' fill='white'%3e%3c/rect%3e%3c/mask%3e%3clinearGradient x1='924' y1='250' x2='1400' y2='250' gradientUnits='userSpaceOnUse' id='SvgjsLinearGradient3070'%3e%3cstop stop-color='rgba(204%2c 163%2c 0%2c 1)' offset='0'%3e%3c/stop%3e%3cstop stop-color='rgba(255%2c 215%2c 0%2c 1)' offset='1'%3e%3c/stop%3e%3c/linearGradient%3e%3cmask id='SvgjsMask3071'%3e%3crect width='1400' height='500' fill='white'%3e%3c/rect%3e%3cpath d='M1118.75 275 a6.25 6.25 0 1 0 12.5 0 a6.25 6.25 0 1 0 -12.5 0zM1118.75 325 a6.25 6.25 0 1 0 12.5 0 a6.25 6.25 0 1 0 -12.5 0zM1168.75 225 a6.25 6.25 0 1 0 12.5 0 a6.25 6.25 0 1 0 -12.5 0z' fill='black'%3e%3c/path%3e%3cpath d='M1268.75 225 a6.25 6.25 0 1 0 12.5 0 a6.25 6.25 0 1 0 -12.5 0z' fill='black'%3e%3c/path%3e%3cpath d='M1218.75 325 a6.25 6.25 0 1 0 12.5 0 a6.25 6.25 0 1 0 -12.5 0zM1218.75 425 a6.25 6.25 0 1 0 12.5 0 a6.25 6.25 0 1 0 -12.5 0z' fill='black'%3e%3c/path%3e%3cpath d='M1168.75 125 a6.25 6.25 0 1 0 12.5 0 a6.25 6.25 0 1 0 -12.5 0zM1068.75 175 a6.25 6.25 0 1 0 12.5 0 a6.25 6.25 0 1 0 -12.5 0zM1218.75 125 a6.25 6.25 0 1 0 12.5 0 a6.25 6.25 0 1 0 -12.5 0zM1318.75 125 a6.25 6.25 0 1 0 12.5 0 a6.25 6.25 0 1 0 -12.5 0z' fill='black'%3e%3c/path%3e%3c/mask%3e%3c/defs%3e%3c/svg%3e");
 }
 .more-info-badges {
   margin: 5px 5px;
@@ -205,7 +253,7 @@ export default {
 }
 .lead-actors {
   color: white;
-  margin: 1% 1% 0 1%;
+  margin: 1% 1% 0 0;
   font-size: 30px;
 }
 .short-details-container {
@@ -216,12 +264,12 @@ export default {
 }
 .movie-tagline {
   font-style: italic;
-  background-color: rebeccapurple;
+  background-color: black;
   color: white;
   margin: 1%;
 }
 .movie-infos {
-  background-color: yellowgreen;
+  background-color: black;
   margin: 1%;
 }
 .progress-bar-container {
@@ -232,17 +280,19 @@ export default {
 }
 .user-score {
   margin-top: 12px;
+  margin-left: 10%;
   font-size: 18px;
   font-weight: 600;
+  border-left: 3px solid #ffd700;
 }
 #progress-container {
   width: 65px;
   height: 66px;
   position: relative;
-  background-color: yellow;
+  background-color: black;
 }
 .horizontal-row-1 {
-  background-color: orange;
+  background-color: black;
   height: 15%;
   padding: 0 1%;
   display: flex;
@@ -250,7 +300,7 @@ export default {
   align-items: center;
 }
 .horizontal-row-2 {
-  background-color: green;
+  background-color: black;
   display: flex;
   /* height: 20%;
   padding: 0 1%;
@@ -262,8 +312,8 @@ export default {
   height: 20%;
 }
 .horizontal-row-3 {
-  background-color: burlywood;
-  height: 30%;
+  background-color: black;
+  height: 25%;
   padding: 0 1%;
   display: flex;
   flex-direction: column;
@@ -271,18 +321,7 @@ export default {
   align-items: flex-start;
   text-align: left;
 }
-.horizontal-row-4 {
-  background-color: darkslategray;
-  height: 15%;
-  padding: 0 1%;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-.horizontal-row-5 {
-  background-color: cornflowerblue;
-  height: 20%;
-}
+
 .multiple-text {
   font-size: 20px;
 }
@@ -302,19 +341,19 @@ export default {
   padding: 0;
 }
 .container-2 {
-  background-color: purple;
+  background-color: black;
 }
 .container-3 {
   /* min-height: 700px; */
-  background-color: darkblue;
+  background-color: black;
 }
 .col-poster {
   padding: 1%;
-  background-color: brown;
+  background-color: black;
 }
 .col-details {
   padding: 1%;
-  background-color: thistle;
+  background-color: black;
 }
 
 .detail-container {

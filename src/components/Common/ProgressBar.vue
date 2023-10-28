@@ -29,7 +29,7 @@ export default {
 
       // Create a new instance of ProgressBar.Circle
       var bar = new ProgressBar.Circle(container, {
-        color: "#aaa",
+        color: "white",
         strokeWidth: 4,
         trailWidth: 1,
         easing: "easeInOut",
@@ -37,8 +37,8 @@ export default {
         text: {
           autoStyleContainer: false,
         },
-        from: { color: "#aaa", width: 1 },
-        to: { color: "#333", width: 4 },
+        from: { color: "#ffd700", width: 4 },
+        to: { color: "#ffd700", width: 4 },
         step: (state, circle) => {
           circle.path.setAttribute("stroke", state.color);
           circle.path.setAttribute("stroke-width", state.width);

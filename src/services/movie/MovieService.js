@@ -17,7 +17,7 @@ class MovieService {
       );
   }
   async getNowPlayingMovies(language = "en-US", page=1) {
-    //https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1&api_key=
+    //https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1&api_key=e426677764ab467061d84adf1fc53f40
     return await api
       .get(
         `movie/now_playing?language=${language}&page=${page}&api_key=${process.env.VUE_APP_APIKEY}`
