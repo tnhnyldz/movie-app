@@ -33,7 +33,7 @@ export default {
         strokeWidth: 4,
         trailWidth: 1,
         easing: "easeInOut",
-        duration: 1400,
+        duration: 2000,
         text: {
           autoStyleContainer: false,
         },
