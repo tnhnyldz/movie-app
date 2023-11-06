@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid main-container">
     <div class="container-fluid slider-container">
-      <SliderTwo :photoArray="SliderMovies" />
+      <SliderTwo :photoArray="SliderPhotos" />
     </div>
     <div class="container nowplaying-container">
       <div class="row">
@@ -62,9 +62,11 @@ export default {
   },
   data() {
     return {
-      SliderMovies: [],
+      SliderPhotos: [],
       Movies: [],
       counter: 1,
+      currentPage:0,
+      totalPages:0,
     };
   },
   components: {
@@ -78,12 +80,12 @@ export default {
         page: this.counter, //passing the page value as 1
       })
       .then(() => {
-        this.Movies = this.$store.getters["Movie/getNowPlayingMovies"];
+        var nowPlayingMovieObject = this.$store.getters["Movie/getNowPlayingMovies"];
+        this.Movies=nowPlayingMovieObject.NowPlayingMovies;
+        this.SliderPhotos=nowPlayingMovieObject.SliderPhotos;
+        this.totalPages=nowPlayingMovieObject.TotalPages;
+        this.currentPage=nowPlayingMovieObject.CurrentPage;
       })
-      .then(() => {
-        this.SliderMovies =
-          this.$store.getters["Movie/getNowPlayingSliderPhotos"];
-      });
   },
   methods: {
     loadMoreMovies() {
@@ -98,7 +100,7 @@ export default {
           // var moreMovies = this.$store.getters["Movie/getNowPlayingMovies"];
           // this.Movies.push(...moreMovies);
           var moreMovies = this.$store.getters["Movie/getNowPlayingMovies"];
-          this.Movies = this.Movies.concat(moreMovies);
+          this.Movies = this.Movies.concat(moreMovies.NowPlayingMovies);
         });
     },
   },

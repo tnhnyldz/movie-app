@@ -5,8 +5,7 @@ const MovieModule = {
   namespaced: true,
   state: {
     popularMovies: [],
-    nowPlayingMovies: [],
-    nowPlayingSliderPhotos: [],
+    nowPlayingMovies: {},
     trendingMovies: [],
     movieDetails: {},
     movieDetailBackdrops: [],
@@ -19,7 +18,6 @@ const MovieModule = {
     getTrendingMovies: (state) => state.trendingMovies,
     getNowPlayingMovies: (state) => state.nowPlayingMovies,
     getMovieDetails: (state) => state.movieDetails,
-    getNowPlayingSliderPhotos: (state) => state.nowPlayingSliderPhotos,
     getMovieDetailBackdrops: (state) => state.movieDetailBackdrops,
     getMovieDetailPosters: (state) => state.movieDetailPosters,
     getMovieDetailCast: (state) => state.movieDetailCast,
@@ -34,7 +32,7 @@ const MovieModule = {
       state.popularMovies = movies;
     },
     setNowPlayingMovies: (state, { rootState, response }) => {
-      state.nowPlayingMovies = response.results.map((x) => {
+      var nowPlayingMovies = response.results.map((x) => {
         return {
           Id: x.id,
           Title: x.title,
@@ -48,12 +46,20 @@ const MovieModule = {
           VoteAverage: x.vote_average,
         };
       });
-      state.nowPlayingSliderPhotos = response.results.map((x) => {
+      var sliderPhotos = response.results.map((x) => {
         return {
           Id: x.id,
           FilePath: rootState.BaseUrls.Original + x.backdrop_path,
         };
       });
+      //create return object
+      var nowPlayingMoviesObject={
+        CurrentPage:response.page,
+        TotalPages:response.total_pages,
+        NowPlayingMovies:nowPlayingMovies,
+        SliderPhotos:sliderPhotos
+      }
+      state.nowPlayingMovies=nowPlayingMoviesObject;
     },
     setTrendingMovies: (state, { rootState, response }) => {
       state.trendingMovies = response.results.map((x) => {
