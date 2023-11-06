@@ -32,6 +32,9 @@
         </div>
       </div>
     </swiper-slide>
+    <swiper-slide>
+     <!-- empty slide -->
+    </swiper-slide>
   </swiper>
 </template>
 <script>
