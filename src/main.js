@@ -8,6 +8,5 @@ import AOS from 'aos';
 import 'aos/dist/aos.css'; 
 
 
-
 createApp(App).use(store).use(router).use(AOS).mount('#app');
 AOS.init();

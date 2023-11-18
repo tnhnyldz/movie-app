@@ -29,26 +29,19 @@
             </h1>
           </div>
           <div class="col horizontal-row horizontal-row-2">
-            <div
-              class="col-md-1 progress-bar-container"
-              style="background-color: black"
-            >
+            <div class="col-md-1 progress-bar-container">
               <p class="user-score bg-secondary roboto text-white">
                 User Score
               </p>
             </div>
-            <div
-              class="col-md-1 progress-bar-container"
-              style="background-color: black"
-            >
+            <div class="col-md-1 progress-bar-container">
               <ProgressBar :BarValue="Details.VoteAverage" />
             </div>
 
             <div
-              class="col-md-4 short-details-container"
+              class="col-md-6 short-details-container"
               style="background-color: black"
             >
-              <p class="movie-tagline roboto">"{{ Details.Tagline }}"</p>
               <p class="movie-infos roboto">
                 <span class="badge more-info-badges text-bg-secondary roboto"
                   >{{ Details.Runtime }} minutes</span
@@ -58,10 +51,17 @@
                 ><span
                   class="badge text-bg-secondary roboto more-info-badges"
                   >{{ Details.ReleaseDate }}</span
+                ><br /><span
+                  class="badge text-bg-light roboto genre-span"
+                  v-for="genre in Details.Genres"
                 >
+                  {{ genre.name }}
+                </span>
               </p>
             </div>
-            <div class="col-md-6" style="background-color: black"></div>
+            <div v-if="Details.Tagline" class="col-md-4 tagline-container">
+              <p class="movie-tagline roboto">"{{ Details.Tagline }}"</p>
+            </div>
           </div>
           <div class="col horizontal-row horizontal-row-3">
             <span class="roboto text-white overview">Overview</span>
@@ -70,73 +70,71 @@
             }}</span>
           </div>
           <div class="col horizontal-row horizontal-row-4">
-            <div class="col-md-4 tags-container">
-              <ul class="list-group">
-                <li
-                  class="list-group-item text-start roboto text-white bg-dark"
-                >
-                  Revenue:
-                  <span class="badge text-bg-secondary">{{
-                    Details.Revenue
-                  }}</span>
-                </li>
-                <li
-                  class="list-group-item text-start roboto text-white bg-dark"
-                >
-                  Budget:
-                  <span class="badge text-bg-secondary">{{
-                    Details.Budget
-                  }}</span>
-                </li>
-                <li
-                  class="list-group-item text-start roboto text-white bg-dark"
-                >
-                  Language:
-                  <span class="badge text-bg-secondary">{{
-                    Details.OriginalLanguage
-                  }}</span>
-                </li>
-                <li
-                  class="list-group-item text-start roboto text-white bg-dark"
-                >
-                  Status:
-                  <span class="badge text-bg-secondary">{{
-                    Details.Status
-                  }}</span>
-                </li>
-              </ul>
+            <div class="col-md-4 additional-info-container">
+              <div class="info-item" v-if="Details.Revenue">
+                <span style="margin-left: 5px"><b> Revenue: </b> </span>
+                <span>{{ Details.Revenue }}</span>
+              </div>
+              <div class="info-item" v-if="Details.Budget">
+                <span style="margin-left: 5px"><b> Budget: </b> </span>
+                <span>{{ Details.Budget }}</span>
+              </div>
+              <div class="info-item" v-if="Details.OriginalLanguage">
+                <span style="margin-left: 5px"><b> Language: </b> </span>
+                <span>{{ Details.OriginalLanguage }}</span>
+              </div>
+              <div class="info-item" v-if="Details.Status">
+                <span style="margin-left: 5px"><b> Status: </b></span>
+                <span>{{ Details.Status }}</span>
+              </div>
             </div>
-            <div class="col-md-4">şsdklsd</div>
-            <div class="col-md-4">şsdklsd</div>
-            <!-- <p class="roboto text-white row-4-text">
-              Revenue:
-              <span class="badge text-bg-secondary">{{ Details.Revenue }}</span>
-            </p>
-            <p class="roboto text-white row-4-text">
-              Budget:
-              <span class="badge text-bg-secondary">{{ Details.Budget }}</span>
-            </p>
-            <p class="roboto text-white row-4-text">
-              Status:
-              <span class="badge text-bg-secondary">{{ Details.Status }}</span>
-            </p>
-            <p class="roboto text-white row-4-text">
-              Original Language:
-              <span class="badge text-bg-secondary">{{
-                Details.OriginalLanguage
-              }}</span>
-            </p>
-            <p class="roboto text-white row-4-text">
-              Popularity:
-              <span class="badge text-bg-secondary">{{
-                Details.Popularity
-              }}</span>
-            </p>
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/6/69/IMDB_Logo_2016.svg"
-              alt=""
-              style="width: 10%; height: auto"
-            /> -->
+            <div class="col-md-4 social-media-container">
+              <span v-if="ExternalIds.Imdb" class="social-media"
+                ><a
+                  class="social-media-links"
+                  :href="ExternalIds.Imdb"
+                  target="_blank"
+                  ><i class="social-media-icons fa-brands fa-imdb"></i></a
+              ></span>
+              <span v-if="ExternalIds.Wikipedia" class="social-media"
+                ><a
+                  class="social-media-links"
+                  :href="ExternalIds.Wikipedia"
+                  target="_blank"
+                  ><i
+                    class="social-media-icons fa-brands fa-wikipedia-w"
+                  ></i></a
+              ></span>
+              <span v-if="ExternalIds.Twitter" class="social-media"
+                ><a
+                  class="social-media-links"
+                  :href="ExternalIds.Twitter"
+                  target="_blank"
+                  ><i class="social-media-icons fa-brands fa-x-twitter"></i></a
+              ></span>
+              <span v-if="ExternalIds.Instagram" class="social-media"
+                ><a
+                  class="social-media-links"
+                  :href="ExternalIds.Instagram"
+                  target="_blank"
+                  ><i class="social-media-icons fa-brands fa-instagram"></i></a
+              ></span>
+              <span v-if="ExternalIds.Facebook" class="social-media"
+                ><a
+                  class="social-media-links"
+                  :href="ExternalIds.Facebook"
+                  target="_blank"
+                  ><i class="social-media-icons fa-brands fa-facebook"></i></a
+              ></span>
+              <span v-if="Details.HomePage" class="social-media"
+                ><a
+                  class="social-media-links"
+                  :href="Details.HomePage"
+                  target="_blank"
+                  ><i class="social-media-icons fa-solid fa-link"></i></a
+              ></span>
+            </div>
+            <div class="col-md-4 d-flex justify-content-center flex-wrap"></div>
           </div>
         </div>
       </div>
@@ -151,6 +149,18 @@
         <div class="col col-md-9 cast-cards">
           <SliderFive :castArray="Cast" />
         </div>
+        <div class="col col-md-3">
+          <div class="d-flex justify-content-center">
+            <p class="roboto keyword-header">Keywords</p>
+          </div>
+          
+          <span
+            class="badge text-bg-dark roboto genre-span"
+            v-for="keyword in Keywords.slice(0, 20)"
+          >
+            {{ "#" + keyword.Keyword }}
+          </span>
+        </div>
       </div>
     </div>
   </div>
@@ -162,7 +172,6 @@ import SliderFour from "@/components/Sliders/SliderFour.vue";
 import SliderFive from "@/components/Sliders/SliderFive.vue";
 import ProgressBar from "@/components/Common/ProgressBar.vue";
 import "@/assets/css/app-global.css";
-
 export default {
   name: "DetailView",
   components: {
@@ -177,7 +186,9 @@ export default {
       Backdrops: [],
       Posters: [],
       Cast: [],
+      Keywords: [],
       Details: {},
+      ExternalIds: {},
     };
   },
   beforeRouteLeave() {
@@ -209,6 +220,18 @@ export default {
     this.$store.dispatch("Movie/fetchMovieDetails", this.MovieId).then(() => {
       this.Details = this.$store.getters["Movie/getMovieDetails"];
     });
+
+    this.$store
+      .dispatch("Movie/fetchMovieDetailExternalIds", this.MovieId)
+      .then(() => {
+        this.ExternalIds =
+          this.$store.getters["Movie/getMovieDetailExternalIds"];
+      });
+    this.$store
+      .dispatch("Movie/fetchMovieDetailKeywords", this.MovieId)
+      .then(() => {
+        this.Keywords = this.$store.getters["Movie/getMovieDetailKeywords"];
+      });
   },
   methods: {
     goBack() {
@@ -218,6 +241,32 @@ export default {
 };
 </script>
 <style scoped>
+.tagline-container {
+  background-color: black;
+  margin-top: 4.5%;
+}
+.info-item {
+  border-left: 2px gold solid;
+  margin: 2% 0;
+  color: white;
+}
+.additional-info-container {
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-around;
+  padding: 0 0 0 0.7%;
+}
+.social-media {
+  margin: 6% 3%;
+}
+.social-media-links {
+  color: white;
+}
+.social-media-icons {
+  font-size: 32px;
+}
 .fa-arrow-left {
   color: white;
   font-size: 28px;
@@ -237,18 +286,11 @@ export default {
 .list-group {
   width: 100%;
 }
-.horizontal-row-4 {
-  background-color: black;
-  height: 40%;
-  padding: 0 1%;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-.tags-container {
+.social-media-container {
   background-color: black;
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
 }
 .cast-cards {
   /* max-height: 500px; */
@@ -271,19 +313,27 @@ export default {
 .container-4 {
   background-position: center;
   background-size: cover;
-  /* min-height: 700px; */
-  /* background-color: darkorange; */
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.dev/svgjs' width='1400' height='500' preserveAspectRatio='none' viewBox='0 0 1400 500'%3e%3cg mask='url(%26quot%3b%23SvgjsMask3069%26quot%3b)' fill='none'%3e%3crect width='1400' height='500' x='0' y='0' fill='rgba(0%2c 0%2c 0%2c 1)'%3e%3c/rect%3e%3cg mask='url(%26quot%3b%23SvgjsMask3071%26quot%3b)'%3e%3cpath d='M1175 275L1125 325M1225 275L1175 225M1475 275L1425 275L1375 275L1325 275L1275 275L1225 275L1175 275L1125 275' stroke='url(%26quot%3b%23SvgjsLinearGradient3070%26quot%3b)' stroke-width='8.33'%3e%3c/path%3e%3cpath d='M1112.5 275 a12.5 12.5 0 1 0 25 0 a12.5 12.5 0 1 0 -25 0zM1112.5 325 a12.5 12.5 0 1 0 25 0 a12.5 12.5 0 1 0 -25 0zM1162.5 225 a12.5 12.5 0 1 0 25 0 a12.5 12.5 0 1 0 -25 0z' fill='url(%26quot%3b%23SvgjsLinearGradient3070%26quot%3b)'%3e%3c/path%3e%3cpath d='M1475 225L1425 225L1375 225L1325 225L1275 225' stroke='url(%26quot%3b%23SvgjsLinearGradient3070%26quot%3b)' stroke-width='8.33'%3e%3c/path%3e%3cpath d='M1262.5 225 a12.5 12.5 0 1 0 25 0 a12.5 12.5 0 1 0 -25 0z' fill='url(%26quot%3b%23SvgjsLinearGradient3070%26quot%3b)'%3e%3c/path%3e%3cpath d='M1425 325L1375 375L1325 375L1275 425L1225 425M1475 325L1425 325L1375 325L1325 325L1275 325L1225 325' stroke='url(%26quot%3b%23SvgjsLinearGradient3070%26quot%3b)' stroke-width='8.33'%3e%3c/path%3e%3cpath d='M1212.5 325 a12.5 12.5 0 1 0 25 0 a12.5 12.5 0 1 0 -25 0zM1212.5 425 a12.5 12.5 0 1 0 25 0 a12.5 12.5 0 1 0 -25 0z' fill='url(%26quot%3b%23SvgjsLinearGradient3070%26quot%3b)'%3e%3c/path%3e%3cpath d='M1225 175L1175 175L1125 175L1075 175M1325 175L1275 125L1225 125M1425 175L1375 125L1325 125M1475 175L1425 175L1375 175L1325 175L1275 175L1225 175L1175 125' stroke='url(%26quot%3b%23SvgjsLinearGradient3070%26quot%3b)' stroke-width='8.33'%3e%3c/path%3e%3cpath d='M1162.5 125 a12.5 12.5 0 1 0 25 0 a12.5 12.5 0 1 0 -25 0zM1062.5 175 a12.5 12.5 0 1 0 25 0 a12.5 12.5 0 1 0 -25 0zM1212.5 125 a12.5 12.5 0 1 0 25 0 a12.5 12.5 0 1 0 -25 0zM1312.5 125 a12.5 12.5 0 1 0 25 0 a12.5 12.5 0 1 0 -25 0z' fill='url(%26quot%3b%23SvgjsLinearGradient3070%26quot%3b)'%3e%3c/path%3e%3c/g%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask3069'%3e%3crect width='1400' height='500' fill='white'%3e%3c/rect%3e%3c/mask%3e%3clinearGradient x1='924' y1='250' x2='1400' y2='250' gradientUnits='userSpaceOnUse' id='SvgjsLinearGradient3070'%3e%3cstop stop-color='rgba(204%2c 163%2c 0%2c 1)' offset='0'%3e%3c/stop%3e%3cstop stop-color='rgba(255%2c 215%2c 0%2c 1)' offset='1'%3e%3c/stop%3e%3c/linearGradient%3e%3cmask id='SvgjsMask3071'%3e%3crect width='1400' height='500' fill='white'%3e%3c/rect%3e%3cpath d='M1118.75 275 a6.25 6.25 0 1 0 12.5 0 a6.25 6.25 0 1 0 -12.5 0zM1118.75 325 a6.25 6.25 0 1 0 12.5 0 a6.25 6.25 0 1 0 -12.5 0zM1168.75 225 a6.25 6.25 0 1 0 12.5 0 a6.25 6.25 0 1 0 -12.5 0z' fill='black'%3e%3c/path%3e%3cpath d='M1268.75 225 a6.25 6.25 0 1 0 12.5 0 a6.25 6.25 0 1 0 -12.5 0z' fill='black'%3e%3c/path%3e%3cpath d='M1218.75 325 a6.25 6.25 0 1 0 12.5 0 a6.25 6.25 0 1 0 -12.5 0zM1218.75 425 a6.25 6.25 0 1 0 12.5 0 a6.25 6.25 0 1 0 -12.5 0z' fill='black'%3e%3c/path%3e%3cpath d='M1168.75 125 a6.25 6.25 0 1 0 12.5 0 a6.25 6.25 0 1 0 -12.5 0zM1068.75 175 a6.25 6.25 0 1 0 12.5 0 a6.25 6.25 0 1 0 -12.5 0zM1218.75 125 a6.25 6.25 0 1 0 12.5 0 a6.25 6.25 0 1 0 -12.5 0zM1318.75 125 a6.25 6.25 0 1 0 12.5 0 a6.25 6.25 0 1 0 -12.5 0z' fill='black'%3e%3c/path%3e%3c/mask%3e%3c/defs%3e%3c/svg%3e");
 }
 .more-info-badges {
   margin: 5px 5px;
   font-size: 14px;
+}
+.genre-span {
+  font-size: 13.5px;
+  margin: 5px 5px;
 }
 .lead-actors {
   color: white;
   margin: 1% 0 1% 0;
   padding: 0 0 0 1%;
   font-size: 30px;
+  border-left: 3px solid #ffd700;
+}
+.keyword-header{
+  color: white;
+  margin: 5% 0 6% 0;
+  padding: 0 0 0 4%;
+  font-size: 26px;
   border-left: 3px solid #ffd700;
 }
 .key-information {
@@ -304,16 +354,19 @@ export default {
   background-color: black;
   color: white;
   margin: 1%;
+  text-align: left;
 }
 .movie-infos {
   background-color: black;
   margin: 1%;
 }
 .progress-bar-container {
+  margin-left: 0.5%;
   padding: 0.5%;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: black;
 }
 .user-score {
   margin-top: 12px;
@@ -358,7 +411,14 @@ export default {
   align-items: flex-start;
   text-align: left;
 }
-
+.horizontal-row-4 {
+  background-color: black;
+  height: 40%;
+  padding: 0 1%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
 .multiple-text {
   font-size: 20px;
 }

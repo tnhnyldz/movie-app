@@ -11,6 +11,8 @@ const MovieModule = {
     movieDetailBackdrops: [],
     movieDetailPosters: [],
     movieDetailCast: [],
+    movieDetailKeywords: [],
+    movieDetailExternalIds: {},
   },
 
   getters: {
@@ -21,6 +23,8 @@ const MovieModule = {
     getMovieDetailBackdrops: (state) => state.movieDetailBackdrops,
     getMovieDetailPosters: (state) => state.movieDetailPosters,
     getMovieDetailCast: (state) => state.movieDetailCast,
+    getMovieDetailExternalIds: (state) => state.movieDetailExternalIds,
+    getMovieDetailKeywords: (state) => state.movieDetailKeywords,
   },
 
   mutations: {
@@ -53,13 +57,13 @@ const MovieModule = {
         };
       });
       //create return object
-      var nowPlayingMoviesObject={
-        CurrentPage:response.page,
-        TotalPages:response.total_pages,
-        NowPlayingMovies:nowPlayingMovies,
-        SliderPhotos:sliderPhotos
-      }
-      state.nowPlayingMovies=nowPlayingMoviesObject;
+      var nowPlayingMoviesObject = {
+        CurrentPage: response.page,
+        TotalPages: response.total_pages,
+        NowPlayingMovies: nowPlayingMovies,
+        SliderPhotos: sliderPhotos,
+      };
+      state.nowPlayingMovies = nowPlayingMoviesObject;
     },
     setTrendingMovies: (state, { rootState, response }) => {
       state.trendingMovies = response.results.map((x) => {
@@ -113,23 +117,31 @@ const MovieModule = {
           Order: x.order,
         };
       });
-      state.movieDetailCast=state.movieDetailCast.filter(x=>x.Photo!=="no photo");
+      state.movieDetailCast = state.movieDetailCast.filter(
+        (x) => x.Photo !== "no photo"
+      );
     },
     setMovieDetails: (state, { response }) => {
       state.movieDetails = {
         Adult: response.adult,
-        Budget: Helper.formatDollar(response.budget),
+        Budget: response.budget ? Helper.formatDollar(response.budget) : null,
         Genres: response.genres,
         HomePage: response.homepage,
         Id: response.id,
         ImdbId: response.imdb_id,
-        OriginalLanguage: response.original_language.toString().toUpperCase(),
+        OriginalLanguage: response.original_language
+          ? response.original_language.toString().toUpperCase()
+          : null,
         OriginalTitle: response.original_title,
         Overview: response.overview,
         Popularity: response.popularity,
         ProductionCountries: response.production_countries,
-        ReleaseDate: Helper.formatDate(response.release_date),
-        Revenue: Helper.formatDollar(response.revenue),
+        ReleaseDate: response.release_date
+          ? Helper.formatDate(response.release_date)
+          : null,
+        Revenue: response.revenue
+          ? Helper.formatDollar(response.revenue)
+          : null,
         Runtime: response.runtime,
         SpokenLanguages: response.spoken_languages,
         Status: response.status,
@@ -145,6 +157,33 @@ const MovieModule = {
         VoteCount: response.vote_count,
         Year: Helper.getYear(response.release_date),
       };
+    },
+    setMovieDetailExternalIds: (state, { response }) => {
+      state.movieDetailExternalIds = {
+        Facebook: response.facebook_id
+          ? "https://www.facebook.com/" + response.facebook_id
+          : null,
+        Instagram: response.instagram_id
+          ? "https://www.instagram.com/" + response.instagram_id
+          : null,
+        Twitter: response.twitter_id
+          ? "https://twitter.com/" + response.twitter_id
+          : null,
+        Imdb: response.imdb_id
+          ? "https://www.imdb.com/title/" + response.imdb_id
+          : null,
+        Wikipedia: response.wikidata_id
+          ? "https://www.wikidata.org/wiki/" + response.wikidata_id
+          : null,
+      };
+    },
+    setMovieDetailKeywords: (state, { response }) => {
+     state.movieDetailKeywords=response.keywords.map((x)=>{
+        return{
+          Id:x.id,
+          Keyword:x.name
+        }
+     })
     },
   },
 
@@ -228,6 +267,30 @@ const MovieModule = {
         }
       } catch (error) {
         console.error("Error fetching Movie Details:", error);
+      }
+    },
+    async fetchMovieDetailExternalIds({ commit }, movieId) {
+      try {
+        const response = await MovieService.getMovieDetailExternalIds(movieId);
+        if (response && response.id) {
+          commit("setMovieDetailExternalIds", { response });
+        } else {
+          console.error("Invalid data for fetchMovieDetailExternalIds");
+        }
+      } catch (error) {
+        console.error("Error fetching Movie Detail external Ids:", error);
+      }
+    },
+    async fetchMovieDetailKeywords({ commit }, movieId) {
+      try {
+        const response = await MovieService.getMovieDetailKeywords(movieId);
+        if (response && response.keywords) {
+          commit("setMovieDetailKeywords", { response });
+        } else {
+          console.error("Invalid data for fetchMovieDetailKeywords");
+        }
+      } catch (error) {
+        console.error("Error fetching Movie Detail keywords: ", error);
       }
     },
   },

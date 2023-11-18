@@ -92,6 +92,36 @@ class MovieService {
         }
       );
   }
+  async getMovieDetailExternalIds(MovieId) {
+    // https://api.themoviedb.org/3/movie/346698/external_ids?language=en-US&api_key=e426677764ab467061d84adf1fc53f40
+    return await api
+      .get(
+        `movie/${MovieId}/external_ids?language=en-US&api_key=${process.env.VUE_APP_APIKEY}`
+      )
+      .then(
+        (response) => {
+          return response.data;
+        },
+        (error) => {
+          return error.data;
+        }
+      );
+  }
+  async getMovieDetailKeywords(MovieId) {
+    // https://api.themoviedb.org/3/movie/346698/keywords?language=en-US&api_key=e426677764ab467061d84adf1fc53f40
+    return await api
+      .get(
+        `movie/${MovieId}/keywords?language=en-US&api_key=${process.env.VUE_APP_APIKEY}`
+      )
+      .then(
+        (response) => {
+          return response.data;
+        },
+        (error) => {
+          return error.data;
+        }
+      );
+  }
   async getMovieDetails(MovieId) {
     // https://api.themoviedb.org/3/movie/346698?language=en-US&api_key=e426677764ab467061d84adf1fc53f40
     return await api
