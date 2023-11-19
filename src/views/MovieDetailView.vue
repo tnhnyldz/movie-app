@@ -150,17 +150,23 @@
         <div class="col col-md-9 cast-cards">
           <SliderFive :castArray="Cast" />
         </div>
-        <div class="col col-md-3 mt-3 text-start">
+        <div class="col col-md-3 mt-4 text-start">
           <span
             class="badge text-bg-dark roboto keyword-span"
-            v-for="keyword in Keywords"
+            v-for="keyword in Keywords.slice(0,22)"
           >
             {{ "#" + keyword.Keyword }}
           </span>
         </div>
       </div>
     </div>
-    <div class="container container-5"></div>
+    <div class="container container-5">
+      <div class="row row-4">
+        <div class="col col-md-12 videos-header">
+          <p class="videos-text roboto">Videos and Trailers</p>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -239,6 +245,21 @@ export default {
 };
 </script>
 <style scoped>
+.videos-text {
+  color: white;
+  margin: 1% 0 1% 0;
+  padding: 0 0 0 1%;
+  font-size: 30px;
+  border-left: 3px solid #ffd700;
+}
+.videos-header {
+  background-color: teal;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 1%;
+  align-items: center;
+  /* background-color: black; */
+}
 .tagline-container {
   background-color: black;
   margin-top: 4.5%;

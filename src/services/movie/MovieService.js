@@ -1,7 +1,7 @@
 import api from "@/services/api";
 
 class MovieService {
-  async getPopularMovies(language= "en-US", page=1) {
+  async getPopularMovies(language = "en-US", page = 1) {
     //https://api.themoviedb.org/3/movie/popular?language=en-US&page=1&api_key=
     return await api
       .get(
@@ -16,7 +16,7 @@ class MovieService {
         }
       );
   }
-  async getNowPlayingMovies(language = "en-US", page=1) {
+  async getNowPlayingMovies(language = "en-US", page = 1) {
     //https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1&api_key=e426677764ab467061d84adf1fc53f40
     //taylor swift 1160164
     return await api
@@ -76,7 +76,7 @@ class MovieService {
         }
       );
   }
-  async getMovieDetailCast(movieId,language="en-US") {
+  async getMovieDetailCast(movieId, language = "en-US") {
     // https://api.themoviedb.org/3/movie/346698/credits?language=en-US&api_key=e426677764ab467061d84adf1fc53f40
     return await api
       .get(
@@ -91,7 +91,7 @@ class MovieService {
         }
       );
   }
-  async getMovieDetailExternalIds(movieId,language="en-US") {
+  async getMovieDetailExternalIds(movieId, language = "en-US") {
     // https://api.themoviedb.org/3/movie/346698/external_ids?language=en-US&api_key=e426677764ab467061d84adf1fc53f40
     return await api
       .get(
@@ -106,7 +106,7 @@ class MovieService {
         }
       );
   }
-  async getMovieDetailKeywords(movieId,language="en-US") {
+  async getMovieDetailKeywords(movieId, language = "en-US") {
     // https://api.themoviedb.org/3/movie/346698/keywords?language=en-US&api_key=e426677764ab467061d84adf1fc53f40
     return await api
       .get(
@@ -121,7 +121,7 @@ class MovieService {
         }
       );
   }
-  async getMovieDetails(movieId,language="en-US") {
+  async getMovieDetails(movieId, language = "en-US") {
     // https://api.themoviedb.org/3/movie/346698?language=en-US&api_key=e426677764ab467061d84adf1fc53f40
     return await api
       .get(
