@@ -2,6 +2,7 @@
   <swiper
     :slidesPerView="1"
     :spaceBetween="10"
+    :mousewheel="true"
     :breakpoints="{
       '640': {
         slidesPerView: 2,
@@ -46,7 +47,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 
 // import required modules
-import { Pagination } from "swiper/modules";
+import { Pagination,Mousewheel } from "swiper/modules";
 
 export default {
   name: "SliderOne",
@@ -62,7 +63,7 @@ export default {
   },
   setup() {
     return {
-      modules: [Pagination],
+      modules: [Pagination,Mousewheel],
     };
   },
 };
@@ -93,6 +94,7 @@ export default {
   justify-content: center;
   align-items: center;
   width: 20% !important;
+  cursor: ew-resize;
 }
 .card-body {
   padding: 2% 0 2% 5%;

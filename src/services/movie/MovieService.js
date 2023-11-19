@@ -46,6 +46,21 @@ class MovieService {
         }
       );
   }
+  async getMovieDetails(movieId, language = "en-US") {
+    // https://api.themoviedb.org/3/movie/346698?language=en-US&api_key=e426677764ab467061d84adf1fc53f40
+    return await api
+      .get(
+        `movie/${movieId}?language=${language}&api_key=${process.env.VUE_APP_APIKEY}`
+      )
+      .then(
+        (response) => {
+          return response.data;
+        },
+        (error) => {
+          return error.data;
+        }
+      );
+  }
   async getMovieDetailBackdrops(movieId) {
     // https://api.themoviedb.org/3/movie/346698/images?api_key=
     return await api
@@ -121,11 +136,12 @@ class MovieService {
         }
       );
   }
-  async getMovieDetails(movieId, language = "en-US") {
-    // https://api.themoviedb.org/3/movie/346698?language=en-US&api_key=e426677764ab467061d84adf1fc53f40
+  async getMovieDetailVideos(movieId, language = "en-US") {
+    // https://api.themoviedb.org/3/movie/872585/videos?language=en-US&api_key=e426677764ab467061d84adf1fc53f40
+    // faf 385687
     return await api
       .get(
-        `movie/${movieId}?language=${language}&api_key=${process.env.VUE_APP_APIKEY}`
+        `movie/${movieId}/videos?language=${language}&api_key=${process.env.VUE_APP_APIKEY}`
       )
       .then(
         (response) => {

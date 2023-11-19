@@ -153,7 +153,7 @@
         <div class="col col-md-3 mt-4 text-start">
           <span
             class="badge text-bg-dark roboto keyword-span"
-            v-for="keyword in Keywords.slice(0,22)"
+            v-for="keyword in Keywords.slice(0, 22)"
           >
             {{ "#" + keyword.Keyword }}
           </span>
@@ -161,9 +161,17 @@
       </div>
     </div>
     <div class="container container-5">
-      <div class="row row-4">
+      <div class="row row-6">
         <div class="col col-md-12 videos-header">
           <p class="videos-text roboto">Videos and Trailers</p>
+        </div>
+      </div>
+      <div class="row row-7">
+        <div class="col col-md-8 trailer-section">
+          <p>skldddds</p>
+        </div>
+        <div class="col col-md-4 text-start trailer-info-section">
+          <p>skldddds</p>
         </div>
       </div>
     </div>
@@ -191,6 +199,7 @@ export default {
       Posters: [],
       Cast: [],
       Keywords: [],
+      Videos: [],
       Details: {},
       ExternalIds: {},
     };
@@ -224,7 +233,6 @@ export default {
     this.$store.dispatch("Movie/fetchMovieDetails", this.MovieId).then(() => {
       this.Details = this.$store.getters["Movie/getMovieDetails"];
     });
-
     this.$store
       .dispatch("Movie/fetchMovieDetailExternalIds", this.MovieId)
       .then(() => {
@@ -236,6 +244,12 @@ export default {
       .then(() => {
         this.Keywords = this.$store.getters["Movie/getMovieDetailKeywords"];
       });
+    this.$store
+      .dispatch("Movie/fetchMovieDetailVideos", this.MovieId)
+      .then(() => {
+        this.Videos = this.$store.getters["Movie/getMovieDetailVideos"];
+        console.log(this.Videos);
+      });
   },
   methods: {
     goBack() {
@@ -245,6 +259,16 @@ export default {
 };
 </script>
 <style scoped>
+.trailer-info-section {
+  background-color: royalblue;
+}
+.trailer-section {
+  background-color: rosybrown;
+}
+.container-5 {
+  min-height: 700px;
+  background-color: red;
+}
 .videos-text {
   color: white;
   margin: 1% 0 1% 0;
@@ -468,10 +492,6 @@ export default {
 .container-4 {
   background-position: center;
   background-size: cover;
-}
-.container-5 {
-  min-height: 700px;
-  background-color: red;
 }
 .col-poster {
   padding: 1%;

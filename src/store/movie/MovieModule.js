@@ -13,6 +13,7 @@ const MovieModule = {
     movieDetailCast: [],
     movieDetailKeywords: [],
     movieDetailExternalIds: {},
+    movieDetailVideos:[]
   },
 
   getters: {
@@ -25,6 +26,7 @@ const MovieModule = {
     getMovieDetailCast: (state) => state.movieDetailCast,
     getMovieDetailExternalIds: (state) => state.movieDetailExternalIds,
     getMovieDetailKeywords: (state) => state.movieDetailKeywords,
+    getMovieDetailVideos: (state) => state.movieDetailVideos,
   },
 
   mutations: {
@@ -185,6 +187,21 @@ const MovieModule = {
         }
      })
     },
+    setMovieDetailVideos: (state, { response }) => {
+      state.movieDetailVideos=response.results.map((x)=>{
+         return{
+           Id:x.id,
+           YoutubeKey:x.key,
+           Name:x.name,
+           Site:x.site,
+           Resolution:x.size+"p",
+           Type:x.type,
+           Official:x.official,
+           PublishedAt:Helper.formatDate(x.published_at),
+           Language:x.iso_639_1+"-"+x.iso_3166_1,
+         }
+      })
+     },
   },
 
   actions: {
@@ -291,6 +308,18 @@ const MovieModule = {
         }
       } catch (error) {
         console.error("Error fetching Movie Detail keywords: ", error);
+      }
+    },
+    async fetchMovieDetailVideos({ commit }, movieId) {
+      try {
+        const response = await MovieService.getMovieDetailVideos(movieId);
+        if (response && response.results) {
+          commit("setMovieDetailVideos", { response });
+        } else {
+          console.error("Invalid data for fetchMovieDetailVideos");
+        }
+      } catch (error) {
+        console.error("Error fetching Movie Detail videos: ", error);
       }
     },
   },
