@@ -143,26 +143,24 @@
       <div class="row row-4">
         <div class="col col-md-12 cast-header">
           <p class="lead-actors roboto">Lead Actors</p>
+          <p class="roboto keyword-header">Keywords</p>
         </div>
       </div>
       <div class="row row-5 cast-div">
         <div class="col col-md-9 cast-cards">
           <SliderFive :castArray="Cast" />
         </div>
-        <div class="col col-md-3">
-          <div class="d-flex justify-content-center">
-            <p class="roboto keyword-header">Keywords</p>
-          </div>
-          
+        <div class="col col-md-3 mt-3 text-start">
           <span
-            class="badge text-bg-dark roboto genre-span"
-            v-for="keyword in Keywords.slice(0, 20)"
+            class="badge text-bg-dark roboto keyword-span"
+            v-for="keyword in Keywords"
           >
             {{ "#" + keyword.Keyword }}
           </span>
         </div>
       </div>
     </div>
+    <div class="container container-5"></div>
   </div>
 </template>
 
@@ -299,20 +297,39 @@ export default {
 }
 
 .cast-header {
+  background-color: black;
   display: flex;
-  justify-content: start;
+  justify-content: space-between;
+  padding-left: 1%;
   align-items: center;
   /* background-color: black; */
+}
+.keyword-header {
+  color: white;
+  margin: 0 0 0 0;
+  padding: 0 11.6% 0 1%;
+  font-size: 30px;
+  border-left: 3px solid #ffd700;
+}
+.lead-actors {
+  color: white;
+  margin: 1% 0 1% 0;
+  padding: 0 0 0 1%;
+  font-size: 30px;
+  border-left: 3px solid #ffd700;
+}
+.key-information {
+  color: white;
+  margin: 1% 0 1% 0;
+  padding: 0 0 0 1%;
+  font-size: 30px;
+  border-left: 3px solid #ffd700;
 }
 .key-information-header {
   display: flex;
   justify-content: start;
   align-items: center;
   /* background-color: black; */
-}
-.container-4 {
-  background-position: center;
-  background-size: cover;
 }
 .more-info-badges {
   margin: 5px 5px;
@@ -322,26 +339,9 @@ export default {
   font-size: 13.5px;
   margin: 5px 5px;
 }
-.lead-actors {
-  color: white;
-  margin: 1% 0 1% 0;
-  padding: 0 0 0 1%;
-  font-size: 30px;
-  border-left: 3px solid #ffd700;
-}
-.keyword-header{
-  color: white;
-  margin: 5% 0 6% 0;
-  padding: 0 0 0 4%;
-  font-size: 26px;
-  border-left: 3px solid #ffd700;
-}
-.key-information {
-  color: white;
-  margin: 1% 0 1% 0;
-  padding: 0 0 0 1%;
-  font-size: 30px;
-  border-left: 3px solid #ffd700;
+.keyword-span {
+  font-size: 13.5px;
+  margin: 5px 5px;
 }
 .short-details-container {
   display: flex;
@@ -443,6 +443,14 @@ export default {
 .container-3 {
   /* min-height: 700px; */
   background-color: black;
+}
+.container-4 {
+  background-position: center;
+  background-size: cover;
+}
+.container-5 {
+  min-height: 700px;
+  background-color: red;
 }
 .col-poster {
   padding: 1%;
