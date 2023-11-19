@@ -50,7 +50,7 @@ import "swiper/css/pagination";
 import { Pagination,Mousewheel } from "swiper/modules";
 
 export default {
-  name: "SliderOne",
+  name: "SliderFive",
   props: {
     castArray: {
       type: Array,

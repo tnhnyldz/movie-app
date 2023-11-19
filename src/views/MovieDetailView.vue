@@ -163,12 +163,12 @@
     <div class="container container-5">
       <div class="row row-6">
         <div class="col col-md-12 videos-header">
-          <p class="videos-text roboto">Videos and Trailers</p>
+          <p class="videos-text roboto">Teasers and other videos</p>
         </div>
       </div>
       <div class="row row-7">
         <div class="col col-md-8 trailer-section">
-          <p>skldddds</p>
+          <SliderSix />
         </div>
         <div class="col col-md-4 text-start trailer-info-section">
           <p>skldddds</p>
@@ -182,6 +182,7 @@
 import SliderOne from "@/components/Sliders/SliderOne.vue";
 import SliderFour from "@/components/Sliders/SliderFour.vue";
 import SliderFive from "@/components/Sliders/SliderFive.vue";
+import SliderSix from "@/components/Sliders/SliderSix.vue";
 import ProgressBar from "@/components/Common/ProgressBar.vue";
 import "@/assets/css/app-global.css";
 export default {
@@ -190,6 +191,7 @@ export default {
     SliderOne,
     SliderFour,
     SliderFive,
+    SliderSix,
     ProgressBar,
   },
   data() {
@@ -264,6 +266,8 @@ export default {
 }
 .trailer-section {
   background-color: rosybrown;
+  min-height: 500px;
+  padding: 2% 1%;
 }
 .container-5 {
   min-height: 700px;
