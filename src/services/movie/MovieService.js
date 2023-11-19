@@ -46,11 +46,11 @@ class MovieService {
         }
       );
   }
-  async getMovieDetailBackdrops(MovieId) {
+  async getMovieDetailBackdrops(movieId) {
     // https://api.themoviedb.org/3/movie/346698/images?api_key=
     return await api
       .get(
-        `movie/${MovieId}/images?include_image_language=en,null&api_key=${process.env.VUE_APP_APIKEY}`
+        `movie/${movieId}/images?include_image_language=en,null&api_key=${process.env.VUE_APP_APIKEY}`
       )
       .then(
         (response) => {
@@ -61,15 +61,14 @@ class MovieService {
         }
       );
   }
-  async getMovieDetailPosters(MovieId) {
+  async getMovieDetailPosters(movieId) {
     // https://api.themoviedb.org/3/movie/346698/images?include_image_language=en,null&api_key=
     return await api
       .get(
-        `movie/${MovieId}/images?include_image_language=en,null&api_key=${process.env.VUE_APP_APIKEY}`
+        `movie/${movieId}/images?include_image_language=en,null&api_key=${process.env.VUE_APP_APIKEY}`
       )
       .then(
         (response) => {
-          // console.log(response.data.posters)
           return response.data;
         },
         (error) => {
@@ -77,11 +76,11 @@ class MovieService {
         }
       );
   }
-  async getMovieDetailCast(MovieId) {
+  async getMovieDetailCast(movieId,language="en-US") {
     // https://api.themoviedb.org/3/movie/346698/credits?language=en-US&api_key=e426677764ab467061d84adf1fc53f40
     return await api
       .get(
-        `movie/${MovieId}/credits?language=en-US&api_key=${process.env.VUE_APP_APIKEY}`
+        `movie/${movieId}/credits?language=${language}&api_key=${process.env.VUE_APP_APIKEY}`
       )
       .then(
         (response) => {
@@ -92,11 +91,11 @@ class MovieService {
         }
       );
   }
-  async getMovieDetailExternalIds(MovieId) {
+  async getMovieDetailExternalIds(movieId,language="en-US") {
     // https://api.themoviedb.org/3/movie/346698/external_ids?language=en-US&api_key=e426677764ab467061d84adf1fc53f40
     return await api
       .get(
-        `movie/${MovieId}/external_ids?language=en-US&api_key=${process.env.VUE_APP_APIKEY}`
+        `movie/${movieId}/external_ids?language=${language}&api_key=${process.env.VUE_APP_APIKEY}`
       )
       .then(
         (response) => {
@@ -107,11 +106,11 @@ class MovieService {
         }
       );
   }
-  async getMovieDetailKeywords(MovieId) {
+  async getMovieDetailKeywords(movieId,language="en-US") {
     // https://api.themoviedb.org/3/movie/346698/keywords?language=en-US&api_key=e426677764ab467061d84adf1fc53f40
     return await api
       .get(
-        `movie/${MovieId}/keywords?language=en-US&api_key=${process.env.VUE_APP_APIKEY}`
+        `movie/${movieId}/keywords?language=${language}&api_key=${process.env.VUE_APP_APIKEY}`
       )
       .then(
         (response) => {
@@ -122,11 +121,11 @@ class MovieService {
         }
       );
   }
-  async getMovieDetails(MovieId) {
+  async getMovieDetails(movieId,language="en-US") {
     // https://api.themoviedb.org/3/movie/346698?language=en-US&api_key=e426677764ab467061d84adf1fc53f40
     return await api
       .get(
-        `movie/${MovieId}?language=en-US&api_key=${process.env.VUE_APP_APIKEY}`
+        `movie/${movieId}?language=${language}&api_key=${process.env.VUE_APP_APIKEY}`
       )
       .then(
         (response) => {
