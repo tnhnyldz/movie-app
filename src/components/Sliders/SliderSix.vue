@@ -6,13 +6,19 @@
     @slideChange="getPaginationValues()"
     :navigation="true"
     :modules="modules"
+    :effect="'fade'"
     class="mySwiper"
   >
-    <swiper-slide>Slide 1</swiper-slide>
-    <swiper-slide>Slide 2</swiper-slide><swiper-slide>Slide 3</swiper-slide>
-    <swiper-slide>Slide 4</swiper-slide><swiper-slide>Slide 5</swiper-slide>
-    <swiper-slide>Slide 6</swiper-slide><swiper-slide>Slide 7</swiper-slide>
-    <swiper-slide>Slide 8</swiper-slide><swiper-slide>Slide 9</swiper-slide>
+    <swiper-slide v-for="(link, index) in LinkArray" :key="index">
+      <iframe
+        :src="`https://www.youtube.com/embed/${link.YoutubeKey}?rel=0&showinfo=0&autoplay=0`"
+        allowfullscreen
+        allowtransparency
+        width="100%"
+        height="100%"
+        loading="lazy"
+      ></iframe>
+    </swiper-slide>
   </swiper>
 </template>
 <script>
@@ -23,39 +29,47 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 // import required modules
-import { Pagination, Navigation } from "swiper/modules";
+import { Pagination, Navigation, EffectFade } from "swiper/modules";
 
 export default {
   mounted() {
     this.getPaginationValues();
-    const fractionPagination = document.querySelector(".swiper-pagination-fraction");
+    const fractionPagination = document.querySelector(
+      ".swiper-pagination-fraction"
+    );
     const prevButton = document.querySelector(".swiper-button-prev");
     const nextButton = document.querySelector(".swiper-button-next");
     if (fractionPagination) {
       fractionPagination.style.color = "white";
       prevButton.style.color = "white";
       nextButton.style.color = "white";
+      // fractionPagination.style.margingBottom = "1%";
     }
   },
   methods: {
     getPaginationValues() {
       const currentVideo = document.querySelector(".swiper-pagination-current");
-      const totalVideo = document.querySelector(".swiper-pagination-total");
-      if (currentVideo && totalVideo) {
+      // const totalVideo = document.querySelector(".swiper-pagination-total");
+      if (currentVideo) {
         const currentVideoValue = currentVideo.textContent;
-        const totalVideoValue = totalVideo.textContent;
-        console.log("Total Video Value:", currentVideoValue-1);
+        currentVideo = currentVideo - 1;
       }
     },
   },
   name: "SliderSix",
+  props: {
+    LinkArray: {
+      type: Array,
+      default: () => [],
+    },
+  },
   components: {
     Swiper,
     SwiperSlide,
   },
   setup() {
     return {
-      modules: [Pagination, Navigation],
+      modules: [Pagination, Navigation, EffectFade],
     };
   },
 };
@@ -69,17 +83,12 @@ export default {
 .swiper-slide {
   text-align: center;
   font-size: 18px;
-  background: green;
+  background: black;
+  border: 1px gray solid;
   /* Center slide text vertically */
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.swiper-slide img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  padding-bottom: 2%;
 }
 </style>

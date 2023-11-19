@@ -168,7 +168,7 @@
       </div>
       <div class="row row-7">
         <div class="col col-md-8 trailer-section">
-          <SliderSix />
+          <SliderSix :LinkArray="Videos" />
         </div>
         <div class="col col-md-4 text-start trailer-info-section">
           <p>skldddds</p>
@@ -217,6 +217,12 @@ export default {
     this.MovieId = this.$route.params.id;
 
     this.$store
+      .dispatch("Movie/fetchMovieDetailVideos", this.MovieId)
+      .then(() => {
+        this.Videos = this.$store.getters["Movie/getMovieDetailVideos"];
+        console.log(this.Videos);
+      });
+    this.$store
       .dispatch("Movie/fetchMovieDetailBackdrops", this.MovieId)
       .then(() => {
         this.Backdrops = this.$store.getters["Movie/getMovieDetailBackdrops"];
@@ -246,12 +252,6 @@ export default {
       .then(() => {
         this.Keywords = this.$store.getters["Movie/getMovieDetailKeywords"];
       });
-    this.$store
-      .dispatch("Movie/fetchMovieDetailVideos", this.MovieId)
-      .then(() => {
-        this.Videos = this.$store.getters["Movie/getMovieDetailVideos"];
-        console.log(this.Videos);
-      });
   },
   methods: {
     goBack() {
@@ -265,13 +265,18 @@ export default {
   background-color: royalblue;
 }
 .trailer-section {
-  background-color: rosybrown;
+  /* background-color: black; */
   min-height: 500px;
-  padding: 2% 1%;
+  padding: 1% 1%;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.dev/svgjs' width='1440' height='600' preserveAspectRatio='none' viewBox='0 0 1440 600'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1012%26quot%3b)' fill='none'%3e%3crect width='1440' height='600' x='0' y='0' fill='rgba(193%2c 163%2c 0%2c 1)'%3e%3c/rect%3e%3cpath d='M0%2c446.116C84.029%2c436.104%2c163.485%2c410.867%2c235.756%2c366.844C309.427%2c321.968%2c387.64%2c271.682%2c418.566%2c191.153C448.97%2c111.984%2c404.726%2c27.271%2c398.652%2c-57.318C391.988%2c-150.128%2c438.378%2c-256.897%2c381.128%2c-330.249C324.041%2c-403.392%2c213.308%2c-401.56%2c121.207%2c-412.794C41.179%2c-422.555%2c-34.707%2c-400.546%2c-114.728%2c-390.729C-212.869%2c-378.689%2c-319.282%2c-402.319%2c-402.277%2c-348.575C-494.418%2c-288.909%2c-591.146%2c-194.208%2c-587.645%2c-84.491C-584.067%2c27.643%2c-444.011%2c80.321%2c-385.537%2c176.069C-336.794%2c255.884%2c-351.457%2c374.032%2c-274.857%2c427.686C-198.092%2c481.456%2c-93.065%2c457.205%2c0%2c446.116' fill='%237e6a00'%3e%3c/path%3e%3cpath d='M1440 937.461C1514.062 951.0989999999999 1592.811 975.6990000000001 1661.241 944.258 1732.165 911.671 1772.108 837.348 1808.348 768.219 1846.2559999999999 695.909 1900 615.082 1874.463 537.534 1848.718 459.35400000000004 1738.843 449.932 1683.479 389.024 1630.1680000000001 330.374 1633.872 220.086 1559.942 191.515 1486.898 163.28699999999998 1410.416 223.85000000000002 1338.958 255.882 1276.362 283.942 1212.739 312.404 1170.205 366.222 1128.705 418.73199999999997 1114.3980000000001 485.568 1105.0529999999999 551.842 1095.73 617.963 1086.43 688.112 1116.405 747.781 1145.9940000000001 806.682 1208.717 838.065 1265.583 871.398 1320.327 903.4870000000001 1377.594 925.969 1440 937.461' fill='%23ffd806'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1012'%3e%3crect width='1440' height='600' fill='white'%3e%3c/rect%3e%3c/mask%3e%3c/defs%3e%3c/svg%3e");
 }
 .container-5 {
+  margin-top: 1%;
   min-height: 700px;
-  background-color: red;
+  /* background-color: red; */
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
 }
 .videos-text {
   color: white;
@@ -281,12 +286,12 @@ export default {
   border-left: 3px solid #ffd700;
 }
 .videos-header {
-  background-color: teal;
+  background-color: black;
   display: flex;
   justify-content: space-between;
   padding-left: 1%;
   align-items: center;
-  /* background-color: black; */
+
 }
 .tagline-container {
   background-color: black;
@@ -496,6 +501,7 @@ export default {
 .container-4 {
   background-position: center;
   background-size: cover;
+  background-color: black;
 }
 .col-poster {
   padding: 1%;
