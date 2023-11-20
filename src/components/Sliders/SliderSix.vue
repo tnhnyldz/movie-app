@@ -34,25 +34,25 @@ import { Pagination, Navigation, EffectFade } from "swiper/modules";
 export default {
   mounted() {
     this.getPaginationValues();
-    const fractionPagination = document.querySelector(
+    let fractionPagination = document.querySelector(
       ".swiper-pagination-fraction"
     );
-    const prevButton = document.querySelector(".swiper-button-prev");
-    const nextButton = document.querySelector(".swiper-button-next");
+    let prevButton = document.querySelector(".swiper-button-prev");
+    let nextButton = document.querySelector(".swiper-button-next");
     if (fractionPagination) {
       fractionPagination.style.color = "white";
       prevButton.style.color = "white";
       nextButton.style.color = "white";
-      // fractionPagination.style.margingBottom = "1%";
     }
   },
   methods: {
     getPaginationValues() {
-      const currentVideo = document.querySelector(".swiper-pagination-current");
+      let currentVideo = document.querySelector(".swiper-pagination-current");
       // const totalVideo = document.querySelector(".swiper-pagination-total");
       if (currentVideo) {
-        const currentVideoValue = currentVideo.textContent;
-        currentVideo = currentVideo - 1;
+        let currentVideoValue = currentVideo.textContent;
+        currentVideoValue = currentVideoValue - 1;
+        console.log(currentVideoValue);
       }
     },
   },
