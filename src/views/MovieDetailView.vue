@@ -332,7 +332,7 @@ export default {
   display: flex;
   background-color: black;
   justify-content: flex-start;
-  align-items: end;
+  align-items: flex-end;
   padding: 2% 0 2% 0.9%;
 }
 .list-group {
