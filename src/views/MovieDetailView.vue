@@ -42,7 +42,7 @@
               class="col-md-6 short-details-container"
               style="background-color: black"
             >
-              <ShortDetailBadges :Details="Details"/> 
+              <ShortDetailBadges :Details="Details" />
             </div>
             <div v-if="Details.Tagline" class="col-md-4 tagline-container">
               <p class="movie-tagline roboto">"{{ Details.Tagline }}"</p>
@@ -56,22 +56,7 @@
           </div>
           <div class="col horizontal-row horizontal-row-4">
             <div class="col-md-4 additional-info-container">
-              <div class="info-item" v-if="Details.Revenue">
-                <span style="margin-left: 5px"><b> Revenue: </b> </span>
-                <span>{{ Details.Revenue }}</span>
-              </div>
-              <div class="info-item" v-if="Details.Budget">
-                <span style="margin-left: 5px"><b> Budget: </b> </span>
-                <span>{{ Details.Budget }}</span>
-              </div>
-              <div class="info-item" v-if="Details.OriginalLanguage">
-                <span style="margin-left: 5px"><b> Language: </b> </span>
-                <span>{{ Details.OriginalLanguage }}</span>
-              </div>
-              <div class="info-item" v-if="Details.Status">
-                <span style="margin-left: 5px"><b> Status: </b></span>
-                <span>{{ Details.Status }}</span>
-              </div>
+              <AdditionalInfos :Details="Details" />
             </div>
             <div class="col-md-4 social-media-container">
               <SocialMediaIcons
@@ -96,12 +81,7 @@
           <SliderFive :castArray="Cast" />
         </div>
         <div class="col col-md-3 mt-4 text-start">
-          <span
-            class="badge text-bg-dark roboto keyword-span"
-            v-for="keyword in Keywords.slice(0, 22)"
-          >
-            {{ "#" + keyword.Keyword }}
-          </span>
+          <Keywords :Keywords="Keywords" />
         </div>
       </div>
     </div>
@@ -131,6 +111,8 @@ import SliderSix from "@/components/Sliders/SliderSix.vue";
 import ProgressBar from "@/components/Common/ProgressBar.vue";
 import SocialMediaIcons from "@/components/Common/SocialMediaIcons.vue";
 import ShortDetailBadges from "@/components/Common/ShortDetailBadges.vue";
+import AdditionalInfos from "@/components/Common/AdditionalInfos.vue";
+import Keywords from "@/components/Common/Keywords.vue";
 import "@/assets/css/app-global.css";
 export default {
   name: "DetailView",
@@ -141,7 +123,9 @@ export default {
     SliderSix,
     ProgressBar,
     SocialMediaIcons,
-    ShortDetailBadges
+    ShortDetailBadges,
+    AdditionalInfos,
+    Keywords,
   },
   data() {
     return {
@@ -258,11 +242,6 @@ export default {
   background-color: black;
   margin-top: 4.5%;
 }
-.info-item {
-  border-left: 2px gold solid;
-  margin: 2% 0;
-  color: white;
-}
 .additional-info-container {
   background-color: black;
   display: flex;
@@ -336,11 +315,6 @@ export default {
   justify-content: flex-start;
   align-items: center;
   /* background-color: black; */
-}
-
-.keyword-span {
-  font-size: 13.5px;
-  margin: 5px 5px;
 }
 .short-details-container {
   display: flex;
