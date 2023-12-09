@@ -89,50 +89,7 @@
               </div>
             </div>
             <div class="col-md-4 social-media-container">
-              <span v-if="ExternalIds.Imdb" class="social-media"
-                ><a
-                  class="social-media-links"
-                  :href="ExternalIds.Imdb"
-                  target="_blank"
-                  ><i class="social-media-icons fa-brands fa-imdb"></i></a
-              ></span>
-              <span v-if="ExternalIds.Wikipedia" class="social-media"
-                ><a
-                  class="social-media-links"
-                  :href="ExternalIds.Wikipedia"
-                  target="_blank"
-                  ><i
-                    class="social-media-icons fa-brands fa-wikipedia-w"
-                  ></i></a
-              ></span>
-              <span v-if="ExternalIds.Twitter" class="social-media"
-                ><a
-                  class="social-media-links"
-                  :href="ExternalIds.Twitter"
-                  target="_blank"
-                  ><i class="social-media-icons fa-brands fa-x-twitter"></i></a
-              ></span>
-              <span v-if="ExternalIds.Instagram" class="social-media"
-                ><a
-                  class="social-media-links"
-                  :href="ExternalIds.Instagram"
-                  target="_blank"
-                  ><i class="social-media-icons fa-brands fa-instagram"></i></a
-              ></span>
-              <span v-if="ExternalIds.Facebook" class="social-media"
-                ><a
-                  class="social-media-links"
-                  :href="ExternalIds.Facebook"
-                  target="_blank"
-                  ><i class="social-media-icons fa-brands fa-facebook"></i></a
-              ></span>
-              <span v-if="Details.HomePage" class="social-media"
-                ><a
-                  class="social-media-links"
-                  :href="Details.HomePage"
-                  target="_blank"
-                  ><i class="social-media-icons fa-solid fa-link"></i></a
-              ></span>
+             <SocialMediaIcons :SocialMediaObject="ExternalIds" :homePageLink="Details.HomePage"/>
             </div>
             <div class="col-md-4 d-flex justify-content-center flex-wrap"></div>
           </div>
@@ -184,6 +141,7 @@ import SliderFour from "@/components/Sliders/SliderFour.vue";
 import SliderFive from "@/components/Sliders/SliderFive.vue";
 import SliderSix from "@/components/Sliders/SliderSix.vue";
 import ProgressBar from "@/components/Common/ProgressBar.vue";
+import SocialMediaIcons from "@/components/Common/SocialMediaIcons.vue";
 import "@/assets/css/app-global.css";
 export default {
   name: "DetailView",
@@ -193,6 +151,7 @@ export default {
     SliderFive,
     SliderSix,
     ProgressBar,
+    SocialMediaIcons
   },
   data() {
     return {
@@ -309,15 +268,6 @@ export default {
   align-items: flex-start;
   justify-content: space-around;
   padding: 0 0 0 0.7%;
-}
-.social-media {
-  margin: 6% 3%;
-}
-.social-media-links {
-  color: white;
-}
-.social-media-icons {
-  font-size: 32px;
 }
 .fa-arrow-left {
   color: white;
