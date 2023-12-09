@@ -11,3 +11,25 @@
 body::-webkit-scrollbar {
   display: none;
 }
+/* global colors */
+.background-clr-blck{
+  background-color: black;
+}
+.background-clr-red{
+  background-color: red;
+}
+.background-clr-yellow{
+  background-color: yellow;
+}
+.background-clr-green{
+  background-color: green;
+}
+.background-clr-pink{
+  background-color: pink;
+}
+.background-clr-orange{
+  background-color: orange;
+}
+
+/* justify-content-center */
+/* justify-content: center; */
