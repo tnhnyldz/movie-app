@@ -12,7 +12,7 @@
         </div>
       </div>
       <div class="row row-2">
-        <div class="d-flex col col-md-12 key-information-header">
+        <div class="d-flex col align-items-center col-md-12 key-information-header">
           <p class="key-information roboto">Key Information</p>
         </div>
       </div>
@@ -23,23 +23,23 @@
           <SliderFour :photoArray="Posters" />
         </div>
         <div class="col col-9 background-clr-blck col-details">
-          <div class="d-flex col background-clr-blck horizontal-row horizontal-row-1">
+          <div class="d-flex align-items-center col background-clr-blck horizontal-row horizontal-row-1">
             <h1 class="roboto text-white">
               {{ Details.Title }} ({{ Details.Year }})
             </h1>
           </div>
           <div class="d-flex col background-clr-blck horizontal-row horizontal-row-2">
-            <div class="d-flex justify-content-center background-clr-blck col-md-1 progress-bar-container">
+            <div class="d-flex justify-content-center align-items-center background-clr-blck col-md-1 progress-bar-container">
               <p class="user-score bg-secondary roboto text-white">
                 User Score
               </p>
             </div>
-            <div class="d-flex justify-content-center col-md-1 progress-bar-container">
+            <div class="d-flex justify-content-center align-items-center col-md-1 progress-bar-container">
               <ProgressBar :BarValue="Details.VoteAverage" />
             </div>
 
             <div
-              class="d-flex justify-content-center flex-column col-md-6 short-details-container"
+              class="d-flex justify-content-center align-items-center flex-column col-md-6 short-details-container"
               style="background-color: black"
             >
               <ShortDetailBadges :Details="Details" />
@@ -54,7 +54,7 @@
               Details.Overview
             }}</span>
           </div>
-          <div class="d-flex col horizontal-row background-clr-blck horizontal-row-4">
+          <div class="d-flex align-items-center col horizontal-row background-clr-blck horizontal-row-4">
             <div class="d-flex flex-column background-clr-blck col-md-4 additional-info-container">
               <AdditionalInfos :Details="Details" />
             </div>
@@ -71,7 +71,7 @@
     </div>
     <div class="container background-clr-blck container-4">
       <div class="row row-4">
-        <div class="d-flex justify-content-between background-clr-blck col col-md-12 cast-header">
+        <div class="d-flex justify-content-between align-items-center background-clr-blck col col-md-12 cast-header">
           <p class="lead-actors roboto">Lead Actors</p>
           <p class="roboto keyword-header">Keywords</p>
         </div>
@@ -87,7 +87,7 @@
     </div>
     <div class="container container-5">
       <div class="row row-6">
-        <div class="d-flex justify-content-between background-clr-blck col col-md-12 videos-header">
+        <div class="d-flex justify-content-between align-items-center background-clr-blck col col-md-12 videos-header">
           <p class="videos-text roboto">Teasers and other videos</p>
         </div>
       </div>
@@ -232,7 +232,6 @@ export default {
 }
 .videos-header {
   padding-left: 1%;
-  align-items: center;
 }
 .tagline-container {
   margin-top: 4.5%;
@@ -268,7 +267,6 @@ export default {
 
 .cast-header {
   padding-left: 1%;
-  align-items: center;
 }
 .keyword-header {
   color: white;
@@ -293,10 +291,6 @@ export default {
 }
 .key-information-header {
   justify-content: flex-start;
-  align-items: center;
-}
-.short-details-container {
-  align-items: center;
 }
 .movie-tagline {
   font-style: italic;
@@ -307,7 +301,6 @@ export default {
 .progress-bar-container {
   margin-left: 0.5%;
   padding: 0.5%;
-  align-items: center;
 }
 .user-score {
   margin-top: 12px;
@@ -326,7 +319,6 @@ export default {
   height: 15%;
   padding: 0 1%;
   justify-content: left;
-  align-items: center;
 }
 .horizontal-row-2 {
   height: 20%;
@@ -341,7 +333,6 @@ export default {
   height: 40%;
   padding: 0 1%;
   justify-content: space-around;
-  align-items: center;
 }
 .multiple-text {
   font-size: 20px;
