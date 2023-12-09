@@ -7,12 +7,12 @@
     </div>
     <div class="container background-clr-blck container-2">
       <div class="row">
-        <div class="d-flex col background-clr-blck col-md-12 row-col">
+        <div class="d-flex justify-content-start col background-clr-blck col-md-12 row-col">
           <i class="fa fa-arrow-left" @click="goBack"></i>
         </div>
       </div>
       <div class="row row-2">
-        <div class="d-flex col align-items-center col-md-12 key-information-header">
+        <div class="d-flex justify-content-start col align-items-center col-md-12 key-information-header">
           <p class="key-information roboto">Key Information</p>
         </div>
       </div>
@@ -23,7 +23,7 @@
           <SliderFour :photoArray="Posters" />
         </div>
         <div class="col col-9 background-clr-blck col-details">
-          <div class="d-flex align-items-center col background-clr-blck horizontal-row horizontal-row-1">
+          <div class="d-flex align-items-center justify-content-start col background-clr-blck horizontal-row horizontal-row-1">
             <h1 class="roboto text-white">
               {{ Details.Title }} ({{ Details.Year }})
             </h1>
@@ -48,17 +48,17 @@
               <p class="movie-tagline background-clr-blck roboto">"{{ Details.Tagline }}"</p>
             </div>
           </div>
-          <div class="d-flex justify-content-center flex-column background-clr-blck col horizontal-row horizontal-row-3">
+          <div class="d-flex justify-content-center align-items-start flex-column background-clr-blck col horizontal-row horizontal-row-3">
             <span class="roboto text-white overview">Overview</span>
             <span class="roboto text-white overview-text">{{
               Details.Overview
             }}</span>
           </div>
-          <div class="d-flex align-items-center col horizontal-row background-clr-blck horizontal-row-4">
-            <div class="d-flex flex-column background-clr-blck col-md-4 additional-info-container">
+          <div class="d-flex align-items-center justify-content-around col horizontal-row background-clr-blck horizontal-row-4">
+            <div class="d-flex flex-column align-items-start justify-content-around background-clr-blck col-md-4 additional-info-container">
               <AdditionalInfos :Details="Details" />
             </div>
-            <div class="d-flex justify-content-center background-clr-blck col-md-4 social-media-container">
+            <div class="d-flex justify-content-center flex-wrap background-clr-blck col-md-4 social-media-container">
               <SocialMediaIcons
                 :SocialMediaObject="ExternalIds"
                 :homePageLink="Details.HomePage"
@@ -237,8 +237,6 @@ export default {
   margin-top: 4.5%;
 }
 .additional-info-container {
-  align-items: flex-start;
-  justify-content: space-around;
   padding: 0 0 0 0.7%;
 }
 .fa-arrow-left {
@@ -251,15 +249,8 @@ export default {
   font-size: 28px;
 }
 .row-col {
-  justify-content: flex-start;
   align-items: flex-end;
   padding: 2% 0 2% 0.9%;
-}
-.list-group {
-  width: 100%;
-}
-.social-media-container {
-  flex-wrap: wrap;
 }
 .cast-cards {
   padding: 1%;
@@ -289,9 +280,6 @@ export default {
   font-size: 30px;
   border-left: 3px solid #ffd700;
 }
-.key-information-header {
-  justify-content: flex-start;
-}
 .movie-tagline {
   font-style: italic;
   color: white;
@@ -318,7 +306,6 @@ export default {
 .horizontal-row-1 {
   height: 15%;
   padding: 0 1%;
-  justify-content: left;
 }
 .horizontal-row-2 {
   height: 20%;
@@ -326,13 +313,11 @@ export default {
 .horizontal-row-3 {
   height: 25%;
   padding: 0 1%;
-  align-items: flex-start;
   text-align: left;
 }
 .horizontal-row-4 {
   height: 40%;
   padding: 0 1%;
-  justify-content: space-around;
 }
 .multiple-text {
   font-size: 20px;
@@ -362,11 +347,9 @@ export default {
 .col-details {
   padding: 1%;
 }
-
 .detail-container {
   min-height: 95vh;
 }
-
 .row-1 {
   padding: 2% 0;
   min-height: 5vh;
