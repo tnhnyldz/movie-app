@@ -42,22 +42,7 @@
               class="col-md-6 short-details-container"
               style="background-color: black"
             >
-              <p class="movie-infos roboto">
-                <span class="badge more-info-badges text-bg-secondary roboto"
-                  >{{ Details.Runtime }} minutes</span
-                ><span class="badge text-bg-secondary roboto more-info-badges"
-                  ><i class="fas fa-star" style="color: #ffd700"></i>
-                  {{ Details.VoteStar }}</span
-                ><span
-                  class="badge text-bg-secondary roboto more-info-badges"
-                  >{{ Details.ReleaseDate }}</span
-                ><br /><span
-                  class="badge text-bg-light roboto genre-span"
-                  v-for="genre in Details.Genres"
-                >
-                  {{ genre.name }}
-                </span>
-              </p>
+              <ShortDetailBadges :Details="Details"/> 
             </div>
             <div v-if="Details.Tagline" class="col-md-4 tagline-container">
               <p class="movie-tagline roboto">"{{ Details.Tagline }}"</p>
@@ -89,7 +74,10 @@
               </div>
             </div>
             <div class="col-md-4 social-media-container">
-             <SocialMediaIcons :SocialMediaObject="ExternalIds" :homePageLink="Details.HomePage"/>
+              <SocialMediaIcons
+                :SocialMediaObject="ExternalIds"
+                :homePageLink="Details.HomePage"
+              />
             </div>
             <div class="col-md-4 d-flex justify-content-center flex-wrap"></div>
           </div>
@@ -142,6 +130,7 @@ import SliderFive from "@/components/Sliders/SliderFive.vue";
 import SliderSix from "@/components/Sliders/SliderSix.vue";
 import ProgressBar from "@/components/Common/ProgressBar.vue";
 import SocialMediaIcons from "@/components/Common/SocialMediaIcons.vue";
+import ShortDetailBadges from "@/components/Common/ShortDetailBadges.vue";
 import "@/assets/css/app-global.css";
 export default {
   name: "DetailView",
@@ -151,7 +140,8 @@ export default {
     SliderFive,
     SliderSix,
     ProgressBar,
-    SocialMediaIcons
+    SocialMediaIcons,
+    ShortDetailBadges
   },
   data() {
     return {
@@ -174,47 +164,60 @@ export default {
     // 346698 barbide id
     // 1160164 taylor swift id
     this.MovieId = this.$route.params.id;
-
-    this.$store
-      .dispatch("Movie/fetchMovieDetailVideos", this.MovieId)
-      .then(() => {
-        this.Videos = this.$store.getters["Movie/getMovieDetailVideos"];
-        console.log(this.Videos);
-      });
-    this.$store
-      .dispatch("Movie/fetchMovieDetailBackdrops", this.MovieId)
-      .then(() => {
-        this.Backdrops = this.$store.getters["Movie/getMovieDetailBackdrops"];
-      });
-
-    this.$store
-      .dispatch("Movie/fetchMovieDetailPosters", this.MovieId)
-      .then(() => {
-        this.Posters = this.$store.getters["Movie/getMovieDetailPosters"];
-      });
-    this.$store
-      .dispatch("Movie/fetchMovieDetailCast", this.MovieId)
-      .then(() => {
-        this.Cast = this.$store.getters["Movie/getMovieDetailCast"];
-      });
-    this.$store.dispatch("Movie/fetchMovieDetails", this.MovieId).then(() => {
-      this.Details = this.$store.getters["Movie/getMovieDetails"];
-    });
-    this.$store
-      .dispatch("Movie/fetchMovieDetailExternalIds", this.MovieId)
-      .then(() => {
-        this.ExternalIds =
-          this.$store.getters["Movie/getMovieDetailExternalIds"];
-      });
-    this.$store
-      .dispatch("Movie/fetchMovieDetailKeywords", this.MovieId)
-      .then(() => {
-        this.Keywords = this.$store.getters["Movie/getMovieDetailKeywords"];
-      });
+    this.getAllDetailData();
   },
   methods: {
     goBack() {
       this.$router.go(-1);
+    },
+    getAllDetailData() {
+      const fetchVideos = this.$store.dispatch(
+        "Movie/fetchMovieDetailVideos",
+        this.MovieId
+      );
+      const fetchBackdrops = this.$store.dispatch(
+        "Movie/fetchMovieDetailBackdrops",
+        this.MovieId
+      );
+      const fetchPosters = this.$store.dispatch(
+        "Movie/fetchMovieDetailPosters",
+        this.MovieId
+      );
+      const fetchCast = this.$store.dispatch(
+        "Movie/fetchMovieDetailCast",
+        this.MovieId
+      );
+      const fetchDetails = this.$store.dispatch(
+        "Movie/fetchMovieDetails",
+        this.MovieId
+      );
+      const fetchExternalIds = this.$store.dispatch(
+        "Movie/fetchMovieDetailExternalIds",
+        this.MovieId
+      );
+      const fetchKeywords = this.$store.dispatch(
+        "Movie/fetchMovieDetailKeywords",
+        this.MovieId
+      );
+
+      Promise.all([
+        fetchVideos,
+        fetchBackdrops,
+        fetchPosters,
+        fetchCast,
+        fetchDetails,
+        fetchExternalIds,
+        fetchKeywords,
+      ]).then(() => {
+        this.Videos = this.$store.getters["Movie/getMovieDetailVideos"];
+        this.Backdrops = this.$store.getters["Movie/getMovieDetailBackdrops"];
+        this.Posters = this.$store.getters["Movie/getMovieDetailPosters"];
+        this.Cast = this.$store.getters["Movie/getMovieDetailCast"];
+        this.Details = this.$store.getters["Movie/getMovieDetails"];
+        this.ExternalIds =
+          this.$store.getters["Movie/getMovieDetailExternalIds"];
+        this.Keywords = this.$store.getters["Movie/getMovieDetailKeywords"];
+      });
     },
   },
 };
@@ -250,7 +253,6 @@ export default {
   justify-content: space-between;
   padding-left: 1%;
   align-items: center;
-
 }
 .tagline-container {
   background-color: black;
@@ -335,14 +337,7 @@ export default {
   align-items: center;
   /* background-color: black; */
 }
-.more-info-badges {
-  margin: 5px 5px;
-  font-size: 14px;
-}
-.genre-span {
-  font-size: 13.5px;
-  margin: 5px 5px;
-}
+
 .keyword-span {
   font-size: 13.5px;
   margin: 5px 5px;
@@ -359,10 +354,6 @@ export default {
   color: white;
   margin: 1%;
   text-align: left;
-}
-.movie-infos {
-  background-color: black;
-  margin: 1%;
 }
 .progress-bar-container {
   margin-left: 0.5%;
