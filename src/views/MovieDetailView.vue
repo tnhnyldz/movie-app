@@ -1,64 +1,64 @@
 <template>
-  <div class="detail-container container-fluid">
+  <div class="detail-container background-clr-blck container-fluid">
     <div class="container-fluid container-1">
-      <div class="row row-1">
+      <div class="d-flex justify-content-center background-clr-blck row row-1">
         <SliderOne :photoArray="Backdrops" />
       </div>
     </div>
-    <div class="container container-2">
+    <div class="container background-clr-blck container-2">
       <div class="row">
-        <div class="col col-md-12 row-col">
+        <div class="d-flex col background-clr-blck col-md-12 row-col">
           <i class="fa fa-arrow-left" @click="goBack"></i>
         </div>
       </div>
       <div class="row row-2">
-        <div class="col col-md-12 key-information-header">
+        <div class="d-flex col col-md-12 key-information-header">
           <p class="key-information roboto">Key Information</p>
         </div>
       </div>
     </div>
-    <div class="container container-3">
+    <div class="container background-clr-blck container-3">
       <div class="row row-3">
-        <div class="col col-3 col-poster" v-if="Posters.length > 0">
+        <div class="col col-3 background-clr-blck col-poster" v-if="Posters.length > 0">
           <SliderFour :photoArray="Posters" />
         </div>
-        <div class="col col-9 col-details">
-          <div class="col horizontal-row horizontal-row-1">
+        <div class="col col-9 background-clr-blck col-details">
+          <div class="d-flex col background-clr-blck horizontal-row horizontal-row-1">
             <h1 class="roboto text-white">
               {{ Details.Title }} ({{ Details.Year }})
             </h1>
           </div>
-          <div class="col horizontal-row horizontal-row-2">
-            <div class="col-md-1 progress-bar-container">
+          <div class="d-flex col background-clr-blck horizontal-row horizontal-row-2">
+            <div class="d-flex justify-content-center background-clr-blck col-md-1 progress-bar-container">
               <p class="user-score bg-secondary roboto text-white">
                 User Score
               </p>
             </div>
-            <div class="col-md-1 progress-bar-container">
+            <div class="d-flex justify-content-center col-md-1 progress-bar-container">
               <ProgressBar :BarValue="Details.VoteAverage" />
             </div>
 
             <div
-              class="col-md-6 short-details-container"
+              class="d-flex justify-content-center flex-column col-md-6 short-details-container"
               style="background-color: black"
             >
               <ShortDetailBadges :Details="Details" />
             </div>
-            <div v-if="Details.Tagline" class="col-md-4 tagline-container">
-              <p class="movie-tagline roboto">"{{ Details.Tagline }}"</p>
+            <div v-if="Details.Tagline" class="col-md-4 background-clr-blck tagline-container">
+              <p class="movie-tagline background-clr-blck roboto">"{{ Details.Tagline }}"</p>
             </div>
           </div>
-          <div class="col horizontal-row horizontal-row-3">
+          <div class="d-flex justify-content-center flex-column background-clr-blck col horizontal-row horizontal-row-3">
             <span class="roboto text-white overview">Overview</span>
             <span class="roboto text-white overview-text">{{
               Details.Overview
             }}</span>
           </div>
-          <div class="col horizontal-row horizontal-row-4">
-            <div class="col-md-4 additional-info-container">
+          <div class="d-flex col horizontal-row background-clr-blck horizontal-row-4">
+            <div class="d-flex flex-column background-clr-blck col-md-4 additional-info-container">
               <AdditionalInfos :Details="Details" />
             </div>
-            <div class="col-md-4 social-media-container">
+            <div class="d-flex justify-content-center background-clr-blck col-md-4 social-media-container">
               <SocialMediaIcons
                 :SocialMediaObject="ExternalIds"
                 :homePageLink="Details.HomePage"
@@ -69,9 +69,9 @@
         </div>
       </div>
     </div>
-    <div class="container container-4">
+    <div class="container background-clr-blck container-4">
       <div class="row row-4">
-        <div class="col col-md-12 cast-header">
+        <div class="d-flex justify-content-between background-clr-blck col col-md-12 cast-header">
           <p class="lead-actors roboto">Lead Actors</p>
           <p class="roboto keyword-header">Keywords</p>
         </div>
@@ -87,7 +87,7 @@
     </div>
     <div class="container container-5">
       <div class="row row-6">
-        <div class="col col-md-12 videos-header">
+        <div class="d-flex justify-content-between background-clr-blck col col-md-12 videos-header">
           <p class="videos-text roboto">Teasers and other videos</p>
         </div>
       </div>
@@ -145,8 +145,9 @@ export default {
     this.$store.commit("Movie/setEmpty");
   },
   created() {
-    // 346698 barbide id
-    // 1160164 taylor swift id
+    // barbide id 346698 
+    // taylor swift 1160164
+    // saw x 951491
     this.MovieId = this.$route.params.id;
     this.getAllDetailData();
   },
@@ -211,7 +212,6 @@ export default {
   background-color: royalblue;
 }
 .trailer-section {
-  /* background-color: black; */
   min-height: 500px;
   padding: 1% 1%;
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.dev/svgjs' width='1440' height='600' preserveAspectRatio='none' viewBox='0 0 1440 600'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1012%26quot%3b)' fill='none'%3e%3crect width='1440' height='600' x='0' y='0' fill='rgba(193%2c 163%2c 0%2c 1)'%3e%3c/rect%3e%3cpath d='M0%2c446.116C84.029%2c436.104%2c163.485%2c410.867%2c235.756%2c366.844C309.427%2c321.968%2c387.64%2c271.682%2c418.566%2c191.153C448.97%2c111.984%2c404.726%2c27.271%2c398.652%2c-57.318C391.988%2c-150.128%2c438.378%2c-256.897%2c381.128%2c-330.249C324.041%2c-403.392%2c213.308%2c-401.56%2c121.207%2c-412.794C41.179%2c-422.555%2c-34.707%2c-400.546%2c-114.728%2c-390.729C-212.869%2c-378.689%2c-319.282%2c-402.319%2c-402.277%2c-348.575C-494.418%2c-288.909%2c-591.146%2c-194.208%2c-587.645%2c-84.491C-584.067%2c27.643%2c-444.011%2c80.321%2c-385.537%2c176.069C-336.794%2c255.884%2c-351.457%2c374.032%2c-274.857%2c427.686C-198.092%2c481.456%2c-93.065%2c457.205%2c0%2c446.116' fill='%237e6a00'%3e%3c/path%3e%3cpath d='M1440 937.461C1514.062 951.0989999999999 1592.811 975.6990000000001 1661.241 944.258 1732.165 911.671 1772.108 837.348 1808.348 768.219 1846.2559999999999 695.909 1900 615.082 1874.463 537.534 1848.718 459.35400000000004 1738.843 449.932 1683.479 389.024 1630.1680000000001 330.374 1633.872 220.086 1559.942 191.515 1486.898 163.28699999999998 1410.416 223.85000000000002 1338.958 255.882 1276.362 283.942 1212.739 312.404 1170.205 366.222 1128.705 418.73199999999997 1114.3980000000001 485.568 1105.0529999999999 551.842 1095.73 617.963 1086.43 688.112 1116.405 747.781 1145.9940000000001 806.682 1208.717 838.065 1265.583 871.398 1320.327 903.4870000000001 1377.594 925.969 1440 937.461' fill='%23ffd806'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1012'%3e%3crect width='1440' height='600' fill='white'%3e%3c/rect%3e%3c/mask%3e%3c/defs%3e%3c/svg%3e");
@@ -219,7 +219,6 @@ export default {
 .container-5 {
   margin-top: 1%;
   min-height: 700px;
-  /* background-color: red; */
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -232,20 +231,13 @@ export default {
   border-left: 3px solid #ffd700;
 }
 .videos-header {
-  background-color: black;
-  display: flex;
-  justify-content: space-between;
   padding-left: 1%;
   align-items: center;
 }
 .tagline-container {
-  background-color: black;
   margin-top: 4.5%;
 }
 .additional-info-container {
-  background-color: black;
-  display: flex;
-  flex-direction: column;
   align-items: flex-start;
   justify-content: space-around;
   padding: 0 0 0 0.7%;
@@ -260,8 +252,6 @@ export default {
   font-size: 28px;
 }
 .row-col {
-  display: flex;
-  background-color: black;
   justify-content: flex-start;
   align-items: flex-end;
   padding: 2% 0 2% 0.9%;
@@ -270,24 +260,15 @@ export default {
   width: 100%;
 }
 .social-media-container {
-  background-color: black;
-  display: flex;
-  justify-content: center;
   flex-wrap: wrap;
 }
 .cast-cards {
-  /* max-height: 500px; */
   padding: 1%;
-  /* background-color: black; */
 }
 
 .cast-header {
-  background-color: black;
-  display: flex;
-  justify-content: space-between;
   padding-left: 1%;
   align-items: center;
-  /* background-color: black; */
 }
 .keyword-header {
   color: white;
@@ -311,20 +292,14 @@ export default {
   border-left: 3px solid #ffd700;
 }
 .key-information-header {
-  display: flex;
   justify-content: flex-start;
   align-items: center;
-  /* background-color: black; */
 }
 .short-details-container {
-  display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
 }
 .movie-tagline {
   font-style: italic;
-  background-color: black;
   color: white;
   margin: 1%;
   text-align: left;
@@ -332,10 +307,7 @@ export default {
 .progress-bar-container {
   margin-left: 0.5%;
   padding: 0.5%;
-  display: flex;
-  justify-content: center;
   align-items: center;
-  background-color: black;
 }
 .user-score {
   margin-top: 12px;
@@ -351,40 +323,23 @@ export default {
   background-color: black;
 }
 .horizontal-row-1 {
-  background-color: black;
   height: 15%;
   padding: 0 1%;
-  display: flex;
   justify-content: left;
   align-items: center;
 }
 .horizontal-row-2 {
-  background-color: black;
-  display: flex;
-  /* height: 20%;
-  padding: 0 1%;
-  display: flex;
-  flex-direction: column;
-  justify-content: end;
-  align-items: flex-start;
-  text-align: left; */
   height: 20%;
 }
 .horizontal-row-3 {
-  background-color: black;
   height: 25%;
   padding: 0 1%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: flex-start;
   text-align: left;
 }
 .horizontal-row-4 {
-  background-color: black;
   height: 40%;
   padding: 0 1%;
-  display: flex;
   justify-content: space-around;
   align-items: center;
 }
@@ -406,38 +361,24 @@ export default {
 .container-1 {
   padding: 0;
 }
-.container-2 {
-  background-color: black;
-}
-.container-3 {
-  /* min-height: 700px; */
-  background-color: black;
-}
 .container-4 {
   background-position: center;
   background-size: cover;
-  background-color: black;
 }
 .col-poster {
   padding: 1%;
-  background-color: black;
 }
 .col-details {
   padding: 1%;
-  background-color: black;
 }
 
 .detail-container {
   min-height: 95vh;
-  background-color: black;
 }
 
 .row-1 {
   padding: 2% 0;
-  display: flex;
-  justify-content: center;
   min-height: 5vh;
-  background-color: black;
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
