@@ -50,9 +50,8 @@ export default {
       let currentVideo = document.querySelector(".swiper-pagination-current");
       // const totalVideo = document.querySelector(".swiper-pagination-total");
       if (currentVideo) {
-        let currentVideoValue = currentVideo.textContent;
-        currentVideoValue = currentVideoValue - 1;
-        console.log(currentVideoValue);
+        let currentVideoValue = parseInt(currentVideo.textContent, 10);
+        this.$emit('current-video',currentVideoValue);
       }
     },
   },

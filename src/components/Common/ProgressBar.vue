@@ -52,7 +52,6 @@ export default {
       bar.text.style.fontSize = "2rem";
 
       // Start the animation
-      console.log(this.BarValue);
       bar.animate(this.BarValue / 100);
     },
   },

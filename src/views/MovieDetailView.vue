@@ -1,40 +1,55 @@
 <template>
   <div class="detail-container background-clr-blck container-fluid">
-    <div class="container-fluid container-1">
+    <div class="container-fluid container-1 p-0">
       <div class="d-flex justify-content-center background-clr-blck row row-1">
         <SliderOne :photoArray="Backdrops" />
       </div>
     </div>
     <div class="container background-clr-blck container-2">
       <div class="row">
-        <div class="d-flex justify-content-start col background-clr-blck col-md-12 row-col">
-          <i class="fa fa-arrow-left" @click="goBack"></i>
+        <div
+          class="d-flex justify-content-start col background-clr-blck col-md-12 row-col"
+        >
+          <i class="fa fa-arrow-left clr-white" @click="goBack"></i>
         </div>
       </div>
       <div class="row row-2">
-        <div class="d-flex justify-content-start col align-items-center col-md-12 key-information-header">
-          <p class="key-information roboto">Key Information</p>
+        <div
+          class="d-flex justify-content-start col align-items-center col-md-12 key-information-header"
+        >
+          <p class="key-information clr-white roboto">Key Information</p>
         </div>
       </div>
     </div>
     <div class="container background-clr-blck container-3">
       <div class="row row-3">
-        <div class="col col-3 background-clr-blck col-poster" v-if="Posters.length > 0">
+        <div
+          class="col col-3 padding-1 background-clr-blck col-poster"
+          v-if="Posters.length > 0"
+        >
           <SliderFour :photoArray="Posters" />
         </div>
-        <div class="col col-9 background-clr-blck col-details">
-          <div class="d-flex align-items-center justify-content-start col background-clr-blck horizontal-row horizontal-row-1">
+        <div class="col col-9 background-clr-blck padding-1 col-details">
+          <div
+            class="d-flex align-items-center justify-content-start col background-clr-blck horizontal-row horizontal-row-1"
+          >
             <h1 class="roboto text-white">
               {{ Details.Title }} ({{ Details.Year }})
             </h1>
           </div>
-          <div class="d-flex col background-clr-blck horizontal-row horizontal-row-2">
-            <div class="d-flex justify-content-center align-items-center background-clr-blck col-md-1 progress-bar-container">
+          <div
+            class="d-flex col background-clr-blck horizontal-row horizontal-row-2"
+          >
+            <div
+              class="d-flex justify-content-center align-items-center background-clr-blck col-md-1 progress-bar-container"
+            >
               <p class="user-score bg-secondary roboto text-white">
                 User Score
               </p>
             </div>
-            <div class="d-flex justify-content-center align-items-center col-md-1 progress-bar-container">
+            <div
+              class="d-flex justify-content-center align-items-center col-md-1 progress-bar-container"
+            >
               <ProgressBar :BarValue="Details.VoteAverage" />
             </div>
 
@@ -44,21 +59,34 @@
             >
               <ShortDetailBadges :Details="Details" />
             </div>
-            <div v-if="Details.Tagline" class="col-md-4 background-clr-blck tagline-container">
-              <p class="movie-tagline background-clr-blck roboto">"{{ Details.Tagline }}"</p>
+            <div
+              v-if="Details.Tagline"
+              class="col-md-4 background-clr-blck tagline-container"
+            >
+              <p class="movie-tagline clr-white background-clr-blck roboto">
+                "{{ Details.Tagline }}"
+              </p>
             </div>
           </div>
-          <div class="d-flex justify-content-center align-items-start flex-column background-clr-blck col horizontal-row horizontal-row-3">
+          <div
+            class="d-flex justify-content-center align-items-start flex-column background-clr-blck col horizontal-row horizontal-row-3"
+          >
             <span class="roboto text-white overview">Overview</span>
             <span class="roboto text-white overview-text">{{
               Details.Overview
             }}</span>
           </div>
-          <div class="d-flex align-items-center justify-content-around col horizontal-row background-clr-blck horizontal-row-4">
-            <div class="d-flex flex-column align-items-start justify-content-around background-clr-blck col-md-4 additional-info-container">
+          <div
+            class="d-flex align-items-center justify-content-around col horizontal-row background-clr-blck horizontal-row-4"
+          >
+            <div
+              class="d-flex flex-column align-items-start justify-content-around background-clr-blck col-md-4 additional-info-container"
+            >
               <AdditionalInfos :Details="Details" />
             </div>
-            <div class="d-flex justify-content-center flex-wrap background-clr-blck col-md-4 social-media-container">
+            <div
+              class="d-flex justify-content-center flex-wrap background-clr-blck col-md-4 social-media-container"
+            >
               <SocialMediaIcons
                 :SocialMediaObject="ExternalIds"
                 :homePageLink="Details.HomePage"
@@ -71,13 +99,15 @@
     </div>
     <div class="container background-clr-blck container-4">
       <div class="row row-4">
-        <div class="d-flex justify-content-between align-items-center background-clr-blck col col-md-12 cast-header">
-          <p class="lead-actors roboto">Lead Actors</p>
-          <p class="roboto keyword-header">Keywords</p>
+        <div
+          class="d-flex justify-content-between align-items-center background-clr-blck col col-md-12 cast-header"
+        >
+          <p class="lead-actors clr-white roboto">Lead Actors</p>
+          <p class="roboto clr-white keyword-header">Keywords</p>
         </div>
       </div>
       <div class="row row-5 cast-div">
-        <div class="col col-md-9 cast-cards">
+        <div class="col col-md-9 padding-1 cast-cards">
           <SliderFive :castArray="Cast" />
         </div>
         <div class="col col-md-3 mt-4 text-start">
@@ -87,16 +117,23 @@
     </div>
     <div class="container container-5">
       <div class="row row-6">
-        <div class="d-flex justify-content-between align-items-center background-clr-blck col col-md-12 videos-header">
-          <p class="videos-text roboto">Teasers and other videos</p>
+        <div
+          class="d-flex justify-content-between align-items-center background-clr-blck col col-md-12 videos-header"
+        >
+          <p class="videos-text clr-white roboto">Teasers and other videos</p>
         </div>
       </div>
       <div class="row row-7">
-        <div class="col col-md-8 trailer-section">
-          <SliderSix :LinkArray="Videos" />
+        <div class="col col-md-8 padding-1 trailer-section">
+          <SliderSix
+            @current-video="setCurrentVideoDetails"
+            :LinkArray="Videos"
+          />
         </div>
-        <div class="col col-md-4 text-start trailer-info-section">
-          <p>skldddds</p>
+        <div
+          class="col col-md-4 p-0 d-flex flex-column justify-content-start trailer-info-section"
+        >
+          <TrailerDetails :videoObj="videoObj" />
         </div>
       </div>
     </div>
@@ -113,7 +150,10 @@ import SocialMediaIcons from "@/components/Common/SocialMediaIcons.vue";
 import ShortDetailBadges from "@/components/Common/ShortDetailBadges.vue";
 import AdditionalInfos from "@/components/Common/AdditionalInfos.vue";
 import Keywords from "@/components/Common/Keywords.vue";
+import TrailerDetails from "@/components/Common/TrailerDetails.vue";
 import "@/assets/css/app-global.css";
+import "@/assets/css/spacing.css";
+
 export default {
   name: "DetailView",
   components: {
@@ -126,6 +166,7 @@ export default {
     ShortDetailBadges,
     AdditionalInfos,
     Keywords,
+    TrailerDetails
   },
   data() {
     return {
@@ -137,6 +178,14 @@ export default {
       Videos: [],
       Details: {},
       ExternalIds: {},
+      videoObj: {
+        name: "",
+        resolution: "",
+        type: "",
+        Official: false,
+        publishedAt: "",
+        language: "",
+      },
     };
   },
   beforeRouteLeave() {
@@ -145,7 +194,7 @@ export default {
     this.$store.commit("Movie/setEmpty");
   },
   created() {
-    // barbide id 346698 
+    // barbide id 346698
     // taylor swift 1160164
     // saw x 951491
     this.MovieId = this.$route.params.id;
@@ -154,6 +203,27 @@ export default {
   methods: {
     goBack() {
       this.$router.go(-1);
+    },
+    setCurrentVideoDetails(value) {
+      var current = value - 1;
+      var currentVideo = this.Videos[current];
+      if (typeof currentVideo === "undefined") {
+        setTimeout(() => {
+          this.videoObj.name = this.Videos[0]?.Name;
+          this.videoObj.resolution = this.Videos[0]?.Resolution;
+          this.videoObj.type = this.Videos[0]?.Type;
+          this.videoObj.Official = this.Videos[0]?.Official;
+          this.videoObj.publishedAt = this.Videos[0]?.PublishedAt;
+          this.videoObj.language = this.Videos[0]?.Language;
+        }, 2000);
+      } else {
+        this.videoObj.name = currentVideo?.Name;
+        this.videoObj.resolution = currentVideo?.Resolution;
+        this.videoObj.type = currentVideo?.Type;
+        this.videoObj.Official = currentVideo?.Official;
+        this.videoObj.publishedAt = currentVideo?.PublishedAt;
+        this.videoObj.language = currentVideo?.Language;
+      }
     },
     getAllDetailData() {
       const fetchVideos = this.$store.dispatch(
@@ -208,12 +278,9 @@ export default {
 };
 </script>
 <style scoped>
-.trailer-info-section {
-  background-color: royalblue;
-}
+
 .trailer-section {
   min-height: 500px;
-  padding: 1% 1%;
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.dev/svgjs' width='1440' height='600' preserveAspectRatio='none' viewBox='0 0 1440 600'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1012%26quot%3b)' fill='none'%3e%3crect width='1440' height='600' x='0' y='0' fill='rgba(193%2c 163%2c 0%2c 1)'%3e%3c/rect%3e%3cpath d='M0%2c446.116C84.029%2c436.104%2c163.485%2c410.867%2c235.756%2c366.844C309.427%2c321.968%2c387.64%2c271.682%2c418.566%2c191.153C448.97%2c111.984%2c404.726%2c27.271%2c398.652%2c-57.318C391.988%2c-150.128%2c438.378%2c-256.897%2c381.128%2c-330.249C324.041%2c-403.392%2c213.308%2c-401.56%2c121.207%2c-412.794C41.179%2c-422.555%2c-34.707%2c-400.546%2c-114.728%2c-390.729C-212.869%2c-378.689%2c-319.282%2c-402.319%2c-402.277%2c-348.575C-494.418%2c-288.909%2c-591.146%2c-194.208%2c-587.645%2c-84.491C-584.067%2c27.643%2c-444.011%2c80.321%2c-385.537%2c176.069C-336.794%2c255.884%2c-351.457%2c374.032%2c-274.857%2c427.686C-198.092%2c481.456%2c-93.065%2c457.205%2c0%2c446.116' fill='%237e6a00'%3e%3c/path%3e%3cpath d='M1440 937.461C1514.062 951.0989999999999 1592.811 975.6990000000001 1661.241 944.258 1732.165 911.671 1772.108 837.348 1808.348 768.219 1846.2559999999999 695.909 1900 615.082 1874.463 537.534 1848.718 459.35400000000004 1738.843 449.932 1683.479 389.024 1630.1680000000001 330.374 1633.872 220.086 1559.942 191.515 1486.898 163.28699999999998 1410.416 223.85000000000002 1338.958 255.882 1276.362 283.942 1212.739 312.404 1170.205 366.222 1128.705 418.73199999999997 1114.3980000000001 485.568 1105.0529999999999 551.842 1095.73 617.963 1086.43 688.112 1116.405 747.781 1145.9940000000001 806.682 1208.717 838.065 1265.583 871.398 1320.327 903.4870000000001 1377.594 925.969 1440 937.461' fill='%23ffd806'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1012'%3e%3crect width='1440' height='600' fill='white'%3e%3c/rect%3e%3c/mask%3e%3c/defs%3e%3c/svg%3e");
 }
 .container-5 {
@@ -224,7 +291,6 @@ export default {
   background-repeat: no-repeat;
 }
 .videos-text {
-  color: white;
   margin: 1% 0 1% 0;
   padding: 0 0 0 1%;
   font-size: 30px;
@@ -240,7 +306,6 @@ export default {
   padding: 0 0 0 0.7%;
 }
 .fa-arrow-left {
-  color: white;
   font-size: 28px;
 }
 .fa-arrow-left:hover {
@@ -252,29 +317,22 @@ export default {
   align-items: flex-end;
   padding: 2% 0 2% 0.9%;
 }
-.cast-cards {
-  padding: 1%;
-}
 
 .cast-header {
   padding-left: 1%;
 }
 .keyword-header {
-  color: white;
-  margin: 0 0 0 0;
   padding: 0 11.6% 0 1%;
   font-size: 30px;
   border-left: 3px solid #ffd700;
 }
 .lead-actors {
-  color: white;
   margin: 1% 0 1% 0;
   padding: 0 0 0 1%;
   font-size: 30px;
   border-left: 3px solid #ffd700;
 }
 .key-information {
-  color: white;
   margin: 1% 0 1% 0;
   padding: 0 0 0 1%;
   font-size: 30px;
@@ -282,7 +340,6 @@ export default {
 }
 .movie-tagline {
   font-style: italic;
-  color: white;
   margin: 1%;
   text-align: left;
 }
@@ -334,18 +391,9 @@ export default {
 .row-4-text {
   font-size: 18px;
 }
-.container-1 {
-  padding: 0;
-}
 .container-4 {
   background-position: center;
   background-size: cover;
-}
-.col-poster {
-  padding: 1%;
-}
-.col-details {
-  padding: 1%;
 }
 .detail-container {
   min-height: 95vh;

@@ -198,7 +198,7 @@ const MovieModule = {
            Type:x.type,
            Official:x.official,
            PublishedAt:Helper.formatDate(x.published_at),
-           Language:x.iso_639_1+"-"+x.iso_3166_1,
+           Language:x.iso_639_1
          }
       })
      },

@@ -32,7 +32,7 @@ export default {
   methods: {},
 };
 </script>
-<style>
+<style scoped>
 .info-item {
   border-left: 2px gold solid;
   margin: 2% 0;
